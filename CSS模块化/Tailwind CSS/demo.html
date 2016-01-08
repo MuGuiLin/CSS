@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css"> -->
+  <link rel="stylesheet" href="./css/tailwind.min.css">
+  </link>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/utilities.min.css"> -->
+  <link rel="stylesheet" href="./css/utilities.min.css">
+
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="js/tailwindcss.3.4.16.js"></script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+          color: aqua;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <h1 class="text-3xl text-primary font-bold text-center"> Tailwind CSS </h1>
+
+  <div class="lg:content-auto">
+    <a href="http://" target="_blank" rel="noopener noreferrer">Tailwind CSS</a>
+  </div>
+
+</body>
+
+</html>
