@@ -2,21 +2,39 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css"> -->
-  <link rel="stylesheet" href="./css/tailwind.min.css">
-  </link>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind CSS</title>
 
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/utilities.min.css"> -->
-  <link rel="stylesheet" href="./css/utilities.min.css">
+  <!-- 纯CSS不能自定义样式，而且文件体积较大 -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" /> -->
+  <!-- <link rel="stylesheet" href="./css/tailwind.min.css" /> -->
+
+  <!-- 实用工具类 如：弹窗组、表单组件等 -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/utilities.min.css" /> -->
+  <!-- <link rel="stylesheet" href="./css/utilities.min.css" /> -->
 
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <script src="js/tailwindcss.3.4.16.js"></script>
+  <!-- 自定义配置、覆盖默认配置、CSS变量 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'oklch(0.57 0.21 271.18)',
+          }
+        }
+      }
+    }
+  </script>
   <style type="text/tailwindcss">
+    /* 自定义样式类 */
     @layer utilities {
         .content-auto {
           content-visibility: auto;
+        }
+        .my-color  {
           color: aqua;
         }
       }
@@ -24,10 +42,37 @@
 </head>
 
 <body>
-  <h1 class="text-3xl text-primary font-bold text-center"> Tailwind CSS </h1>
+  <h1 class="py-10 text-3xl font-bold text-center text-primary">
+    Hello Tailwind CSS!
+  </h1>
 
   <div class="lg:content-auto">
-    <a href="http://" target="_blank" rel="noopener noreferrer">Tailwind CSS</a>
+    <ul class=" flex bg-blue-500 my-color text-xl">
+      <li class="px-4 py-2">
+        <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS 官网</a>
+      </li>
+      <li class="px-4 py-2 bg-white-500 text-white hover: text-lg">
+        <a href="https://cdn.tailwindcss.com" target="_blank">tailwindcss JS文件</a>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="flex flex-col items-center gap-6 p-7 md:flex-row md:gap-8 rounded-2xl m-10 border border-gray-200 dark:border-gray-700 ">
+    <div>
+      <img class="size-48 shadow-xl rounded-md" alt=""
+        src="https://tailwindcss.com/_next/static/media/css-grid-4.308d73d9.png" />
+    </div>
+    <div class="flex items-center md:items-start">
+      <span class="text-2xl font-medium">Class Warfare</span>
+      <span class="font-medium text-sky-500">The Anti-Patterns</span>
+      <span class="flex gap-2 font-medium text-gray-600 dark:text-gray-400">
+        <span>No. 4</span>
+        <span>·</span>
+        <span>2025</span>
+        <button type="button" class="p-2 rounded-md bg-indigo-500 hover:bg-fuchsia-500 text-white">CSS hover</button>
+      </span>
+    </div>
   </div>
 
 </body>
