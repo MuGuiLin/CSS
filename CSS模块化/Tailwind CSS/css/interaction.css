@@ -1,0 +1,170 @@
+body {
+    background: green;
+    width: 100vw;
+    height: 100vh;
+}
+
+/*应援*/
+.Interaction {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.Interaction .list {
+    position: absolute;
+    border: 1px solid #fff;
+}
+
+.Interaction .list li {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    z-index: 999;
+}
+
+.Interaction .item-1,
+.Interaction .item-3 {
+    width: 720px;
+    height: 100px;
+    bottom: 60px;
+    right: 380px;
+}
+
+.Interaction .item-3 {
+    top: 40px;
+}
+
+.Interaction .item-2,
+.Interaction .item-4 {
+    width: 100px;
+    height: 620px;
+    top: 220px;
+    right: 100px;
+}
+
+.Interaction .item-4 {
+    left: 470px;
+}
+
+.Interaction .item-1 li.nub,
+.Interaction .item-3 li.nub {
+    top: -50px;
+    left: 400px;
+}
+
+.Interaction .item-2 li.nub,
+.Interaction .item-4 li.nub {
+    left: 50px;
+    top: 460px;
+}
+
+.Interaction .item-1 li.nup,
+.Interaction .item-3 li.nup {
+    top: -130px;
+    left: -200px;
+}
+
+.Interaction .item-2 li.nup,
+.Interaction .item-4 li.nup {
+    top: -130px;
+}
+
+.Interaction .list li img {
+    vertical-align: middle;
+}
+
+.Interaction .item-1 li.num,
+.Interaction .item-3 li.num {
+    left: 550px;
+}
+
+.Interaction .item-3 li.num {
+    top: -12px;
+}
+
+.Interaction .item-2 li.num,
+.Interaction .item-4 li.num {
+    top: 56px;
+    left: 120px;
+}
+
+.Interaction .item-2 li.num {
+    left: -200px;
+}
+
+.Interaction .list li.num {
+    z-index: 666;
+}
+
+.Interaction .list li.num b {
+    display: block;
+    padding-top: 11px;
+    width: 152px;
+    height: 60px;
+    color: white;
+    font-size: 28px;
+    -webkit-text-stroke: 0.2px black;
+    background: url(../img/score-bg.png) no-repeat;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+
+.Interaction .list li .move {
+    position: absolute;
+}
+
+.Interaction .list li .move-1 {
+    top: -20px;
+    width: 50px;
+}
+
+.Interaction .list li .move-2 {
+    top: -35px;
+    left: 50px;
+    width: 150px;
+}
+
+.Interaction .item-1 li .move-4,
+.Interaction .item-3 li .move-4 {
+    top: -40px;
+    left: 140px;
+}
+
+.Interaction .item-1 li .move-3 {
+    top: -20px;
+}
+
+.Interaction .item-1 li .move-4 {
+    top: -60px;
+}
+
+.Interaction .item-2 li .move-1 {
+    left: 0px;
+}
+
+.Interaction .item-4 li .move-1 {
+    left: -70px;
+}
+
+.Interaction .item-2 li .move-2 {
+    top: 60px;
+    left: -50px;
+}
+
+.Interaction .item-4 li .move-2 {
+    top: 60px;
+    left: -110px;
+}
+
+.Interaction .item-2 li .move-3,
+.Interaction .item-4 li .move-3 {
+    top: -55px;
+    left: -70px;
+}
+
+.Interaction .item-2 li .move-4,
+.Interaction .item-4 li .move-4 {
+    top: 65px;
+    left: -95px
+}

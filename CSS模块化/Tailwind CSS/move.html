@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaction</title>
+  <link rel="stylesheet" href="./css/interaction.css" />
+  <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+  <!--点赞+10、砸蛋-10、鲜花+50、黑锅-50-->
+  <div id="Interaction" class="Interaction">
+    <ul v-for="(o, i) in shower" :class="'list '+'item-'+(i+1)">
+      <li class="nub">
+        <img class="move move-1" :id="'move-u'+o.id+'-g1'" />
+      </li>
+      <li class="nub">
+        <img class="move move-2" :id="'move-u'+o.id+'-g2'" />
+      </li>
+      <li class="num">
+        <b :id="'user-core-'+o.id">{{o.score}}</b>
+      </li>
+      <li class="nup">
+        <img class="move move-3" :id="'move-u'+o.id+'-g3'" />
+      </li>
+      <li class="nup">
+        <img class="move move-4" :id="'move-u'+o.id+'-g4'" />
+      </li>
+    </ul>
+  </div>
+
+  <script type="module">
+    import { createApp, ref } from './js/vue.esm-browser.js'
+    //1、创建根组件
+    const app = createApp({
+      setup() {
+        // 4个玩家
+        const shower = ref(
+          [
+            { id: 1, score: Math.floor(Math.random() * 9999) },
+            { id: 2, score: Math.floor(Math.random() * 9999) },
+            { id: 3, score: Math.floor(Math.random() * 9999) },
+            { id: 4, score: Math.floor(Math.random() * 9999) },
+          ]
+        );
+
+        const GiftObj = {};
+        //收到的礼物
+        globalThis.setInterval(() => {
+          const o = {
+            // 随机玩家ID
+            showerID: Math.floor(Math.random() * 4) + 1,
+            // 随机礼物ID
+            giftID: Math.floor(Math.random() * 4) + 1,
+            // 随机分数
+            giftScore: Math.floor(Math.random() * 9999)
+          }
+
+          //收到的礼物
+          const sNick = 'move-u' + o.showerID + '-g' + o.giftID;
+          const $sCore = $('#user-core-' + o.showerID);
+
+          if (!GiftObj[sNick]) {
+            GiftObj[sNick] = 1;
+          } else {
+            GiftObj[sNick]++;
+          };
+          // 玩家分数加减
+          $sCore.text(Number($sCore.text()) + Number(o.giftScore));
+        }, 1200);
+
+
+
+        // 延时消费队列（因为每个礼物动画，至少要完整的显示一次动画【不是一闪而过】）
+        globalThis.setInterval(function () {
+          console.log(GiftObj);
+          for (let i in GiftObj) {
+            if (0 < GiftObj[i]) {
+              console.log(i.substr(i.length - 1, 1));
+              $('#' + i).attr('src', 'img/gif-' + i.substr(i.length - 1, 1) + '.gif?' + (Math.random()));
+              GiftObj[i]--;
+            }
+          }
+        }, 1200);
+
+        return {
+          shower
+        }
+      }
+    });
+    //2、挂载插件ElementPlus
+    // app.use(ElementPlus)
+
+    //3、挂载根组件
+    app.mount('#Interaction');
+
+    // 4、处理错误
+    app.config.errorHandler = (err) => {
+      /* 处理错误 */
+      console.log("出现错误：")
+      console.error(err)
+    };
+  </script>
+</body>
+
+</html>
