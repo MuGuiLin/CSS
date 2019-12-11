@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3字体、文本效果</title>
+	<style type="text/css">
+		@font-face {
+			font-family: mupiaos;
+			src: url(fonts/soujinbook.ttf), url(fonts/SingleMalta.ttf);
+			font-weight: bold;
+			font-style: initial;
+		}
+
+		.clear {
+			clear: both;
+		}
+
+		section {
+			font-family: mupiaos;
+			width: 1200px;
+			margin: auto;
+			font-size: 24px;
+		}
+
+		mark {
+			font-weight: bold;
+			font-size: 36px;
+		}
+
+		.shadow1 {
+			float: left;
+			text-shadow: 5px 5px 5px red;
+		}
+
+		.shadow2 {
+			float: left;
+			text-shadow: 10px 10px 20px blue;
+		}
+
+		.shadow3 {
+			float: left;
+			text-shadow: 4px 4px 20px green;
+		}
+
+		.wrap1 {
+			float: left;
+			width: 400px;
+			height: 120px;
+			border: 1px solid black;
+		}
+
+		.wrap2 {
+			word-wrap: break-word;
+			float: left;
+			margin-left: 100px;
+			width: 400px;
+			height: 120px;
+			border: 1px solid black;
+		}
+
+		.overflow {
+			float: left;
+			margin-left: 240px;
+			width: 300px;
+			height: 60px;
+			border: 1px solid black;
+			margin-bottom: 100px;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.overflow:hover {
+			text-overflow: inherit;
+			overflow: visible;
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 style="text-align: center; font-family: '微软雅黑';">CSS3字体(@font-face)、文本效果</h1>
+	<hr />
+	<br />
+	<section>
+		@font-face是CSS3中的一个模块，他主要是把自己定义的Web字体嵌入到你的网页中: <br /><br />
+		支持如下属性@font-face：<br />
+		{<br />
+		&nbsp; &nbsp; font-family：mupiao；设置文本的字体名称。<br />
+		&nbsp; &nbsp; font-style：italic；设置文本样式。<br />
+		&nbsp; &nbsp; font-variant：small-caps；设置文本是否大小写。<br />
+		&nbsp; &nbsp; font-weight：bold；设置文本的粗细。<br />
+		&nbsp; &nbsp; font-stretch：semi-condensed；设置文本是否横向的拉伸变形。<br />
+		&nbsp; &nbsp; font-size：24px；设置文本字体大小。<br />
+		&nbsp; &nbsp; src：url(fonts/xxxx.ttf),url()；设置自定义字体的相对路径或者绝对路径。<br />
+		}
+		<img src="./img/font-face.png" width="800px" />
+		<h2>Web常见的字体格式:(5种)</h2>
+
+		一、TureTpe(<mark>.ttf</mark>)格式：<br />
+		.ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，因此他不为网站优化,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome4+,Safari3+,Opera10+,iOS Mobile
+		Safari4.2+】；<br /><br />
+
+		二、OpenType(<mark>.otf</mark>)格式：<br />
+		.otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，所以也提供了更多的功能,支持这种字体的浏览器有 Firefox3.5+,Chrome4.0+,Safari3.1+,Opera10.0+,iOS
+		Mobile Safari4.2+】；<br /><br />
+
+		三、Web Open Font Format(<mark>.woff</mark>)格式：<br />
+		.woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome6+,Safari3.6+,Opera11.1+】；<br /><br />
+
+		四、Embedded Open Type(<mark>.eot</mark>)格式：<br />
+		.eot字体是IE专用字体，可以从TrueType创建此格式字体,支持这种字体的浏览器有【IE4+】；<br /><br />
+
+		五、SVG(<mark>.svg</mark>)格式：<br />
+		.svg字体是基于SVG字体渲染的一种格式,支持这种字体的浏览器有【Chrome4+,Safari3.1+,Opera10.0+,iOS Mobile Safari3.2+】。
+
+	</section>
+
+
+
+</body>
+
+</html>

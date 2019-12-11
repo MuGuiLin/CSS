@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>圆形放大消失效果</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				/* background-image: -webkit-linear-gradient(-225deg, #77ffd2, #6297db 48%, #1eecff); */
+				background-image: -webkit-radial-gradient(50% 5%,50% 80%,#0A9DFB,#2087F4);
+			}
+			
+			.box{
+				position: relative;
+			}
+			
+			.box img{
+				width:60px;
+				margin-top: -30px;
+				margin-left: -30px;
+			}
+
+			.circle {
+				position: absolute;
+				top: -180px;
+				left: -180px;
+				width: 360px;
+				height: 360px;
+				-webkit-animation: circle 4.5s linear infinite;
+				border-radius: 50%;
+			}
+			
+			/* .circle:first-child{ 第1个 */
+			/* .circle:last-child{ 最后1个 */
+			.circle:nth-child(2){
+				animation-delay: 1.5s;
+			}
+			
+			.circle:nth-child(3){
+				animation-delay: 3s;
+			}
+
+			@-webkit-keyframes circle {
+				from {
+					transform: scale(0);
+					background-color: rgba(255, 255, 255, .1);
+					border: 1px solid rgba(255, 255, 255, .3);
+				}
+
+				to {
+					transform: scale(2);
+					background-color: transparent;
+					border: 1px solid rgba(255, 255, 255, 0);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<img src="https://iniditor.smgtech.net/Public/images/advertising.png" >
+		</div>
+	</body>
+</html>

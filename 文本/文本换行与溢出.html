@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>文本换行</title>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		pre {
+			font-size: 18px;
+			line-height: 32px;
+		}
+
+		.text {
+			margin: 50px 100px;
+			padding: 10px;
+			width: 400px;
+			border: 1px solid black;
+		}
+
+		.overflow {
+			margin: 50px 100px;
+			width: 300px;
+			height: 60px;
+			line-height: 30px;
+			border: 1px solid black;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.overflow:hover {
+			text-overflow: inherit;
+			overflow: visible;
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>文本换行 与 溢出处理</h1>
+	<hr />
+
+	<pre>
+		<b>文字换行：</b>
+		// 指定非CJK脚本的断行规则（怎么样进行单词内的断句）提示:CJK脚本是中国，日本和韩国（"中日韩"）脚本。。
+		1、word-break: normal | keep-all | break-all
+			参数说明：
+				normal 　 	//（默认的换行规则）依照亚洲语言和非亚洲语言的文本规则，允许在字内换行
+				keep-all 	//（只能在半角空格或连字符处换行）与所有非亚洲语言的normal相同。对于中文，韩文，日文，不允许字断开。适合包含少量亚洲文本的非亚洲文本
+				break-all 	//（允许再单词内换行）该行为与亚洲语言的normal相同。也允许非亚洲语言文本行的任意字内断开。该值适合包含一些非亚洲文本的亚洲文本
+
+		// 允许长的内容可以自动换行（可在单词内进行断句，这是为了防止当一个字符串太长而找不到它的自然断句点时产生溢出现象）。
+		2、word-wrap: normal | break-word; //自动换行
+			参数说明：
+				normal		// 只在允许的断字点换行(浏览器保持默认处理)
+				break-word	// 在长单词或URL地址内部进行换行
+		
+		// 指定元素内的空白怎样处理。
+		3、white-space: normal | pre | nowrap | pre-wrap | pre-line | inherit;
+			参数说明：
+				normal		// （默认）空白会被浏览器忽略。
+				pre 		// 空白会被浏览器保留。其行为方式类似 HTML 中的 pre 标签。
+				nowrap 		// 文本不会换行，文本会在在同一行上继续，直到遇到 br 标签为止。
+				pre-wrap 	// 保留空白符序列，但是正常地进行换行。
+				pre-line	// 合并空白符序列，但是保留换行符。
+				inherit 	// 规定应该从父元素继承 white-space 属性的值。
+
+		// 指定文本换行规则
+		4、text-wrap: normal | none | unrestricted | suppress;
+				normal 		 // 只在允许的换行点进行换行。
+				none 		 // 不换行。元素无法容纳的文本会溢出。
+				unrestricted // 在任意两个字符间换行。
+				suppress 	 // 压缩元素中的换行。浏览器只在行中没有其他有效换行点时进行换行。
+
+
+		<b>常用组合：</b>
+		1、自动换行
+			white-space: pre-wrap;  // 中文自动换行
+			word-break: break-all;  // 数字自动换行
+			word-wrap: break-word;  // 英文以单词作为换行依据
+
+		2、强制不换行
+			word-break: normal;
+			white-space: nowrap; 
+		
+		
+		<b>文字溢出处理：</b>
+		1、单行文本溢出显示省略号(…)
+			width: 200px;
+			heigth: 100px;
+
+			overflow: hidden; 
+			white-space: nowrap; 
+			text-overflow: ellipsis; // ... 超出部分隐藏且以省略号形式出现（部分浏览器还需要加宽度width属性）
+		
+		2、多行文本溢出显示省略号(…)，WebKit浏览器或移动端的页面
+			width: 200px;
+			heigth: 100px;
+
+			display: -webkit-box;
+			overflow: hidden;
+			text-overflow: ellipsis; // ... 超出部分隐藏且以省略号形式出现（部分浏览器还需要加宽度width属性）
+			-webkit-line-clamp: 2; 	 //2行 行数可自定义
+			-webkit-box-orient: vertical;
+	</pre>
+
+
+	<div class="text">
+		<p>英文字母: </p>
+		abjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyz
+	</div>
+
+	<div class="text" style="word-wrap: break-word; color: green;">
+		<p>英文字母: word-wrap: break-word; </p>
+		abjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyzabjdefghijklmnopqrstuvwxyz
+	</div>
+
+
+
+	<div class="text">
+		<p>英文文章: </p>
+		This paragraph contains a very long word: thisisaverylongword. The long word will break and wrap to the next line.
+	</div>
+
+	<div class="text" style="word-break: break-all; color: green;">
+		<p>英文文章: word-break: break-all;</p>
+		This paragraph contains a very long word: thisisaverylongword. The long word will break and wrap to the next line.
+	</div>
+
+	<div class="text" style="word-break: break-all; text-align: justify; color: blueviolet;">
+		<p>英文文章: word-break: break-all; text-align: justify;</p>
+		This paragraph contains a very long word: thisisaverylongword. The long word will break and wrap to the next line.
+	</div>
+
+
+
+	<div class="text">
+		<p>数字：</p>
+		1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+	</div>
+
+	<div class="text" style="word-wrap: break-word;">
+		<p>数字：word-wrap: break-word;</p>
+		1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+	</div>
+
+
+
+	<div class="text" style="word-wrap: break-word; color: red;">
+		<p>文本数字英文：word-wrap: break-word;</p>
+		文本文本文本文本文本1234567890abjdefghijklmnopqr文本文本文本文本文本stuvwxyz123456789012345678901234文本文本文本文本文本567890abjdefghijklmnopqrstu文本文本文本文本文本vwxyz12345678901234567890abjdefghijklmnopqrstuvwxyz123456789012345678901234567890
+	</div>
+
+	<div class="text" style="word-break: break-all; color: blue;">
+		<p>文本数字英文：word-break: break-all;</p>
+		文本文本文本文本文本1234567890abjdefghijklmnopqr文本文本文本文本文本stuvwxyz123456789012345678901234文本文本文本文本文本567890abjdefghijklmnopqrstu文本文本文本文本文本vwxyz12345678901234567890abjdefghijklmnopqrstuvwxyz123456789012345678901234567890
+	</div>
+
+	<div class="text" style="word-break: break-all; text-align: justify; color: purple;">
+		<p>文本数字英文：word-break: break-all; text-align: justify;</p>
+		文本文本文本文本文本1234567890abjdefghijklmnopqr文本文本文本文本文本stuvwxyz123456789012345678901234文本文本文本文本文本567890abjdefghijklmnopqrstu文本文本文本文本文本vwxyz12345678901234567890abjdefghijklmnopqrstuvwxyz123456789012345678901234567890
+	</div>
+
+	
+
+
+	<h2>text-overflow属性：指定当文本溢出包含它的元素，应该发生什么？</h2>
+	
+
+	<div class="overflow" style="text-overflow:ellipsis;">
+		text-overflow: ellipsis;  <br /> 当文本超出(溢出包含它的元素)时显示省略符号来代表被修剪的文本。
+	</div>
+
+	<div class="overflow" style="text-overflow:clip;">
+		text-overflow: clip; <b style="color: blue;">鼠标指我试试</b><br /> 当文本超出(溢出包含它的元素)直接时修剪文本。
+	</div>
+
+	<div class="overflow" style="text-overflow:string;">
+		text-overflow: string; <br /> 当文本超出(溢出包含它的元素)时使用给定的字符串来代表被修剪的文本。
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css hover控制其他元素</title>
+    <style>
+        body div {
+            padding-left: 10px;
+            width: 200px;
+            line-height: 32px;
+            margin: 20px;
+            border: 1px solid gray;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box1:hover {
+            cursor: pointer;
+            background: #FFFF00;
+        }
+
+        .box1:hover>.item:first-child {
+            background: #FF0000;
+        }
+
+        .box1:hover>.item {
+            color: wheat;
+            font-weight: bold;
+            background: #FF00FF;
+        }
+
+        .box1:hover>.item:nth-child(3) {
+            background: #0000FF;
+        }
+
+        .box1:hover+.box2 {
+            background: #00FF00;
+        }
+
+        .box1:hover+.box2>.item {
+            background: cyan;
+        }
+        
+        .box1:hover+.box2>.item:last-child {
+            background: deeppink;
+        }
+
+        .box2:hover {
+            cursor: pointer;
+            background: #FF00FF;
+        }
+
+        .box2:hover>.item:first-child {
+            color: wheat;
+            background: #0000FF;
+        }
+
+        .box2:hover>.item:last-child {
+            background: #00FF00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        css hover控制其他元素
+    </h1>
+    <hr>
+    <div class='box1'>
+        盒子1
+        <div class='item'>元素1</div>
+        <div class='item'>元素2</div>
+        <div class='item'>元素3</div>
+    </div>
+    <div class='box2'>
+        盒子2
+        <div class='item'>元素1</div>
+        <div class='item'>元素2</div>
+    </div>
+</body>
+
+</html>

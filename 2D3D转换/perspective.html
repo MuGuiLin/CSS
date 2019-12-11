@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		pre{
+			font-size: 18px;
+			line-height: 32px;
+		}
+
+		.box {
+			position: relative;
+			padding: 10px;
+			margin: auto;
+			height: 200px;
+			width: 200px;
+			border: 1px solid gray;
+			-webkit-perspective: 50;
+		}
+
+		#div2 {
+			padding: 50px;
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			position: absolute;
+			text-align: center;
+			color: wheat;
+			font-size: 28px;
+			border: 1px solid blue;
+			background: blueviolet;
+			transform: rotateX(23deg);
+		}
+	</style>
+</head>
+
+<body>
+	<h1>设置元素被查看位置的视图</h1>
+	<hr />
+	<pre>
+		<b>perspective定义和用法</b>
+			- perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。
+			- 当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+
+			* 注释：perspective 属性只影响 3D 转换元素。
+			* 提示：请与 perspective-origin 属性一同使用该属性，这样您就能够改变 3D 元素的底部位置。
+	</pre>
+	<div class="box">
+		<div id="div2">HELLO</div>
+	</div>
+
+</body>
+
+</html>

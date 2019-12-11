@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>filter-blur滤镜</title>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		img {
+			width: 100%
+		}
+
+		.main {
+			-webkit-filter: blur(5px);
+		}
+
+		.main p{
+			text-indent: 30px;
+			font-size: 24px;
+			line-height: 38px;
+		}
+
+		.alert {
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgba(158, 99, 99, 0.1);
+		}
+
+		.alert-wrapper {
+			width: 320px;
+			height: 180px;
+			padding: 20px;
+			border: 1px solid red;
+			background: rgba(255, 255, 255, 0.5);
+			box-shadow: 2px 3px 20px 10px red;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>filter-blur滤镜(灰度)</h1>
+	<hr />
+
+	<div class="main">
+		<p>
+			皮尤研究中心对各国居民是否支持自由市场经济（Free&nbsp;MarketEconomy）的调查显示，国民对对市场经济支持度最高的国家多数并非拥有完善市场经济体制。许多还在市场经济道路上探索的国家例如中国、越南、孟加拉等国对自由市场的热情远高于传统的资本主义堡垒——美英等国家。这些热情拥抱市场经济的国家又普遍经历了从国家主导的计划经济到市场经济的转变。
+		</p>
+		<p>
+			<img src="http://img5.cache.netease.com/cnews/2014/10/15/201410150655531fdf0.png" />
+		</p>
+		<p>
+			皮尤在对全球近4.9万人进行调查后发现，越南成为全世界最支持市场经济的国家。95%的越南人表示，在自由市场经济体中，大多数人都能活得更好。持同样看法的孟加拉人占比达80%（位列第二），中国人有76%（位列第四）。同样的问题，在英国有70%的支持率，而美国人，则只有65%表示支持自由市场经济体系。44个受调查国家的平均支持率也仅有64%。
+		</p>
+	</div>
+
+	<div class="alert">
+		<div class="alert-wrapper">
+			<h1>Hello World!</h1>
+		</div>
+	</div>
+</body>
+
+</html>

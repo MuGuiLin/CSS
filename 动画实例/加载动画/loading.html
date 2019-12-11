@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>加载动画</title>
+	<style type="text/css">
+		.alert {
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.load {
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			color: white;
+			text-align: center;
+			border-radius: 10px;
+			border: 1px solid white;
+			box-shadow: 0 0 10px 2px gray;
+			animation: square-spin 3s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+		}
+
+		@keyframes square-spin {
+			25% {
+				transform: perspective(100px) rotateX(180deg) rotateY(0);
+				background: red;
+			}
+
+			50% {
+				transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+				background: green;
+			}
+
+			75% {
+				transform: perspective(100px) rotateX(0) rotateY(180deg);
+				background: blue;
+			}
+
+			100% {
+				transform: perspective(100px) rotateX(0) rotateY(0);
+				background: purple;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<section class="alert">
+		<div class="load">加载中！</div>
+	</section>
+</body>
+
+</html>

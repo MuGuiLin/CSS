@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			section{ margin: auto; width: 1000px;}
+			h1{ text-align: center;}
+			.no1{ border:1px dashed #cccccc; line-height: 200px;}
+			
+			.no2{ border:1px dashed #cccccc; line-height:200px; vertical-align:middle; }
+			.no2 span{ display:inline-block; line-height:24px; vertical-align:middle; }
+			
+			.no3{ border:1px dashed #cccccc; padding: 80px 0;}
+		</style>
+	</head>
+
+	<body>
+		<section>
+			<h1>单行，多行文字垂直居中样式</h1><hr />
+			
+			<h2>no1</h2>
+			<p class="no1">一行文字垂直居中 只设置行高后，内容区上下方自动填充行间距，就可以使得文字垂直居中p{line-height: 200px}</p>
+			
+			<h2>no2</h2>
+			<p class="no2">
+				<span>对于 高度固定 的块级元素，里面文字单行或多行显示，外面的p{line-height:200px; vertical-align:middle;} 借助于line-height 和 vertical-align:middle;。 p里面的span{display:inline-block; line-height:24px; vertical-align:middle;}</span> 
+			</p>
+			
+			<h2>no3</h2>
+			<p class="no3">对于 高度不固定 的块级元素，多行文字垂直居中 要实现 文字垂直居中使用padding就好了。p{ border:1px dashed #cccccc; padding: 50px 0;}</p>
+		</section>
+	</body>
+
+</html>
