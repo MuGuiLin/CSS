@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-behavior 滚动条平滑滚动</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .nav {
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        .box {
+            height: 500px;
+            border: 1px solid gray;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .box div {
+            height: 100vh;
+            padding: 50px;
+            font-size: 24px;
+        }
+
+        .box div:nth-child(odd) {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>scroll-behavior 滚动条平滑滚动</h1>
+    <hr>
+
+    <p>当用户手动导航或者 CSSOM scrolling API 触发滚动操作时，CSS 属性 scroll-behavior
+    为一个滚动框指定滚动行为，其他任何的滚动，例如那些由于用户行为而产生的滚动，不受这个属性的影响。在根元素中指定这个属性时，它反而适用于视窗。</p>
+
+    <nav class="nav">
+        <a href="#page-1">第1屏</a>
+        <a href="#page-2">第2屏</a>
+        <a href="#page-3">第3屏</a>
+    </nav>
+    <div class="box">
+        <div id="page-1">我是第1屏</div>
+        <div id="page-2">我是第2屏</div>
+        <div id="page-3">我是第3屏</div>
+    </div>
+</body>
+
+</html>
