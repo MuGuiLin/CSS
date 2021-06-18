@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 1000px;
+            height: 1200px;
+            display: grid;
+            /* gid: 块级网格(默认)，inline-grid：行内网格，subgrid：继承父网络(用于在，当前网格容器本身是网格项时，作为网格容器使用，【也就是说网格项，也可作为网格容器使用】)*/
+            grid-template-columns: 10% 200px auto 2fr 1fr;  /*5列*/
+            /* grid-template-columns: repeat(3, 1fr); */
+            /* grid-template-rows: 50% 50%; */
+            /* grid-template-rows: repeat(2, 1fr); */
+            grid-template-rows: auto; /* auto 平均分配所有行高【注：如果container或item没有设置高度时，以item中内容的高度来做基数】*/
+            grid-template-rows: 1fr; /*1fr 除第1行是1fr之外，其他就平均分配行高*/
+            border: 1px solid red;
+        }
+
+        .container .item {
+            height: 50px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/columns行-rows列.jpg" alt="" />
+    <main class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+    </main>
+</body>
+
+</html>

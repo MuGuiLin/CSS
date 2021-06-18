@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 1000px;
+            height: 1500px;
+
+            display: grid;
+            /* grid-template-columns: 150px 150px 150px 150px 150px;
+            grid-template-rows: auto; */
+
+            grid: "header header header header" 60px
+                  "main main . sidebar" 440px
+                  "footer footer footer footer" 100px / auto 50px auto; 
+
+
+            /*
+                网格-content-对齐方式
+            */
+            /*justify-content 横向水平网格-对齐方式： stretch(默认值)*/
+            /* justify-content: stretch;   横向撑满container容器*/
+            /* justify-content: start;  左对齐*/
+            /* justify-content: end;  右对齐*/
+            /* justify-content: center;  /*水平居中对齐*/
+            /* justify-content: space-around;  /*两端有空隙对齐*/
+            /* justify-content: space-between;  /*两端无空隙对齐*/
+            justify-content: space-evenly;  /*两端均等空隙对齐*/
+
+            /* align-content 纵向垂直平网格-对齐方式： stretch(默认值)*/
+            /* align-content: stretch;   横向撑满container容器*/
+            /* align-content: start;  左对齐*/
+            /* align-content: end;  右对齐*/
+            /* align-content: center;  /*水平居中对齐*/
+            /* align-content: space-around;  /*两端有空隙对齐*/
+            /* align-content: space-between;  /*两端无空隙对齐*/
+            align-content: space-evenly;  /*两端均等空隙对齐*/
+
+            /*上面两种网格-content对齐方式的简写*/
+            place-content: space-evenly;  /* 注：先垂直 后水平，如果要设置垂直和水平方向都是一样的对齐方式，只需一个值就OK了，如： place-content: space-evenly; */  
+            /* 通过：justify-content: center; align-content: center；或 place-content: space-evenly; 属性实现了 网格 的中部居中对齐方式 */
+
+
+            /*justify-items 横向水平对齐方式： stretch(默认值)*/
+            /* justify-items: stretch;  横向撑满container容器*/
+            /* justify-items: start;  左对齐*/
+            /* justify-items: end;  右对齐*/
+            justify-items: center;  /*水平居中对齐*/
+
+            /*align-items 纵向垂直对齐方式： stretch(默认值)*/
+               /* align-items: stretch;  横向撑满container容器*/
+            /* align-items: start;  左对齐*/
+            /* align-items: end;  右对齐*/
+            align-items: center;  /*水平居中对齐*/
+
+            /*上面两种对齐方式的简写*/
+            place-items: center;  /* 注：先垂直 后水平，如果要设置垂直和水平方向都是一样的对齐方式，只需一个值就OK了，如： place-items: center; */  
+
+            /* 通过：justify-items: center; align-items: center；或 place-items: center; 属性实现了 网格项 的中部居中对齐方式 */
+
+            border: 1px solid red;
+        }
+
+        .container .item {
+            border: 1px solid blue;
+            background-color: rebeccapurple;
+        }
+
+        .container .item img {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/grid属性.jpg" alt="" />
+    <main class="container">
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" /></div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url(./img/Grid网格布局属性.jpg) no-repeat center center;
+            background-size: contain;
+        }
+        .container {
+            margin: 60px auto;
+            width: 800px;
+            height: 800px;
+            display: grid;
+
+            /*
+            * 单元格(子项)  items 设置 
+            */
+
+            /*排序：默认(先行后列-水平[横向从左向右]) row，纵向从上向下column*/
+            /* grid-auto-flow: row;   */
+            /* grid-auto-flow: column; */
+            /* grid-auto-flow: row dense; */
+            /* grid-auto-flow: column dense;  */
+
+
+            /*间距： 行， 列*/
+            grid-gap: 20px 10px;
+
+
+            /*行高：*/
+            /* grid-template-rows: 100px 200px 300px; */
+            /* grid-template-rows: repeat(3, 100px 200px 300px); */
+            grid-template-rows: repeat(3, 100px);
+
+
+            /*列宽：*/
+            grid-template-columns: 100px 120px 100px;
+            /* grid-template-columns: 1fr 50px  2fr; */
+
+
+            /*对齐方式*/
+            /*横向水平对齐（左: start, 中: center, 右: end, 拉伸: stretch {占满单元格的整个宽度【默认值】}） */
+            /* justify-items: center; */
+            /*纵向垂直对齐（上: start, 中: center, 下: end, 拉伸: stretch {占满单元格的整个宽度【默认值】}） */
+            /* align-items: baseline; */
+            /*合并简写: 水平对齐, 垂直对齐*/
+            place-items: center;
+
+
+
+
+            /* 
+            * 网格 content 设置 
+            */
+            /*对齐方式*/
+            /*横向水平对齐（左: start(默认值), 中: center, 右: end, 拉伸: stretch | space-around | space-between | space-evenly; ）*/
+            /* justify-content: center; */
+            /*纵向垂直对齐（上: start(默认值), 中: center, 下: end, 拉伸: stretch | space-around | space-between | space-evenly; ）*/
+            /* align-content: center; */
+            /*合并简写: 水平对齐, 垂直对齐*/
+            place-content: center;
+
+
+            /* padding: 20px; */
+            border: 2px solid blueviolet;
+
+            transition: all 1s;
+        }
+
+        .container:hover {
+            place-content: space-evenly;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .item:hover{
+            border-color: rebeccapurple;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <div class="item">
+            <p>2</p>
+        </div>
+        <div class="item">9</div>
+        <div class="item">4</div>
+        <div class="item">7</div>
+        <div class="item">
+            <p>5</p>
+            <span></span>
+        </div>
+        <div class="item">3</div>
+        <div class="item">6</div>
+        <div class="item">1</div>
+        <div class="item">8</div>
+    </section>
+</body>
+
+</html>

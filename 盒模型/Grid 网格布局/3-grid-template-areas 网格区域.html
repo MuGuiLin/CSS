@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 1000px;
+            height: 600px;
+
+            display: grid;
+
+            /*定义列*/
+            grid-template-columns: repeat(4, 25%);
+
+            /*定义行*/
+            grid-template-rows: auto;
+
+            /*网格区域*/
+            grid-template-areas: "header header header header"
+                                 "main main . sidebar"
+                                 "footer footer footer footer";
+
+            border: 1px solid red;
+        }
+
+        .container .item {
+            text-align: center;
+            border: 1px solid blue;
+        }
+
+        .header {
+            grid-area: header;
+            background: blue;
+        }
+
+        .main {
+            grid-area: main;
+            background: yellow;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background: red;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/网格区域.jpg" alt="" />
+    <main class="container">
+        <div class="item header">header</div>
+        <div class="item main">main</div>
+        <div class="item sidebar">sidebar</div>
+        <div class="item footer">footer</div>
+    </main>
+</body>
+
+</html>

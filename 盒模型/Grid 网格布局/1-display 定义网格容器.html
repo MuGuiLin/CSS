@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .container {
+            display: grid;
+            /* gid: 块级网格(默认)，inline-grid：行内网格，subgrid：继承父网络(用于在，当前网格容器本身是网格项时，作为网格容器使用，【也就是说网格项，也可作为网格容器使用】)*/
+            grid-template-columns: 33.33% 33.33% 33.33%;
+            /* grid-template-columns: repeat(3, 1fr); */
+            /* grid-template-rows: 50% 50%; */
+            grid-template-rows: repeat(2, 1fr);
+            border: 1px solid red;
+        }
+
+        .container .item {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/display属性.jpg" alt="" />
+    <main class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </main>
+</body>
+
+</html>
