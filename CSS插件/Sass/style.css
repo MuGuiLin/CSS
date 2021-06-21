@@ -1,0 +1,39 @@
+/*
+Error: Invalid CSS after "    width: 100%": expected "{", was "; height: 80px;..."
+        on line 6 of style.scss
+
+1: *{
+2:     margin: 0px; padding:0px;
+3:  }
+4:  
+5: .mupiao
+6:     width: 100%; height: 80px; background: red;
+7:     span
+8:         color: green;
+
+Backtrace:
+style.scss:6
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:1278:in `expected'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:1208:in `expected'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:1203:in `tok!'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:677:in `block'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:670:in `ruleset'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:696:in `block_child'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:689:in `block_contents'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:137:in `stylesheet'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/scss/parser.rb:41:in `parse'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:414:in `_to_tree'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:307:in `render_with_sourcemap'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/sass_scss.rb:391:in `run'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/sass_scss.rb:63:in `process_result'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/base.rb:52:in `parse'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/base.rb:19:in `parse!'
+D:/Program Files (x86)/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/bin/scss:13:in `<top (required)>'
+D:/Program Files (x86)/Ruby24-x64/bin/scss:22:in `load'
+D:/Program Files (x86)/Ruby24-x64/bin/scss:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"    width: 100%\": expected \"{\", was \"; height: 80px;...\"\A         on line 6 of style.scss\A \A 1: *{\A 2:     margin: 0px; padding:0px;\A 3:  }\A 4:  \A 5: .mupiao\A 6:     width: 100%; height: 80px; background: red;\A 7:     span\A 8:         color: green;"; }

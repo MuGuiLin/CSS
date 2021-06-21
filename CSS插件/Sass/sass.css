@@ -1,0 +1,16 @@
+* {
+  margin: 0px; }
+
+body {
+  background: red; }
+
+.mupiao {
+  width: 100px;
+  height: 100px; }
+  .mupiao .add {
+    background: green;
+    color: #EEE; }
+  .mupiao .del {
+    background: red; }
+
+/*# sourceMappingURL=sass.css.map */
