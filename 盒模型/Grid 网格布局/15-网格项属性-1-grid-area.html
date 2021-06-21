@@ -151,7 +151,7 @@
             grid-column-end: 5; */
 
             /*以上两个属性的简写*/
-            grid-column: 2 / 5;
+            /*grid-column: 2 / 5;
             /*或 如下 都一样*/
             /* grid-column: 2 / span 5; */
 
@@ -161,9 +161,13 @@
             grid-row-end: 4;  */
 
             /*以上两个属性的简写*/
-            grid-row: 2 / 4;    
+            /*grid-row: 2 / 4;    
             /*或 如下 都一样*/
             /* grid-row: 2 / span 4;         */
+
+
+            /*以上的终极简写                                        行的开始         /     列的开始       /    列的结束      /     行的结束                                                           */  
+            grid-area: 2 /  2 / 4 / 5;  /*参数说明(注顺序！！)：grid-column-start: 2 / grid-row-start: 2 / grid-row-end: 4 / grid-column-end: 5; */
 
             z-index: 2; /*注：当网络区域之间有重叠时，可以z-index: number; 来控制显示堆叠顺序，值越大，显示越靠前！！ */
 
@@ -171,7 +175,7 @@
 
             /* grid-column-start: -1; /*从右向左
             grid-column-start: -2; */
-
+  
             /*从列 的第2根网格线开始 到 top-right-line名字线 之间合并*/
             /* grid-column-start: 2;
             grid-column-end: span top-right-line;  */
@@ -199,7 +203,7 @@
 </head>
 
 <body>
-    <img src="./img/minmax()函数.jpg" alt="" />
+    <img src="./img/网格项属性-grid-area.jpg" alt="" />
     <main class="container">
         <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
             <dl>
