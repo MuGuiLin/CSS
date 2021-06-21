@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .container {
+            /* margin: auto; */
+            /* width: 1000px;
+            height: 1500px; */
+
+            display: grid;
+            /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+            /* grid-template-columns: repeat(5, 1fr);  /*参数说明：参数1：重复次数， 参数2：要设置的值， 注：该函数只能用于grid-template-columns 和  grid-template-rows 之中*/
+            /* grid-template-columns: 100px 80px repeat(3, 1fr) 10% repeat(2, 60px) 120px;  /*这可以混合 或 多次使用！！*/
+            /* grid-template-columns: 100px 80px repeat(auto-fit, minmax(100px 300px));  /* 以网格容器为准自动填充 注：auto-fit 和 auto-fill 要结合minmax()函数来使用*/
+            /* grid-template-columns: 100px 80px repeat(auto-fill, minmax(100px 300px));  /* 以网格项为准自动填充 如：repeat(auto-fill, minmax(100px 300px))*/
+            /* grid-template-columns: 100px 80px repeat(3, max-content);   */
+            /* grid-template-columns: 100px 80px repeat(3, min-content);   */
+            /*
+                repeat()函数的使用范围：
+                    repeat()函数只能用于grid-template-columns 和  grid-template-rows 之中！！
+
+                repeat()函数中的参数：
+                    参数1：重复次数
+                            - number 整数
+                            - auto-fit 以网格容器为准, 来自动决定重复次数
+                            - auto-fill 以网格项为, 来自动决定重复次数
+
+                    参数2：取值单位
+                            - px像素【注：不能是负数】
+                            - %百分比【注：不能是负数】
+                            - fr flex弹性【注：不能是负数】
+                            - min-content
+                            - max-content
+                            - auto
+                        注：repeat()函数中 可以混合 或 多次使用！！！
+            */
+
+
+            /* grid-template-columns: 100px fit-content(200px) fit-content(300px) 10% 1fr auto; */
+            /*
+                fit-content()函数的使用：
+
+                fit-content(200px) 表示：
+                    如果内容小于200px时就以内容的宽为准，
+                    如果大于200px时宽就只能是200px。
+            */
+
+
+            /* grid-template-columns: minmax(300px, 500px); */
+            /* grid-template-columns: repeat(5, minmax(200px, 1fr)); */
+            /* width:1200px; grid-template-columns: repeat(auto-fit, minmax(100px, 200px)); /* 在1200px 中 以最小值100px, 最大值200px 来自动决定重复次数*/
+            /* width:1200px; grid-template-columns: repeat(auto-fill, minmax(100px, 150px)); /* 在1200px 中 以最小值100px, 最大值200px 来自动决定重复次数*/
+            /* width:1200px; grid-template-columns: repeat(auto-fill, minmax(min-content, max-content)); /* 在1200px 中 以最小值100px, 最大值200px 来自动决定重复次数*/
+            grid-template-columns: repeat(auto-fill, minmax(180px, 300px)) ;
+            /* grid-template-columns: repeat(auto-fill, minmax(180px, 200px)) 150px [top-right-line] 100px; */
+            /*
+                minmax()函数的使用：
+
+                minmax()函数中的参数：
+                    参数1：最大值
+                            - px像素【注：不能是负数】
+                            - %百分比【注：不能是负数】
+                            - fr flex弹性【注：不能是负数】
+                            - min-content
+                            - max-content
+                            - auto
+
+                    参数2：最小值
+                             - px像素【注：不能是负数】
+                            - %百分比【注：不能是负数】
+                            - fr flex弹性【注：不能是负数】
+                            - min-content
+                            - max-content
+                            - auto
+            */
+
+            grid-template-rows: auto;
+            gap: 20px 25px;
+
+            /* grid: "header header header header"60px "main main . sidebar"440px "footer footer footer footer"100px / auto 50px auto; */
+
+
+            /*
+                网格-content-对齐方式
+            */
+            /*justify-content 横向水平网格-对齐方式： stretch(默认值)*/
+            /* justify-content: stretch;   横向撑满container容器*/
+            /* justify-content: start;  左对齐*/
+            /* justify-content: end;  右对齐*/
+            /* justify-content: center;  /*水平居中对齐*/
+            /* justify-content: space-around;  /*两端有空隙对齐*/
+            /* justify-content: space-between;  /*两端无空隙对齐*/
+            /* justify-content: space-evenly; */
+            /*两端均等空隙对齐*/
+
+            /* align-content 纵向垂直平网格-对齐方式： stretch(默认值)*/
+            /* align-content: stretch;   横向撑满container容器*/
+            /* align-content: start;  左对齐*/
+            /* align-content: end;  右对齐*/
+            /* align-content: center;  /*水平居中对齐*/
+            /* align-content: space-around;  /*两端有空隙对齐*/
+            /* align-content: space-between;  /*两端无空隙对齐*/
+            /* align-content: space-evenly; */
+            /*两端均等空隙对齐*/
+
+            /*上面两种网格-content对齐方式的简写*/
+            /* place-content: space-evenly; */
+            /* 注：先垂直 后水平，如果要设置垂直和水平方向都是一样的对齐方式，只需一个值就OK了，如： place-content: space-evenly; */
+            /* 通过：justify-content: center; align-content: center；或 place-content: space-evenly; 属性实现了 网格 的中部居中对齐方式 */
+
+
+            /*justify-items 横向水平对齐方式： stretch(默认值)*/
+            /* justify-items: stretch;  横向撑满container容器*/
+            /* justify-items: start;  左对齐*/
+            /* justify-items: end;  右对齐*/
+            /* justify-items: center; */
+            /*水平居中对齐*/
+
+            /*align-items 纵向垂直对齐方式： stretch(默认值)*/
+            /* align-items: stretch;  横向撑满container容器*/
+            /* align-items: start;  左对齐*/
+            /* align-items: end;  右对齐*/
+            /* align-items: center; */
+            /*水平居中对齐*/
+
+            /*上面两种对齐方式的简写*/
+            /* place-items: center; */
+            /* 注：先垂直 后水平，如果要设置垂直和水平方向都是一样的对齐方式，只需一个值就OK了，如： place-items: center; */
+
+            /* 通过：justify-items: center; align-items: center；或 place-items: center; 属性实现了 网格项 的中部居中对齐方式 */
+
+            border: 1px solid red;
+        }
+
+        .container .item {
+            border: 1px solid blue;
+            background-color: rebeccapurple;
+        }
+
+        /*网络区域*/
+        .container .item:first-of-type {
+            /* 网格顶属性 */
+
+            /* 从列 的第2根网格线开始 到 列的第5根网格线结否 之间合并 */
+            /* grid-column-start: 2;
+            grid-column-end: 5; */
+
+            /*以上两个属性的简写*/
+            grid-column: 2 / 5;
+            /*或 如下 都一样*/
+            /* grid-column: 2 / span 5; */
+
+
+            /* 从行 的第2根网格线开始 到 行的第4根网格线结否 之间合并 */
+            /* grid-row-start: 2;
+            grid-row-end: 4;  */
+
+            /*以上两个属性的简写*/
+            grid-row: 2 / 4;    
+            /*或 如下 都一样*/
+            /* grid-row: 2 / span 4;         */
+
+            z-index: 2; /*注：当网络区域之间有重叠时，可以z-index: number; 来控制显示堆叠顺序，值越大，显示越靠前！！ */
+
+            /* grid-column-start: span 2; */
+
+            /* grid-column-start: -1; /*从右向左
+            grid-column-start: -2; */
+
+            /*从列 的第2根网格线开始 到 top-right-line名字线 之间合并*/
+            /* grid-column-start: 2;
+            grid-column-end: span top-right-line;  */
+
+            border: 1px solid red;
+            background-color: blue;
+        }
+
+         /*网络区域2*/
+        .container .item:nth-of-type(2) {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 3;
+            grid-row-end: 5;
+            z-index: 1; /*注：当网络区域之间有重叠时，可以z-index: number; 来控制显示堆叠顺序，值越大，显示越靠前！！ */
+
+            border: 1px solid green;
+            background-color: yellow;
+        }
+
+        .container .item img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/minmax()函数.jpg" alt="" />
+    <main class="container">
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+        <div class="item">item<img src="./img/astro-mona.jpg" alt="" />
+            <dl>
+                <dt>我是一个标题</dt>
+                <dd>我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容我是一个内容</dd>
+            </dl>
+        </div>
+    </main>
+</body>
+
+</html>
