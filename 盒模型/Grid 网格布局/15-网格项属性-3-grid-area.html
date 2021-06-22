@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .page {
+            border: 2px solid blue;
+        }
+
+        .container {
+            margin: auto;
+            height: 800;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+
+            gap: 20px;
+        }
+
+        .container .item {
+            padding: 80px;
+            color: white;
+            border: 1px solid red;
+            background-color: rebeccapurple;
+            background-size: cover !important;
+        }
+
+        .container .item:first-of-type {
+            grid-area: 1 / 1 / 3 / 3;
+            background-color: red;
+        }
+
+        .container .item:nth-of-type(2) {
+            /*【先行后列】                                         行的开始       /       列的开始        /    行的结束      /     列的结束                                                           */
+            grid-area: 2 / 3 / 5 / 4;  /* 参数说明(注顺序！！)：grid-row-start: 2 / grid-column-start: 3 / grid-row-end: 5 / grid-column-end: 4; */
+            background-color: blue;
+        }
+
+        .container .item:nth-of-type(3) {
+            grid-area: 4 / 2 / 6 / 3;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/网格项属性-grid-area.jpg" alt="" />
+
+    <section class="page">
+
+        <main class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+        </main>
+    </section>
+</body>
+
+</html>

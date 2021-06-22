@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .page {
+            border: 2px solid blue;
+        }
+
+        .container1 {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 20px;
+        }
+
+        .container1>.item {
+            font-size: 4em;
+            text-align: center;
+            border: 1px solid #e5e4e9;
+        }
+
+        .item-1 {
+            background-color: #ef342a;
+            grid-column: 1 / 4;
+
+        }
+
+        .item-2 {
+            background-color: #f68f26;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 4;
+
+            /*以上4行的简写*/
+            grid-area: 2 / 1 / 4 / 3;
+        }
+
+        .item-3 {
+            background-color: #4ba946;
+        }
+
+        .item-4 {
+            background-color: #0376c2;
+        }
+
+        .item-5 {
+            /*【先行后列】                                          行的开始       /       列的开始        /    行的结束     /     列的结束        */
+            grid-area: 4 / 1 / 6 / 2;
+            /*  参数说明(注顺序！！)：grid-row-start: 4 / grid-column-start: 1 / grid-row-end: 6 / grid-column-end: 2 ; */
+
+            background-color: #c077af;
+        }
+
+        .item-6 {
+            grid-area: 4 / 2 / 5 / 4;
+            background-color: #f8d29d;
+        }
+
+        .item-7 {
+            grid-area: 5 / 2 / 6 / 4;
+            background-color: #b5a87f;
+        }
+
+        .item-8 {
+            grid-area: 6 / 1 / 7 / 3;
+            background-color: #d0e4a9;
+        }
+
+        .item-9 {
+            background-color: #4dc7ec;
+        }
+
+
+        .header {
+            height: 100px;
+            background-color: #4dc7ec;
+        }
+
+        .container2 {
+            display: grid;
+            grid-template-columns: 540px auto 540px;
+            grid-template-rows: 305px 305px 305px;
+            gap: 6px;
+        }
+
+        .container2 .item {
+            color: white;
+            border: 1px solid red;
+            background-color: rebeccapurple;
+            background-size: cover !important;
+        }
+
+        .container2 .item:first-of-type {
+            background-color: red;
+        }
+
+        .container2 .item:nth-of-type(2) {
+            /*行的开始/列的开始/行的结束/列的结束*/
+            grid-area: 1 / 2 / span 1 / span 2;
+            height: 68px;
+            background-color: blue;
+        }
+
+        .container2 .item:nth-of-type(3) {
+            grid-area: 2 / 2 / 6 / 3;
+            background-color: green;
+        }
+        .container2 .item:nth-of-type(3) {
+            grid-area: 2 / 2 / 6 / 3;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/网格项属性-grid-area.jpg" alt="" />
+
+    <section class="page">
+        <main class="container1">
+            <div class="item item-1">1</div>
+            <div class="item item-2">2</div>
+            <div class="item item-3">3</div>
+            <div class="item item-4">4</div>
+            <div class="item item-5">5</div>
+            <div class="item item-6">6</div>
+            <div class="item item-7">7</div>
+            <div class="item item-8">8</div>
+            <div class="item item-9">9</div>
+        </main>
+    </section>
+
+    <section class="page">
+        <header class="header">
+
+        </header>
+
+        <main class="container2">
+            <div class="item one">1</div>
+            <div class="item two">2</div>
+            <div class="item three">3</div>
+            <div class="item four">4</div>
+            <div class="item five">5</div>
+            <div class="item six">6</div>
+            <div class="item seven">7</div>
+            <div class="item eight">8</div>
+            <!-- <div class="item none">9</div>
+            <div class="item ten">10</div> -->
+        </main>
+        
+    </section>
+
+</body>
+
+</html>

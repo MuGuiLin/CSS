@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 网格布局</title>
+    <style>
+        .page{
+            border: 2px solid blue;
+        }
+        .header {
+            height: 80px;
+            background-color: rebeccapurple;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            margin: auto;
+            height: 630px;
+
+            display: grid;
+            grid-template-columns: 15.6vw 15.6vw auto 15.6vw 15.6vw;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            /*网络区域*/
+            grid-template-areas:
+                "device map map map value"
+                "industry map map map weight"
+                "area map map map height"
+                "expire alarm static time trip"
+            ;
+            gap: 20px;
+        }
+
+        .container .item {
+            color: white;
+            border: 1px solid red;
+            background-color: rebeccapurple;
+            background-size: cover !important;
+        }
+
+        /*网络区域*/
+        .container div.device {
+            grid-area: device;
+            background: url(./img/grid-area-img/device.jpg) no-repeat;
+        }
+
+        .container div.map {
+            grid-area: map;
+            background: url(./img/grid-area-img/map.jpg) no-repeat;
+        }
+
+        .container div.value {
+            grid-area: value;
+            background: url(./img/grid-area-img/value.jpg) no-repeat;
+        }
+
+        .container div.industry {
+            grid-area: industry;
+            justify-self: start; /*右对齐*/
+            justify-self: center; /*水平居中对齐*/
+            justify-self: end; /*左对齐*/
+            /*justify-self: stretch; /* 默认 拉伸*/
+        }
+
+        .container div.weight {
+            grid-area: weight;
+            /*align-self: center;/*垂直居中对齐*/
+            /*justify-self: center; /*水平居中对齐*/
+            width: 100%;
+            height: 100%;
+            place-self: center center; /* 上面两个属性的简写 */
+        }
+
+        .container div.area {
+            grid-area: area;
+            align-self: start; /*上对齐*/
+            align-self: center;/*垂直居中对齐*/
+            align-self: end;/*下对齐*/
+            /*align-self: stretch;/* 默认 拉伸*/
+        }
+
+        .container div.height {
+            grid-area: height;
+        }
+
+        .container div.expire {
+            grid-area: expire;
+            background: url(./img/grid-area-img/expire.jpg) no-repeat;
+        }
+
+        .container div.alarm {
+            grid-area: alarm;
+        }
+
+        .container div.static {
+            grid-area: static;
+            background: url(./img/grid-area-img/static.jpg) no-repeat;
+        }
+
+        .container div.time {
+            grid-area: time;
+        }
+
+        .container div.trip {
+            grid-area: trip;
+            background: url(./img/grid-area-img/trip.jpg) no-repeat;
+        }
+
+        .container .item img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/网格项属性-self.jpg" alt="" />
+
+    <section class="page">
+        <header class="header">
+
+        </header>
+        <main class="container">
+            <div class="item device">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item map">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item value">item
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item industry">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item weight">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item area">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item height">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item expire">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item alarm">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item time">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item static">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+            <div class="item trip">
+                <dl>
+                    <dt>我是一个标题</dt>
+                    <dd>我是一个内容我是一个内容</dd>
+                </dl>
+            </div>
+
+        </main>
+    </section>
+</body>
+
+</html>
