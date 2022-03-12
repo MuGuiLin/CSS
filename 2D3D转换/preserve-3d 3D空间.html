@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>preserve-3d</title>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		.box {
+			position: relative;
+			margin: 300px auto;
+			width: 100px;
+			color: white;
+			text-align: center;
+			font: 50px/200px "微软雅黑";
+
+			/* 注：preserve-3d这个3D空间属性需要添加到变形元素的父元素或是祖先素上 */
+			/* transform-style: preserve-3d; */
+		}
+
+		.box div {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 200px;
+			height: 200px;
+			border-radius: 10px;
+			border: 1px solid gray;
+		}
+
+		.box div:nth-of-type(1) {
+			color: red;
+			border: 1px solid red;
+			background: rgba(255, 0, 0, 0.5);
+
+			transform: skewY(-20deg);
+		}
+
+		.box div:nth-of-type(2) {
+			color: green;
+			border: 1px solid green;
+			background: rgba(0, 255, 0, 0.5);
+
+			transform: skewY(20deg);
+			animation: identifier 2s linear infinite;
+		}
+
+		.box div:nth-of-type(3) {
+			position: relative;
+			top: -200px;
+			left: -208px;
+			width: 600px;
+			height: 600px;
+			color: blue;
+			border: 10px dashed blue;
+			border-style: dashed;
+			line-height: 600px;
+			border-style: groove;
+			border-radius: 50%;
+			transform:  rotateX(250deg);
+			animation: rotateX 2s linear infinite forwards;
+		}
+
+		.box div:nth-of-type(3)::after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 200px;
+			width: 100px;
+			height: 20px;
+			border-radius: 10px;
+			background: linear-gradient(to right, transparent, blue);
+		}
+
+		.box div:nth-of-type(4) {
+			position: relative;
+			top: -800px;
+			left: -200px;
+			width: 600px;
+			height: 600px;
+			color: purple;
+			border: 2px solid purple;
+			line-height: 600px;
+			border-radius: 50%;
+
+			transform: rotateY(103deg);
+			animation: rotateY 2s 0.3s linear infinite forwards;
+		}
+
+		.box div:nth-of-type(4)::after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 200px;
+			width: 100px;
+			height: 20px;
+			border-radius: 10px;
+			background: linear-gradient(to right, transparent, purple);
+		}
+
+		.box div:nth-of-type(5) {
+			position: relative;
+			top: -1400px;
+			left: -200px;
+			width: 600px;
+			height: 600px;
+			color: cyan;
+			border: 2px groove cyan;
+			line-height: 600px;
+			border-radius: 50%;
+			animation: rotateZ 2s linear infinite forwards;
+		}
+
+		.box div:nth-of-type(5)::after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 250px;
+			width: 50px;
+			height: 20px;
+			border-radius: 10px;
+			background: linear-gradient(to right, transparent, cyan);
+		}
+
+		@keyframes identifier {
+			0% {
+				transform: rotateY(0deg) skewY(0deg);
+			}
+
+			100% {
+
+				transform: rotateY(720deg) skewY(20deg);
+			}
+		}
+
+		@keyframes rotateX {
+			0% {
+				transform: rotateX(250deg) rotateZ(0deg);
+			}
+
+			100% {
+				transform: rotateX(250deg) rotateZ(360deg);
+			}
+		}
+
+		@keyframes rotateY {
+			0% {
+				transform: rotateY(260deg) rotateZ(0deg);
+			}
+
+			100% {
+				transform: rotateY(260deg) rotateZ(360deg);
+			}
+		}
+
+		@keyframes rotateZ {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform:rotate(360deg);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>preserve-3d 景伸</h1>
+	<hr />
+	<div class="box">
+		<div>A</div>
+		<div>B</div>
+		<div>X</div>
+		<div>Y</div>
+		<div>Z</div>
+	</div>
+</body>
+
+</html>
