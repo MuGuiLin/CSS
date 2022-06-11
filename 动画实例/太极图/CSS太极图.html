@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS太极图</title>
+		<style>
+			.box {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -200px;
+				margin-top: -200px;
+				width: 0px;
+				height: 400px;
+				border-radius: 50%;
+				border-left: 200px solid yellow;
+				border-right: 200px solid red;
+				animation: Rotate360 2s linear infinite;
+			}
+
+			.box:before,
+			.box:after {
+				content: "";
+				position: absolute;
+			}
+
+			.box:before {
+				position: absolute;
+				top: 0px;
+				left: -100px;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				background-color: yellow;
+				box-shadow: 0px 200px 0 red;
+			}
+
+			.box:after {
+				left: -30px;
+				top: 70px;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background-color: red;
+				box-shadow: 0px 200px 0 yellow;
+			}
+
+			@keyframes Rotate360 {
+				from {
+					transform: rotate(0deg);
+				}
+
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
