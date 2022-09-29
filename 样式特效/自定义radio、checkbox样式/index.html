@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>自定义radio单选按扭, checkbox复选框 样式</title>
+	<style>
+		
+		/**
+	   	  * 自定义radio单选按扭
+	 	**/
+		input[type="radio"] {
+			position: relative;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 1px solid deeppink;
+			border-radius: 20px;
+			vertical-align: text-top;
+			outline: none;
+			cursor: pointer;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}
+
+		input[type="radio"]:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			display: block;
+			width: 12px;
+			height: 12px;
+			background: #0798ff;
+			-webkit-border-radius: 12px;
+			-moz-border-radius: 12px;
+			border-radius: 12px;
+			-webkit-transform: scale(0);
+			-moz-transform: scale(0);
+			transform: scale(0);
+			-webkit-transition: all ease-in-out 200ms;
+			-moz-transition: all ease-in-out 200ms;
+			transition: all ease-in-out 200ms;
+		}
+
+		input[type="radio"]:checked {
+			border-color: #0798ff;
+		}
+
+		input[type="radio"]:checked:after {
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			transform: scale(1);
+		}
+
+
+
+		/**
+	   	  * 自定义checkbox复选框
+	 	**/
+
+		input[type="checkbox"] {
+			position: relative;
+			margin: 5px;
+			width: 16px;
+			height: 16px;
+			font-size: 14px;
+			vertical-align: text-top;
+			border: 0;
+			background: none;
+			cursor: pointer;
+		}
+
+		input[type="checkbox"]:after {
+			content: "";
+			position: absolute;
+			top: -1px;
+			left: -1px;
+			display: block;
+			width: 16px;
+			height: 16px;
+			border-radius: 3px;
+			visibility: visible;
+			background-color: white;
+			border: 1px solid fuchsia;
+		}
+
+		input[type="checkbox"]:checked::before {
+			content: "";
+			position: absolute;
+			top: -1px;
+			left: -1px;
+			display: block;
+			width: 18px;
+			height: 18px;
+			border-radius: 3px;
+			border-color: #0798ff;
+			background-color: #0798ff;
+		}
+
+		input[type="checkbox"]:checked:after {
+			content: "";
+			position: absolute;
+			top: 2px;
+			left: 5px;
+			display: table;
+			width: 4px;
+			height: 8px;
+			border: 2px solid white;
+			border-top: 0;
+			border-left: 0;
+			border-radius: 0;
+			background-color: #0798ff;
+			transform: scale(0.2) rotate(45deg);
+			animation: checked-select 0.2s ease-in forwards;
+		}
+
+		@keyframes checked-select {
+			to {
+				transform: scale(1) rotate(45deg);
+			}
+		}
+
+
+
+		
+		h1 {
+			text-align: center;
+		}
+
+		h4 {
+			margin-top: 100px;
+		}
+
+		div{
+			margin: 100px;
+		}
+
+		label {
+			margin: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>纯CSS 自定义radio单选按扭、checkbox复选框 默认样式</h1>
+	<hr />
+	<br />
+
+	<div>
+		<h4>🥭自定义radio单选按扭样式：</h4> 
+		<label><input type="radio" value="0" name="sex" checked="checked" /> 学习</label>
+		<label><input type="radio" value="1" name="sex" /> 上网</label>
+		<label><input type="radio" value="2" name="sex" /> 看书</label>
+		<label><input type="radio" value="3" name="sex" /> 打球</label>
+		<label><input type="radio" value="4" name="sex" /> 看电影</label>
+		<label><input type="radio" value="5" name="sex" /> 跑步</label>
+		<label><input type="radio" value="6" name="sex" /> 旅行</label>
+
+		<h4>🍓自定义checkbox多选按扭样式：</h4>
+		<label><input type="checkbox" value="0" checked="checked" /> 学习</label>
+		<label><input type="checkbox" value="1" /> 上网</label>
+		<label><input type="checkbox" value="2" /> 看书</label>
+		<label><input type="checkbox" value="3" /> 打球</label>
+		<label><input type="checkbox" value="4" /> 看电影</label>
+		<label><input type="checkbox" value="5" /> 跑步</label>
+		<label><input type="checkbox" value="6" /> 旅行</label>
+	</div>
+</body>
+
+</html>
