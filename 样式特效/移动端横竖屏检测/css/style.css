@@ -1,0 +1,146 @@
+@-webkit-keyframes rotation {
+    10% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+
+    50%,
+    60% {
+        transform        : rotate(0deg);
+        -webkit-transform: rotate(0deg)
+    }
+
+    90% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+
+    100% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+}
+
+@keyframes rotation {
+    10% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+
+    50%,
+    60% {
+        transform        : rotate(0deg);
+        -webkit-transform: rotate(0deg)
+    }
+
+    90% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+
+    100% {
+        transform        : rotate(90deg);
+        -webkit-transform: rotate(90deg)
+    }
+}
+
+#orientLayer {
+    display: none
+}
+
+@media screen and (min-aspect-ratio:13/8) {
+    #orientLayer {
+        display: block
+    }
+
+    #page-content {
+        display: none
+    }
+}
+
+.mod-orient-layer {
+    display   : none;
+    position  : fixed;
+    height    : 100%;
+    width     : 100%;
+    left      : 0;
+    top       : 0;
+    right     : 0;
+    bottom    : 0;
+    background: #000;
+    z-index   : 9997
+}
+
+.mod-orient-layer .content {
+    position  : absolute;
+    width     : 100%;
+    top       : 45%;
+    margin-top: -75px;
+    text-align: center
+}
+
+.mod-orient-layer .icon-orient {
+    background-image       : url("../img/mobile.png");
+    display                : inline-block;
+    width                  : 67px;
+    height                 : 109px;
+    transform              : rotate(90deg);
+    -webkit-transform      : rotate(90deg);
+    -webkit-animation      : rotation infinite 1.5s ease-in-out;
+    animation              : rotation infinite 1.5s ease-in-out;
+    -webkit-background-size: 67px;
+    background-size        : 67px
+}
+
+.mod-orient-layer .desc {
+    margin-top: 20px;
+    font-size : 15px;
+    color     : #fff
+}
+
+
+
+@media only screen and (max-width: 320px) {
+	footer li{
+		padding-left: 10px;
+	}
+	#footer a{
+		background-position: 10px;
+	}
+	/*#footer #page-btn{
+		background-position: 20px;
+	}*/
+}
+@media only screen and (min-width: 321px) and (max-width: 413px) {
+	footer li{
+		padding-left: 20px;
+	}
+	#footer a{
+		color: #428bca;
+    	text-align: center;
+    	display: block;	
+	}
+	
+}
+@media only screen and (min-width: 414px) and (max-width: 479px) {
+	footer li{
+		padding-left: 30px;
+	}
+	#footer a{
+		color: #428bca;
+    	text-align: center;
+    	display: block;	
+	}
+	
+}
+@media only screen and (min-width: 480px) and (max-width: 719px) {
+	footer li{
+		padding-left: 40px;
+	}
+	#footer a{
+		color: #428bca;
+    	text-align: center;
+    	display: block;	
+	}
+	
+}
