@@ -17,6 +17,7 @@
         height: 100vh;
         background: green;
         user-select: none;
+        overflow: hidden;
       }
 
       body:hover .send {
@@ -27,22 +28,26 @@
         overflow: hidden;
         position: relative;
         height: 100%;
+        width: 200%;
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
 
       .barrage div {
         position: absolute;
+        min-width: 80px;
         font-size: 18px;
         font-weight: bold;
       }
 
       .barrage .msg {
-        display: inline-block;
+        display: block;
         padding: 6px 20px;
-        border-radius: 20px;
+        color: white;
+        text-shadow: 0 0 3px black;
+        /* border-radius: 20px;
         background: rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.8); */
       }
 
       .send {
@@ -91,22 +96,23 @@
         <div class="msg">666..</div>
         <div class="msg">有点意思！</div>
         <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">666..有点意思！有点意思！有点意思！有点意思！</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">
+          弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕弹幕..弹幕..弹幕..弹幕..弹幕..
+        </div>
+        <div class="msg">
+          弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕
+        </div>
         <div class="msg">666..</div>
         <div class="msg">有点意思！</div>
         <div class="msg">弹幕..弹幕..弹幕</div>
-        <div class="msg">666..</div>
-        <div class="msg">有点意思！</div>
-        <div class="msg">弹幕..弹幕..弹幕</div>
-        <div class="msg">666..</div>
-        <div class="msg">有点意思！</div>
-        <div class="msg">弹幕..弹幕..弹幕</div>
-        <div class="msg">666..</div>
-        <div class="msg">有点意思！</div>
-        <div class="msg">弹幕..弹幕..弹幕</div>
-        <div class="msg">666..</div>
-        <div class="msg">有点意思！</div>
-        <div class="msg">弹幕..弹幕..弹幕</div>
-        <div class="msg">666..</div>
+        <div class="msg">
+          666..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕
+        </div>
         <div class="msg">有点意思！</div>
       </main>
     </section>
@@ -130,17 +136,18 @@
         start(obj) {
           const screenHeight = document.documentElement.clientHeight;
           const screenWidth = document.documentElement.clientWidth;
-          const maxTop =
-            screenHeight - this.oSend.offsetHeight - obj.offsetHeight;
-          const maxLeft = screenWidth - obj.offsetWidth;
+          const maxTop = (screenHeight / 3) - this.oSend.offsetHeight - obj.offsetHeight;
+          // const maxLeft = screenWidth - obj.offsetWidth;
+          const maxLeft = screenWidth + obj.offsetWidth;
           obj.style.top = maxTop * Math.random() + "px";
           obj.style.left = maxLeft + "px";
-          obj.style.color = this.color();
-          this.move(Math.random() * 5 + 1, obj, maxLeft);
+          // obj.style.color = this.color();
+          this.move(Math.random() * 4 + 1, obj, maxLeft);
         }
 
         move(k, obj, maxLeft) {
           let speed = k;
+          console.log(obj.offsetWidth);
           maxLeft -= speed;
           if (maxLeft > -obj.offsetWidth) {
             obj.style.left = maxLeft + "px";
