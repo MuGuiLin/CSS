@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>background-clip背景剪裁</title>
+        <style>
+            p {
+                line-height: 200px;
+                text-align: center;
+                font-size: 100px;
+                font-weight: bold;
+                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+                border: solid 1px gray;
+            }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>background-clip背景剪裁</title>
-    <style>
-        p {
-            line-height: 200px;
-            text-align: center;
-            font-size: 100px;
-            font-weight: bold;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-        }
+            p:first-child {
+                background-image: url(./img/jpg.jpg);
+            }
+            p:nth-child(2) {
+                background-image: url(./img/gif.gif);
+                background-size: contain;
+            }
 
-        p:first-child {
-            background-image: url(./img/gif.gif);
-            background-size: contain;
-           
-        }
+            p:last-child {
+                background-image: url(./mp4/movie.mp4);
+            }
+        </style>
+    </head>
 
-        p:last-child {
-            background-image: url(./mp4/movie.mp4);
-        }
-    </style>
-</head>
-
-<body>
-    <p>background-clip背景剪裁 图片源</p>
-    <p>background-clip背景剪裁 视频源</p>
-</body>
+    <body>
+        <p>background-clip背景剪裁 图片源</p>
+        <p>background-clip背景剪裁 图片源</p>
+        <p>background-clip背景剪裁 视频源</p>
+    </body>
 
 </html>
