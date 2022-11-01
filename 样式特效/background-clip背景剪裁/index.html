@@ -7,7 +7,7 @@
         <title>background-clip背景剪裁</title>
         <style>
             p {
-                line-height: 200px;
+                line-height: 100px;
                 text-align: center;
                 font-size: 100px;
                 font-weight: bold;
@@ -27,11 +27,14 @@
                     text：          文本剪裁
                 */
             }
-
             p:first-child {
+                background-image: linear-gradient(90deg,#7209d4,#2832d4 50%,#00a5b2);
+            }
+
+            p:nth-child(2) {
                 background-image: url(./img/jpg.jpg);
             }
-            p:nth-child(2) {
+            p:nth-child(3) {
                 background-image: url(./img/gif.gif);
                 background-size: contain;
             }
@@ -43,6 +46,7 @@
     </head>
 
     <body>
+        <p>background-clip背景剪裁 渐变色</p>
         <p>background-clip背景剪裁 图片源</p>
         <p>background-clip背景剪裁 图片源</p>
         <p>background-clip背景剪裁 视频源</p>
