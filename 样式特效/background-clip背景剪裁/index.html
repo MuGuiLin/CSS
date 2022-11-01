@@ -13,9 +13,19 @@
                 font-weight: bold;
                 font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
                 color: transparent;
+                border: solid 1px gray;
                 background-clip: text;
                 -webkit-background-clip: text;
-                border: solid 1px gray;
+
+                /* background-clip: border-box || padding-box || context-box || no-clip || text
+
+            　　background-clip裁剪属性值说明：
+                    border-box：    此值为默认值，背景从border区域向外裁剪，也就是超出部分将被裁剪掉;
+                    padding-box：   背景从padding区域向外裁剪，超过padding区域的背景将被裁剪掉;
+                    context-box：   背景从content区域向外裁剪，超过context区域的背景将被裁剪掉;
+                    no-clip：       背景从border区域向外裁剪背景。
+                    text：          文本剪裁
+                */
             }
 
             p:first-child {
