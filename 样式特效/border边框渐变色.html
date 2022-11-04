@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>border边框渐变色</title>
+    <style>
+      body {
+        background-color: #000b22;
+        padding: 100px;
+      }
+      .cover {
+      
+        box-sizing: border-box;
+        width: 100%;
+        background: linear-gradient(
+          141deg,
+          #adb9d9 15%,
+          rgba(197, 203, 219, 0) 30%,
+          rgba(197, 203, 219, 0) 70%,
+          #adb9d9
+        );
+        padding: 1px;
+        border-radius: 16px;
+        white-space: nowrap;
+      }
+      .box {
+        margin: 10px;
+        border-radius: 16px;
+        display: flex;
+        line-height: 30vh;
+        align-items: center;
+        padding: 40px 0 40px 0;
+        background: radial-gradient(
+          closest-corner at 75% 50%,
+          #0f3e95,
+          #121d32
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cover">
+      <div class="box">border边框渐变色</div>
+    </div>
+  </body>
+</html>
