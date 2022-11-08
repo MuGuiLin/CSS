@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小圆形飘动</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="alt-over-url">
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+      <bokeh></bokeh>
+    </div>
+    <button type="button" id="btn">扩张 / 缩减</button>
+    <script>
+      const btn = document.querySelector("#btn");
+
+      btn.onclick = function () {
+        if (!document.querySelector("#style")) {
+          const style = document.createElement("style");
+          style.id = "style";
+          // style.innerHTML = `bokeh{animation-direction: alternate-reverse;}`;
+          style.innerHTML = `bokeh{animation-direction: initial;}`;
+          document.head.appendChild(style);
+        } else {
+          document.head.removeChild(document.querySelector("#style"));
+        }
+      };
+    </script>
+  </body>
+</html>
