@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>object-fit图片裁切对齐</title>
+		<style>
+			.box {
+				margin: 50px;
+				padding: 10px;
+				border: 1px solid gray;
+				border-radius: 8px;
+			}
+
+			.box img {
+				margin: 10px;
+				width: 200px;
+			}
+
+			.box2 img {
+				width: 200px;
+				height: 200px;
+				object-fit: cover;
+				object-position: left top;
+				transition: 1s;
+			}
+
+			.box2 img:hover {
+				object-position: right bottom;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img src="./img/CSS3.webp" alt="" />
+			<img src="./img/ts-logo.webp" alt="" />
+			<img src="./img/www.muguilin.com.png" alt="" />
+			<img src="./img/iPhone 6_7_8 Plus.png" alt="" />
+		</div>
+		<div class="box box2">
+			<img src="./img/CSS3.webp" alt="" />
+			<img src="./img/ts-logo.webp" alt="" />
+			<img src="./img/www.muguilin.com.png" alt="" />
+			<img src="./img/iPhone 6_7_8 Plus.png" alt="" />
+		</div>
+	</body>
+</html>
