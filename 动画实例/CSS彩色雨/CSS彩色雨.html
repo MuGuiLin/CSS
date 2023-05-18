@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CSS彩色雨效果</title>
+		<style>
+			.box {
+				position: relative;
+				width: 800px;
+				height: 600px;
+				overflow: hidden;
+				background: #000;
+			}
+
+			.box i {
+				position: absolute;
+				height: 100px;
+				border-bottom-left-radius: 6px;
+				border-bottom-right-radius: 6px;
+				animation: move 3s ease-in-out infinite;
+			}
+
+			.box i:nth-child(5n+1) {
+				background: linear-gradient(transparent, #fff);
+			}
+
+			.box i:nth-child(5n+2) {
+				background: linear-gradient(transparent, #0f0);
+			}
+
+			.box i:nth-child(5n+3) {
+				background: linear-gradient(transparent, #00f);
+			}
+
+			.box i:nth-child(5n+4) {
+				background: linear-gradient(transparent, #f0f);
+			}
+
+			.box i:nth-child(5n+5) {
+				background: linear-gradient(transparent, #f00);
+			}
+
+			@keyframes move {
+				0% {
+					transform: translateY(-100px);
+				}
+
+				100% {
+					transform: translateY(calc(600px + 100px));
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+
+		<script>
+			function create() {
+				const box = document.querySelector('.box');
+				const frag = document.createDocumentFragment();
+				let i = 0;
+
+				while (i < 100) {
+					const dom = document.createElement('i');
+
+					const width = Math.random() * 6;
+					const left = Math.floor(Math.random() * box.clientWidth);
+
+					dom.style.width = 0.3 + width + 'px';
+					dom.style.left = left + 'px';
+
+					const delay = Math.random() * -30;
+					dom.style.animationDelay = delay + 's';
+					dom.style.animationDirection = 1 + width + 's';
+
+					frag.append(dom);
+
+					i++;
+				}
+				box.append(frag);
+			};
+			create();
+		</script>
+	</body>
+</html>
