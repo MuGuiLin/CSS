@@ -1,0 +1,191 @@
+A
+absolute 绝对的
+active 活动的，激活的，<a>标记的一个伪类active 
+align 对齐 
+alpha 透明度，半透明 
+anchor 锚记<a>标记是这个单词的缩写 anchor 锚记<a>标记是这个单词的缩写
+arrow 箭头 
+auto 自动
+
+
+
+
+B
+background 背景 
+border 边框
+banner 页面上的一个横条 
+both 二者都是clear 属性的一个属性值
+black 黑色 
+bottom 底部，是一个CSS 属性
+blink 闪烁 
+box 盒子
+block 块 
+br 换行标记
+blue 蓝色 
+bug 软件程序中的错误
+body 主体，一个HTML 标记 building 建立
+bold 粗体 
+button 按钮
+
+C
+cell 表格的单元格 
+color 颜色
+center 中间，居中 
+connected 连接的
+centimeter 厘米 
+contact 联系
+child 孩子 
+content 内容
+circle 圆圈 
+crosshair 十字叉丝
+class 类别 
+css 层叠样式表
+clear 清除 
+cursor 鼠标指针
+cm 厘米
+
+D
+dashed 虚线 
+display 显示，CSS 的一个属性
+decimal 十进制 
+division 分区，div 就是这个单词的缩写
+decoration 装饰 
+document 文档
+default 默认的 
+dotted 点线
+definition 定义 
+double 双线
+design 设计
+
+E
+element 元素
+
+F
+father 父亲 
+float 浮动
+filter 滤镜，过滤器 
+font 字体
+first 第一个 
+for 在循环语句中的一个保留字
+fixed 固定的 
+four 4 个
+
+
+
+
+G
+gif 一种图像格式 
+green 绿色
+gray 灰色
+
+H
+hack 常用于CSS 中的一些招数，或者类似于偏方的技巧
+here 这里
+hand 手 
+hidden 被隐藏
+head 头部 
+home 首页
+height 高度 
+horizontal 水平的
+help 帮助 
+hover 鼠标指针经过时的效果，或称为“悬停状态”
+设计网，网站设计师的摇篮
+
+I
+Image 图像 
+inline 行内
+important 重要的 
+inner 内部的
+indent 缩进 
+italic 意大利体；即，斜体。
+index 索引。用于定义网站首页的名称。
+
+
+
+
+J
+jpg 一种图像格式 
+justify 两端对齐
+
+L
+language 语言 
+line 线
+last 最后一个 
+link 链接
+left 左边 
+list 列表
+length 长度 
+lowercase 小写
+level 级别，例如 block-levle 就是块级
+
+M
+margin 外边距 
+millimeter 毫米
+max 最大的 
+min 最小的
+medium 中间 
+model 模型
+menu 菜单 
+move 移动
+middle 中间
+
+N
+navigation 导航 
+none 无，不，没有
+new 新的 
+normal 标准
+
+O
+object 对象 
+optional 可选的
+oblique 一种斜体 
+orange 橙色
+one 一个 
+outer 外面的
+only 仅仅 
+overflow 溢出
+open 打开
+
+P
+padding 内边距 progress 进度
+point 点 public 公开的
+pointer 指针，指示器 purple 紫色
+position 定位，位置
+
+R
+red 红色 resize 重新设置大小
+relative 相对的 right 右边
+repeat 重复，平铺 row 行
+replacement 替换
+
+S
+scroll 滚动 shadow 阴影
+silver 银色 special 特殊的
+size 尺寸 square 方块
+solid 固体，实线 static 静态的
+solution 方案 strong 强壮，加粗的
+son 儿子 style 样式
+span 一个HTML 标记
+
+T
+table 表格 title 标题
+td 单元格的HTML 标记 top 顶部
+text 文本 tr 表格中“行”的HTML 标记
+thick 粗的 transitional 过渡的
+thin 细的 two 两个
+three 三个 type 类型
+through 穿过
+
+U
+underline 下划线 uppercase 大写
+upper 上面的 url 网址
+
+V
+vertical 竖直的 visited 访问过的
+
+W
+white 白色 width 宽度
+
+Y
+yellow 黄色
+
