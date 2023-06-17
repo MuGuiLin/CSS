@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>radial-gradient-渐变-webkit-mask-遮罩=足球场</title>
+    <style>
+      body {
+        background-color: #000b22;
+      }
+
+      .box {
+        margin: 100px auto;
+        width: 1050px; /*国际足联规定的标准足球场场地大小为105米＊68米，面积为7140平方米*/
+        height: 680px;
+       
+        border: 2px solid white;
+      }
+      .foot {
+           width: 1050px; /*国际足联规定的标准足球场场地大小为105米＊68米，面积为7140平方米*/
+        height: 680px;
+         background: green;
+        -webkit-mask: radial-gradient(
+              circle at 20px 20px,
+              transparent 20px,
+              white 0px
+            ) -20px -20px,
+          radial-gradient(circle at 5px 5px, transparent 5px, white 0px) -5px -5px /
+            5% 5%;
+        -webkit-mask-composite: source-in;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"><div class="foot"></div></div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</title>
+    <style>
+      body {
+        background-color: #000b22;
+      }
+
+      .box,
+      .box2,
+      .box3,
+      .box4,
+      .box5,
+      .box6 {
+        position: relative;
+        margin: 100px auto;
+        width: 500px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        border-radius: 6px;
+        background: blue;
+        color: white;
+        -webkit-mask: radial-gradient(
+            circle at 20px 20px,
+            /* radial-gradient(形状(ellipse（默认）：指定椭圆形的径向渐变 cricle：指定圆形的径向渐变) at top left, [颜色 断1, 颜色 断2 ...]) top left */
+              transparent 20px,
+            white 0px
+          )
+          100px -20px;
+      }
+      .box2 {
+        height: 200px;
+        -webkit-mask: radial-gradient(
+            circle at 20px 20px,
+            transparent 20px,
+            white 0px
+          ) -20px -20px;
+      }
+      .box3 {
+        height: 200px;
+        -webkit-mask: radial-gradient(
+            circle at 20px 20px,
+            transparent 20px,
+            white 0px
+          ) -20px -20px / 50% 100%;
+      }
+      .box4 {
+        height: 200px;
+        -webkit-mask: radial-gradient(
+              circle at 20px 20px,
+              transparent 20px,
+              white 0px
+            ) -20px -20px / 50% 100%,
+          radial-gradient(circle at 20px 20px, transparent 20px, white 0px) -20px -20px /
+            100% 50%;
+        -webkit-mask-composite: source-in;
+      }
+      .box5 {
+        height: 200px;
+        -webkit-mask: radial-gradient(
+              circle at 20px 20px,
+              transparent 20px,
+              white 0px
+            ) -20px -20px / 50% 100%,
+          radial-gradient(circle at 5px 5px, transparent 5px, white 0px) -5px -5px /
+            100% 20%;
+        -webkit-mask-composite: source-in;
+      }
+      .box6 {
+        height: 200px;
+        filter: drop-shadow(1px 1px 50px white);
+        -webkit-mask: radial-gradient(
+              circle at 20px 20px,
+              transparent 20px,
+              white 0px
+            ) -20px -20px / 50% 100%,
+          radial-gradient(circle at 5px 5px, transparent 5px, white 0px) -255px -5px /
+            100% 6%;
+        -webkit-mask-composite: source-in;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+    <div class="box2">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+    <div class="box3">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+    <div class="box4">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+    <div class="box5">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+    <div class="box6">radial-gradient-渐变-webkit-mask-遮罩=优惠卡券</div>
+  </body>
+</html>
