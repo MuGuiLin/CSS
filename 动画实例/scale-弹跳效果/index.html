@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scale-弹跳效果</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            text-align: center;
+        }
+        .box{
+            display: inline-block;
+            margin: 100px 50px;
+            width: 200px;
+            height: 200px;
+            background: blue;
+            border-radius: 100px;
+            animation: scale 1s;
+        }
+        .box2{
+            border-radius: 0px;
+            background: red;
+        }
+        @keyframes scale {
+            0% {
+                transform: scale(1, 1) translateY(0);
+            }
+            15% {
+                transform: scale(1.2, 0.8) translateY(0);
+            }
+            15% {
+                transform: scale(0.8, 1.2) translateY(-100px);
+            }
+            50% {
+                transform: scale(1, 1) translateY(0);
+            }
+            70% {
+                transform: scale(0.8, 1.2) translateY(-40px);
+            }
+            80% {
+                transform: scale(1, 1) translateY(0);
+            }
+            100% {
+                transform: scale(1, 1) translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>scale-弹跳效果</h1>
+    <hr />
+
+    <div class="box"></div>
+    <div class="box box2"></div>
+
+</body>
+
+</html>
