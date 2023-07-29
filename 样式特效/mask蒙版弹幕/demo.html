@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>CSS3-mask蒙版弹幕</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100vw;
+        height: 100vh;
+        background: green;
+        user-select: none;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        width: 960px;
+        height: 540px;
+        background: url(./img/zhyz.jpg) no-repeat center;
+        background-size: cover;
+      }
+      .barrage-wrapper {
+        width: 100%;
+        height: 100%;
+
+        background-size: cover;
+        mask-image: url(./img/zhyz.png);
+        -webkit-mask-image: url(./img/zhyz.png);
+      }
+
+      @keyframes barrage {
+        from {
+          left: 100%;
+          transform: translateX(0);
+        }
+        to {
+          left: 0;
+          transform: translateX(-100%);
+        }
+      }
+      .block {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 100%;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="barrage-wrapper"></div>
+    </div>
+
+    <script>
+      // 生成一个0~range的随机数
+      const geneNumber = (range) => Math.floor(Math.random() * range);
+      var barrages = [
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+        "空降成功",
+        "真香警告",
+        "温馨提示，前方请调高音量/赶紧戴耳机",
+        "弹幕护体！弹幕护体！弹幕护体！",
+        " 以上企业均已破产",
+        "前方高能",
+        "我从未见过如此厚颜无耻之人",
+        "完结撒花",
+      ];
+      const wrapper = document.querySelector(".barrage-wrapper");
+      for (const item of barrages) {
+        const block = document.createElement("div");
+        block.classList.add("block");
+        block.style.top = geneNumber(486) + "px"; // 弹幕的位置不能超过容器的高度
+        block.style.animation = `barrage ${geneNumber(20)}s linear ${geneNumber(
+          60
+        )}s`; // 随机动画效果
+        block.textContent = item;
+        wrapper.appendChild(block);
+      }
+    </script>
+  </body>
+</html>

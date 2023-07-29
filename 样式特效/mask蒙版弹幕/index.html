@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>CSS3-mask蒙版弹幕</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100vw;
+        height: 100vh;
+        background: green;
+        user-select: none;
+        overflow: hidden;
+      }
+
+      body:hover .send {
+        opacity: 1;
+      }
+      video {
+        position: absolute;
+        top: 0;
+        width: 960px;
+        height: 540px;
+      }
+
+      .screen {
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        width: 200%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        position: absolute;
+        top: 0;
+        width: 960px;
+        height: 540px;
+        // background: blue;
+        mask-image: url(./img/mask.png);
+        -webkit-mask-image: url(./img/mask.png);
+        pointer-events: none;
+      }
+
+      .barrage div {
+        position: absolute;
+        min-width: 80px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .barrage .msg {
+        display: block;
+        padding: 6px 20px;
+        color: white;
+        text-shadow: 0 0 3px black;
+        /* border-radius: 20px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8); */
+      }
+
+      .send {
+        position: fixed;
+        bottom: 5px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 1s;
+      }
+
+      .txt {
+        padding: 0 10px;
+        width: 500px;
+        height: 40px;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        color: white;
+        border-radius: 8px 0 0 8px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .btn {
+        padding: 0 10px;
+        height: 40px;
+        font-size: 18px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 0 8px 8px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <video controls poster="./img/zhyz.jpg">
+      <source src="./mp4/video.mp4" type="" />
+    </video>
+    <section class="screen">
+      <main class="barrage">
+        <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">666..</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">666..有点意思！有点意思！有点意思！有点意思！</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">
+          弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕弹幕..弹幕..弹幕..弹幕..弹幕..
+        </div>
+        <div class="msg">
+          弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕
+        </div>
+        <div class="msg">666..</div>
+        <div class="msg">有点意思！</div>
+        <div class="msg">弹幕..弹幕..弹幕</div>
+        <div class="msg">
+          666..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕..弹幕
+        </div>
+        <div class="msg">有点意思！</div>
+      </main>
+
+      <footer class="send">
+        <input type="text" class="txt" />
+        <button class="btn">发送弹幕</button>
+      </footer>
+    </section>
+
+    <script>
+      class Barrage {
+        constructor() {
+          this.oList = document.querySelectorAll(".barrage div");
+          this.oShow = document.querySelector(".barrage");
+          this.oSend = document.querySelector(".send");
+          this.oText = document.querySelector(".txt");
+          this.beginTime = 0;
+          this.endTime = 0;
+          this.init();
+        }
+
+        color() {
+          return "#" + Math.random().toString(16).slice(-6);
+        }
+
+        start(obj) {
+          const screenHeight = document.documentElement.clientHeight;
+          const screenWidth = document.documentElement.clientWidth;
+          const maxTop =
+            screenHeight / 3 - this.oSend.offsetHeight - obj.offsetHeight;
+          // const maxLeft = screenWidth - obj.offsetWidth;
+          const maxLeft = screenWidth + obj.offsetWidth;
+          obj.style.top = maxTop * Math.random() + "px";
+          obj.style.left = maxLeft + "px";
+          // obj.style.color = this.color();
+          this.move(Math.random() * 4 + 1, obj, maxLeft);
+        }
+
+        move(k, obj, maxLeft) {
+          let speed = k;
+          console.log(obj.offsetWidth);
+          maxLeft -= speed;
+          if (maxLeft > -obj.offsetWidth) {
+            obj.style.left = maxLeft + "px";
+            requestAnimationFrame(() => {
+              this.move(k, obj, maxLeft);
+            });
+          } else {
+            this.start(obj);
+            //   oShow.removeChild(obj); // DOM删除
+          }
+        }
+
+        init() {
+          document.querySelector(".btn").onclick = () => {
+            this.endTime = new Date();
+            if (this.endTime - this.beginTime > 2000) {
+              const oDiv = document.createElement("div");
+              oDiv.innerHTML = this.oText.value;
+              oDiv.className = "msg";
+              this.oShow.appendChild(oDiv);
+
+              this.start(oDiv);
+              this.oText.value = "";
+              this.beginTime = this.endTime;
+            } else {
+              alert("请稍后再发~");
+            }
+          };
+
+          for (var i = 0; i < this.oList.length; i++) {
+            this.start(this.oList[i]);
+          }
+        }
+      }
+      new Barrage();
+    </script>
+  </body>
+</html>
