@@ -53,6 +53,13 @@
         width: 100%;
         color: #fff;
       }
+	  
+	  .demo {
+	    width: 700px;
+	    height: 150px;
+		background : url("./img/logo.png") no-repeat;
+		// -webkit-mask : url("./img/mask.png");
+	  }
     </style>
   </head>
 
@@ -60,6 +67,10 @@
     <div class="container">
       <div class="barrage-wrapper"></div>
     </div>
+	 <div class="demo">
+	 mask.png中黑色部分的透明度（alpha）值为1，将完全显示其下方的图片区域，而其余部分的透明度为0（alpha值），将完全覆盖其下方的图片区域。
+	 </div>
+	
 
     <script>
       // 生成一个0~range的随机数
