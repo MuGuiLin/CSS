@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字交融展开动画</title>
+    <style>
+        body {}
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            margin: 50px;
+            padding: 20px;
+            /* width: fit-content; */
+            text-align: center;
+            filter: contrast(40);
+            background-color: #00f;
+        }
+
+        .box span {
+            font-size: 56px; 
+            color: #fff;
+            animation: move 3s forwards;
+        }
+
+        @keyframes move {
+            0% {
+                letter-spacing: -60px;
+                filter: blur(12px);
+            }
+
+            100% {
+                letter-spacing: 2px;
+                filter: blur(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>文字交融展开动画</h1>
+    <hr>
+
+    <div class="box">
+        <span>文字交融展开动画效果</span>
+    </div>
+</body>
+
+</html>
