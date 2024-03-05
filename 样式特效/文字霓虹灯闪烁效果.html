@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文字霓虹灯闪烁效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+        }
+
+        h1 {
+            font-size: 80px;
+            letter-spacing: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #000); /* 倒影效果 */
+            animation: shadow-flicker 10s linear infinite;
+        }
+        @keyframes shadow {
+            0%{
+                color: #333;
+            }
+            100%{
+                color: #fff;
+                text-shadow: 0 0 10px purple, 0 0 20px purple, 0 0 40px purple, 0 0 80px purple;
+            }
+        }
+        /* 闪烁动画 */
+        @keyframes shadow-flicker {
+            0%,21%,31%,51%,61%,81%,91%,95%{
+                color: purple;
+            }
+            20%,30%,35%,60%,80%,90%,100%{
+                color: #fff;
+                text-shadow: 0 0 5px purple, 0 0 10px rgb(172, 0, 172), 0 0 20px rgb(198, 0, 198), 0 0 40px rgb(255, 0, 255);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 contenteditable>可编辑的文字霓虹灯闪烁效果！</h1>
+</body>
+
+</html>
