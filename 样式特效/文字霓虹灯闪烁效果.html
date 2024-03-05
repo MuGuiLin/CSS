@@ -27,6 +27,7 @@
             -webkit-box-reflect: below 1px linear-gradient(transparent, #000); /* 倒影效果 */
             animation: shadow-flicker 10s linear infinite;
         }
+         /* 闪烁动画 */
         @keyframes shadow {
             0%{
                 color: #333;
@@ -36,7 +37,7 @@
                 text-shadow: 0 0 10px purple, 0 0 20px purple, 0 0 40px purple, 0 0 80px purple;
             }
         }
-        /* 闪烁动画 */
+        /* 闪烁渐变动画 */
         @keyframes shadow-flicker {
             0%,21%,31%,51%,61%,81%,91%,95%{
                 color: purple;
