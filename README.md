@@ -2,7 +2,7 @@
 
 ![CSS](https://www.runoob.com/wp-content/uploads/2013/07/css-logo.png)
 
-## [CSS（层叠样式表） 文档| MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+## [CSS（层叠样式表） 文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
 
 
