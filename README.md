@@ -14,7 +14,7 @@
 >
 > **CSS3* 现在已被大部分现代浏览器支持，而 **从CSS3开始，CSS规范就被拆成众多模块（module）单独进行升级，或者将新需求作为一个新模块来立项并进行标准化。因此今后不会再有CSS4、CSS5这种所谓大版本号的变更，有的只是CSS某个模块级别的跃迁。。
 
-## CSS 预处理器
+## 关于CSS 预处理器
 
 #### less
 
@@ -32,7 +32,9 @@
 
 [PostCSS - 是一个用 JavaScript 工具和插件来转换 CSS 代码的工具 | PostCSS中文网](https://www.postcss.com.cn/)
 
-## CSS 模块化 [css-modules](https://github.com/css-modules/css-modules)
+## 关于CSS 模块化
 
-> CSS Modules 指的是我们像 import js 一样去引入我们的 css 代码，代码中的每一个类名都是引入对象的一个属性，通过这种方式，即可在使用时明确指定所引用的 css 样式。并且 CSS Modules 在打包的时候会自动将类名转换成 hash 值，完全杜绝 css 类名冲突的问题。
+>  [CSS Modules](https://github.com/css-modules/css-modules)CSS Modules 指的是我们像 import'js' 一样去引入我们的 css 代码，代码中的每一个类名都是引入对象的一个属性，通过这种方式，即可在使用时明确指定所引用的 css 样式。
+>
+> 并且 CSS Modules 在打包的时候会自动将类名转换成 hash 值，完全杜绝 css 类名冲突的问题，所以在React.js Web前端APS开发框架中用得比较多。
 
