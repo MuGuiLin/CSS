@@ -1,80 +1,157 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>边框流动</title>
-		<style>
-			.box {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-				margin: 50px auto;
-				width: 300px;
-				height: 300px;
-				background: rgba(0, 0, 0, 0.8);
-				border-radius: 20px;
-				overflow: hidden;
-				box-shadow: 0 0 10px 5px plum;
+
+<head>
+	<meta charset="utf-8">
+	<title>边框线流动效果</title>
+	<style>
+		h1 {
+			text-align: center;
+		}
+
+		.btn {
+			margin: 30px auto;
+			display: block;
+			position: relative;
+			padding: 10px 20px;
+			font-size: 32px;
+			background: transparent;
+			border-radius: 10px;
+			/* border: 4px solid #ff0000;
+			outline: 4px solid #ff0000; */
+			border: 0;
+			cursor: pointer;
+			overflow: hidden;
+		}
+
+		.btn::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 200%;
+			height: 200%;
+			background: blue;
+			animation: rotateion 3s linear infinite;
+			transform-origin: 0 0;
+			/* 设置旋转中心点在左上角  */
+			z-index: -2;
+		}
+
+		.btn::after {
+			content: "";
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			width: calc(100% - 6px);
+			height: calc(100% - 6px);
+			background: #fff;
+			border-radius: 10px;
+			z-index: -1;
+		}
+
+		@keyframes rotateion {
+			to {
+				transform: rotate(1turn);
+			}
+		}
+
+		.btn2 {
+			width: 200px;
+			height: 200px;
+			border-radius: 100px;
+		}
+
+		.btn2::after {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: calc(100% - 10px);
+			height: calc(100% - 10px);
+			background: #fff;
+			border-radius: 50%;
+			z-index: -1;
+		}
+	</style>
+	<style>
+		.box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			margin: 50px auto;
+			width: 300px;
+			height: 300px;
+			background: rgba(0, 0, 0, 0.8);
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: 0 0 10px 5px plum;
+		}
+
+		.box::before {
+			content: "";
+			position: absolute;
+			width: 50%;
+			height: 200%;
+			background: linear-gradient(blue, yellow);
+			animation: rotate 3s linear infinite;
+		}
+
+		.box::after {
+			content: "";
+			position: absolute;
+			inset: 6px;
+			/*inset:6px; === top:6px; right:6px; bottom:6px; left:6px; */
+			background: aqua;
+			border-radius: 20px;
+		}
+
+		.box h3 {
+			color: #fff;
+			font-size: 22px;
+			text-shadow: 2px 2px blueviolet;
+			z-index: 1;
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg);
 			}
 
-			.box::before {
-				content: "";
-				position: absolute;
-				width: 50%;
-				height: 200%;
-				background: linear-gradient(blue, white);
-				animation: rotate 3s linear infinite;
+			100% {
+				transform: rotate(360deg);
 			}
+		}
 
-			.box::after {
-				content: "";
-				position: absolute;
-				inset: 6px;
-				/*inset:6px; === top:6px; right:6px; bottom:6px; left:6px; */
-				background: aqua;
-				border-radius: 20px;
-			}
+		.box2 {
+			width: 500px;
+			background: none;
+		}
 
-			.box h1 {
-				color: #fff;
-				font-size: 3em;
-				text-shadow: 2px 2px blueviolet;
-				z-index: 1;
-			}
+		.box2::before {
+			background: linear-gradient(blue, yellow);
+			animation: rotate 2s linear infinite;
+		}
 
-			@keyframes rotate {
-				0% {
-					transform: rotate(0deg);
-				}
+		.box2::after {
+			background: palegreen;
+		}
+	</style>
+</head>
 
-				100% {
-					transform: rotate(360deg);
-				}
-			}
+<body>
+	<h1>边框线流动效果</h1>
+	<hr />
+	<button class="btn">按扭边框</button>
+	<button class="btn btn2">按扭边框</button>
 
-			.box2 {
-				width: 500px;
-				background: none;
-			}
+	<div class="box">
+		<h3>DIV盒子边框线流动效果1</h3>
+	</div>
+	<div class="box box2">
+		<h3>DIV盒子边框线流动效果2</h3>
+	</div>
+</body>
 
-			.box2::before {
-				background: linear-gradient(blue, yellow);
-				animation: rotate 2s linear infinite;
-			}
-
-			.box2::after {
-				background: palegreen;
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="box">
-			<h1>CSS3</h1>
-		</div>
-		<div class="box box2">
-			<h1>CSS3</h1>
-		</div>
-	</body>
 </html>
