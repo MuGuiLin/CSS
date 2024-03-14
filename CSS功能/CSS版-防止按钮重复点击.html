@@ -7,13 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS版-防止按钮重复点击</title>
     <style>
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 32px;
+            user-select: none;
+            cursor: pointer;
+        }
+
         .btn-throttle {
             animation: key-throttle 1s step-end forwards;
         }
 
         .btn-throttle:active {
             animation: none;
+            cursor: initial;
+        }
 
+        .btn-throttle-5s {
+            
+            animation: key-throttle 5s step-end forwards;
+        }
+
+        .btn-throttle-5s:focus {
+            cursor: no-drop;
+        }
+
+        .btn-throttle-5s:active {
+            animation: none;
+            cursor: pointer;
         }
 
         @keyframes key-throttle {
@@ -31,7 +56,10 @@
 </head>
 
 <body>
+    <h1>CSS版-防止按钮重复点击</h1>
+    <hr>
     <button class="btn-throttle" onclick="console.log(666)">throttle</button>
+    <button class="btn-throttle-5s" onclick="alert(666)">点我后要等5秒钟才可以再次点击，按钮会变灰</button>
 </body>
 
 </html>
