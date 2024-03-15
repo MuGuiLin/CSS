@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hover Effect 3D卡片效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {}
+
+        body {
+            background: #333;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+
+        .card {
+            margin: 100px auto;
+            width: 956px;
+            border-radius: 10px;
+            /* var(--rx, 0deg) =>  CSS变量: --rx = 0deg  */
+            transform: perspective(500px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+            transition: 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            border-radius: inherit;
+        }
+
+        .card:hover {
+            border: 1px solid #b0b0b0;
+            box-shadow: -5px -5px 15px blue, 5px 5px 15px purple;
+        }
+
+        body:hover .card {
+            border: 1px solid #b0b0b0;
+            box-shadow: -5px -5px 15px blue, 5px 5px 15px purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>3D Hover Effect 3D卡片鼠标移动效果</h1>
+    <hr>
+
+    <div class="card">
+        <img src="./img/hero-desktop.webp" alt="" srcset="" />
+    </div>
+
+    <script>
+        // 获取卡片DOM元素
+        const card = document.querySelector('.card');
+
+        // x、y轴旋转偏移范围
+        const xRotate = [-30, 30];
+        const yRotate = [-30, 30];
+
+        // 获取鼠标在卡片上偏移范围内的偏移量
+        const getRotateDeg = (range, value, length) => {
+            //  value / length 为鼠标在卡片上(宽度、高度)的偏移比率
+            //  (range[1] - range[0]) + range[0] 为鼠标在卡片上(宽度、高度)的偏移角度的差值
+
+            return value / length * (range[1] - range[0]) + range[0];
+        };
+
+        // 鼠标移动事件
+        // card.addEventListener('mousemove', (e) => {
+        window.addEventListener('mousemove', (e) => {
+            const { offsetX, offsetY } = e;
+            const { offsetWidth, offsetHeight } = e.target
+            // const {} = card.getBoundingClientRect();
+            // console.log(offsetX, offsetY, offsetWidth, offsetHeight);
+
+            // 注意：y轴旋转方向为反向
+            const rx = getRotateDeg(xRotate, offsetY, offsetHeight);
+            const ry = -getRotateDeg(yRotate, offsetX, offsetWidth);
+
+            // 给CSS旋转角度变量赋值
+            card.style.setProperty('--rx', rx + 'deg');
+            card.style.setProperty('--ry', ry + 'deg');
+        });
+
+        // 鼠标移出事件
+        card.addEventListener('mouseleave', () => {
+            // 重置CSS旋转角度变量
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--ry', '0deg');
+        });
+    </script>
+</body>
+
+</html>
