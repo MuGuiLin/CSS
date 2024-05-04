@@ -1,10 +1,8 @@
-# CSS
+# CSS（层叠样式表） 
+
+[CSS文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
 ![CSS](https://www.runoob.com/wp-content/uploads/2013/07/css-logo.png)
-
-## [CSS（层叠样式表） 文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
-
-
 
 > **CSS** (**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，**CSS** 文件扩展名为 **.css**。
 >
