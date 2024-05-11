@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input 输入正则校验 pattern属性</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .nav {
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>input 输入正则校验 pattern属性</h1>
+    <hr>
+
+    <p>现要实现提交表单时输入的不是3位数的数字时提示请输入三位数字pattern="[0-9]{3}"。</p>  
+    
+    <form action="/example/html5/demo_form.asp">
+        账号：<input type="text" name="user" placeholder="请输入账号" />
+        密号：<input type="text" name="code" pattern="[0-9]{3}" placeholder="请输入三位数字" />
+        <input type="submit" />
+    </form>
+</body>
+
+</html>
