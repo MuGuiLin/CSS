@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>::first-line 块级元素第一行文本</title>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		p {
+			line-height: 60px;
+			font-size: 32px;
+		}
+
+		p::first-line {
+			color: white;
+			font-weight: bolder;
+			background-color: blue;
+		}
+
+		/* p::last-line {background-color: red;} 目前还没有last-line */
+		
+	</style>
+</head>
+
+<body>
+
+	<h1>::first-line 块级元素第一行文本</h1>
+
+	<hr />
+
+	<h2>将p标签内的第一行文本文字背景色设置为蓝色</h2>
+
+	<p>
+		在CSS中，比如要为&lt;p>标签的第一行文本设置背景色，可以使用伪元素::first-line。但是，::first-line 仅适用于块级元素，因此，如果你想要为一个段落的第一行文本设置背景色，你需要确保是作用于块级元素，【需要注意的是】：但目前还没有像 ::nth-line、::nth-last-line 甚至 ::last-line 这样的选择器。实际上这期选择器在某些情况下是非常有用的，Lining.js 提供了这样的功能。
+	</p>
+</body>
+
+</html>
