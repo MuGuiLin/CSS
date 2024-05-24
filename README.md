@@ -1,6 +1,6 @@
 # CSS（层叠样式表） 
 
-[CSS文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+[CSS在线文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
 ![CSS](https://www.runoob.com/wp-content/uploads/2013/07/css-logo.png)
 
