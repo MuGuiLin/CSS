@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>纯CSS 网格背景</title>
+	<style>
+		:root {
+			--base-color: #ffc3d98a;
+			--base-shadow: #ff93b9;
+			--darker-shadow: #f01260f3;
+			--darkest-shadow: #fd4686;
+			--base-highlight: #ff86b1;
+			--lighter-highlight: #ffc8dc;
+			--lightest: #ffffff;
+		}
+
+		html {
+			background: radial-gradient(50vmin 50vmin, #feb4ff, #a3a3ec);
+		}
+
+		body {
+			background-image: repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) 1px, transparent 1px, transparent 30px, rgba(255, 255, 255, 0.3) 30px, rgba(255, 255, 255, 0.3) 31px, transparent 31px, transparent 60px), repeating-linear-gradient(60deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) 1px, transparent 1px, transparent 30px, rgba(255, 255, 255, 0.3) 30px, rgba(255, 255, 255, 0.3) 31px, transparent 31px, transparent 60px), repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 1px, transparent 1px, transparent 30px);
+			background-size: 70px 120px;
+		}
+		html, body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>纯CSS 网格背景</h1>
+	<hr />
+	<br />
+</body>
+
+</html>
