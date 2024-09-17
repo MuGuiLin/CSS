@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform 奥运五环</title>
+    <style>
+        .boxs {
+            margin: 100px auto;
+            width: 890px;
+        }
+
+        .item {
+            position: relative;
+            display: inline-block;
+            margin-left: 30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 30px solid blue;
+        }
+
+        .item:nth-child(1)::after,
+        .item:nth-child(2)::before,
+        .item:nth-child(2)::after,
+        .item:nth-child(3)::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 30px solid transparent;
+            border-right-color: blue;
+            z-index: 1;
+        }
+
+        .item:nth-child(2) {
+            border-color: black;
+        }
+
+        .item:nth-child(2)::before {
+            border-left-color: black;
+        }
+
+        .item:nth-child(2)::after {
+            border-right-color: black;
+        }
+
+        .item:nth-child(3) {
+            border-color: red;
+        }
+
+        .item:nth-child(3)::before {
+            border-left-color: red;
+            border-right-color: transparent;
+        }
+
+        .item:nth-child(4) {
+            position: relative;
+            top: -150px;
+            left: 150px;
+            border-color: yellow;
+        }
+
+        .item:nth-child(5) {
+            position: relative;
+            top: -150px;
+            left: 150px;
+            border-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxs">
+        <i class="item"></i>
+        <i class="item"></i>
+        <i class="item"></i>
+        <i class="item"></i>
+        <i class="item"></i>
+    </div>
+</body>
+
+</html>
