@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>drop-shadow图片阴影</title>
     <style>
-        body{
+        body {
             text-align: center;
+        }
+
+        .shadow {
+            filter: drop-shadow(10px 10px 5px rgba(0, 0, 255, 0.6));
         }
     </style>
 </head>
+
 <body>
     <h1>drop-shadow图片阴影</h1>
-    <img src="./img/astrocat.png" alt="astrocat" />
+    <img src="./img/astrocat.png" alt="astrocat" title="无阴影" />
+    <img src="./img/astrocat.png" alt="astrocat" title="有阴影" class="shadow" />
 </body>
+
 </html>
