@@ -19,6 +19,38 @@
             /* 根据元素内部像素点设置阴影 */
             filter: drop-shadow(10px 10px 5px rgba(0, 0, 255, 0.6));
         }
+
+
+        .dialog-box {
+            position: relative;
+            padding: 10px;
+            width: 300px;
+            height: 100px;
+            margin: 50px;
+            background-color: #fff;
+            border-radius: 6px;
+            border: 1px solid blue;
+        }
+
+        .dialog-box::before,
+        .dialog-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            margin-top: -20px;
+            border-width: 20px;
+            border-style: solid;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: currentColor;
+        }
+
+        .dialog-box::after {
+            right: -39.5px;
+            border-left-color: white;
+        }
     </style>
 </head>
 
@@ -26,7 +58,10 @@
     <h1>drop-shadow图片阴影</h1>
     <hr />
     <img src="./img/astrocat.png" alt="astrocat" title="box-shadow 根据元素盒子边框设置阴影" class="box-shadow" />
-    <img src="./img/astrocat.png" alt="astrocat" title="box-shadow 根据元素内部像素点设置阴影" class="drop-shadow" />
+    <img src="./img/astrocat.png" alt="astrocat" title="drop-shadow 根据元素内部像素点设置阴影" class="drop-shadow" />
+
+    <div class="dialog-box box-shadow">对话框，小三角（box-shadow 根据元素盒子边框设置阴影）</div>
+    <div class="dialog-box drop-shadow">对话框，小三角（drop-shadow 根据元素内部像素点设置阴影）</div>
 </body>
 
 </html>
