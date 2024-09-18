@@ -10,7 +10,13 @@
             text-align: center;
         }
 
-        .shadow {
+        .box-shadow {
+            /* 根据元素盒子边框设置阴影 */
+            box-shadow: 10px 10px 5px rgba(0, 0, 255, 0.6);
+        }
+
+        .drop-shadow {
+            /* 根据元素内部像素点设置阴影 */
             filter: drop-shadow(10px 10px 5px rgba(0, 0, 255, 0.6));
         }
     </style>
@@ -18,8 +24,9 @@
 
 <body>
     <h1>drop-shadow图片阴影</h1>
-    <img src="./img/astrocat.png" alt="astrocat" title="无阴影" />
-    <img src="./img/astrocat.png" alt="astrocat" title="有阴影" class="shadow" />
+    <hr />
+    <img src="./img/astrocat.png" alt="astrocat" title="box-shadow 根据元素盒子边框设置阴影" class="box-shadow" />
+    <img src="./img/astrocat.png" alt="astrocat" title="box-shadow 根据元素内部像素点设置阴影" class="drop-shadow" />
 </body>
 
 </html>
