@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>has选择器</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .boxs {
+            margin: auto;
+            width: 360px;
+            padding: 30px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+        }
+
+        .boxs p {
+            padding: 30px;
+        }
+
+        .boxs input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        /*  has()选择器 +表示下一个兄弟节点 [] 表示所包含的属性 */
+        .boxs label:has(+input[required]):after {
+            content: "*";
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>has选择器</h1>
+    <hr />
+    <p>只有当 input元素上有required属性时，label元素后面才会有*出现！</p>
+    <div class="boxs">
+        <p>
+            <label for="">用户：</label>
+            <input type="text" required placeholder="请输入用户！" />
+        </p>
+        <p>
+            <label for=""> 密码：</label>
+            <input type="password" placeholder="请输入密码！" />
+        </p>
+        <p>
+            <label for=""> 密码：</label>
+            <input type="password" required placeholder="请输入密码！" />
+        </p>
+    </div>
+</body>
+
+</html>
