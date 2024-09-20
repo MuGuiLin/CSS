@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first-letter 首字下沉</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .boxs {
+            margin: auto;
+            width: 500px;
+        }
+
+        p {
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        /* first-letter 选择器 用于选中文本中的第一个字符 */
+        p::first-letter {
+            float: left;
+            font-size: 100px;
+            font-weight: bold;
+            line-height: 1;
+            color: red;
+            text-transform: uppercase;
+            /* 将字母转换为大写 */
+        }
+
+        /* first-line 选择器 用于选中文本中的第一行字符 */
+        p::first-line {
+            color: blue;
+        }
+
+        /* selection 选择器 用于选中文本中选中的字符 */
+        p::selection {
+            color: white;
+            background-color: green;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>::first-letter首字， ::first-liner首行，::selection选中</h1>
+    <hr>
+    <div class="boxs">
+        <p>my name is Donald.font properties
+            color properties
+            background properties
+            margin properties
+            padding properties
+            border properties
+            text-decoration
+            vertical-align (only if float is 'none')
+            text-transform
+            line-height
+            float
+            clear</p>
+        <p>哈哈，这可真有意思呀！</p>
+        <p>在CSS中可以使用::first-letter选择器用来指定元素第一个字符的样式， 可以通过::first-liner选择器用来指定元素第一行字符的样式，可以通过::selection选择器用来指定元素选中字符的样式</p>
+    </div>
+</body>
+
+</html>

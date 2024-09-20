@@ -26,6 +26,7 @@
             padding: 10px;
             font-size: 16px;
         }
+
         /*  has()选择器 +表示下一个兄弟节点 [] 表示所包含的属性 */
         .boxs label:has(+input[required]):after {
             content: "*";
@@ -37,7 +38,7 @@
 <body>
     <h1>has选择器</h1>
     <hr />
-    <p>只有当 input元素上有required属性时，label元素后面才会有*出现！</p>
+    <p>只有当 input元素上有required属性存在时，label元素后面才会有*出现！</p>
     <div class="boxs">
         <p>
             <label for="">用户：</label>
