@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>focus-within子元素焦点监听</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .boxs {
+            margin: auto;
+            width: 360px;
+            padding: 30px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+        }
+
+        .boxs label {
+            display: block;
+            padding: 30px;
+        }
+
+        .boxs input {
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .boxs input:focus {
+            border-color: blue !important;
+        }
+
+        .boxs label:focus-within {
+            background-color: purple;
+            color: white;
+        }
+
+        .boxs p:focus-within {
+            font-size: 32px;
+            color: blue;
+        }
+
+        .boxs p:focus-within label {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>focus-within子元素焦点监听</h1>
+    <hr />
+    <div class="boxs">
+        <p>通过监听子元素的焦点事件focus-within来，修改父元素的样式！
+            <label for="">
+                用户：
+                <input type="text" placeholder="请输入用户！" />
+            </label>
+        </p>
+        <label for="">
+            密码：
+            <input type="password" placeholder="请输入密码！" />
+        </label>
+    </div>
+</body>
+
+</html>
