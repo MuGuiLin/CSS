@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masonry 瀑布流</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .boxs {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 10px;
+            grid-template-rows: masonry; /* masonry 瀑布流，目前只有火狐浏览器支持，而且浏览器需要开启实验功能：在浏览器中打开：chrome://flags 或 edge://flags 然后搜索grid-template-masonry 启用 */
+            margin: auto;
+            width: 1024px;
+        }
+
+        .boxs img {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>grid-template-rows: masonry 纯 CSS Masonry瀑布流布局</h1>
+    <hr>
+    <div class="boxs">
+        <img src="https://picsum.photos/seed/picsum/200/300" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/200" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/500" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/400" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/100" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/200" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/350" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/150" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/500" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/400" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/100" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/200" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/350" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/250" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/550" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/500" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/400" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/100" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/200" alt="图片" />
+        <img src="https://picsum.photos/seed/picsum/200/350" alt="图片" />
+    </div>
+</body>
+
+</html>
