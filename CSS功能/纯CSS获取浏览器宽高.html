@@ -25,7 +25,7 @@
 
         body::before {
             content: '宽度：' counter(w) 'px，高度：' counter(h) 'px';
-            counter-reset: h var(--h) w var(--w);
+            counter-reset: w var(--w) h var(--h); /*  CSS 计数器 https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-reset */
 
             position: fixed;
             top: 50%;
