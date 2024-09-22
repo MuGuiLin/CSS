@@ -7,25 +7,25 @@
     <title>纯CSS获取浏览器宽度 - CSS 新特性 @property 与 数学函数tan(atan2(var()))</title>
     <style>
         @property --w_raw {
-            syntax: '<length>';
-            inherits: false;
-            initial-value: 100vw;
+            syntax: '<length>'; /* 是这个属性的单位，我们给它设置为 <length> ，以便于让浏览器理解这是一个长度单位 */
+            inherits: false; 
+            initial-value: 100vw; /* 是这个属性的初始值，如果不修改，它一直是 100vw */
         }
 
         @property --h_raw {
             syntax: '<length>';
-            inherits: false;
+            inherits: false; /* 是这个属性是否可以被继承 */
             initial-value: 100vh;
         }
 
         :root {
-            --w: tan(atan2(var(--w_raw), 1px));
-            --h: tan(atan2(var(--h_raw), 1px));
+            --w: tan(atan2(var(--w_raw), 1px)); /* tan()函数 用于返回给定角度的正切 */
+            --h: tan(atan2(var(--h_raw), 1px)); /* atans(y, x)函数，用于返回点 (x, y) 到原点的角度（弧度单位） */
         }
 
         body::before {
-            content: '宽度：' counter(w) 'px，高度：' counter(h) 'px';
-            counter-reset: w var(--w) h var(--h); /*  CSS 计数器 https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-reset */
+            content: '宽度：' counter(w) 'px，高度：' counter(h) 'px'; 
+            counter-reset: w var(--w) h var(--h); /*  重置计数器 https://developer.mozilla.org/zh-CN/docs/Web/CSS/counter-reset */
 
             position: fixed;
             top: 50%;
