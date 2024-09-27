@@ -2,6 +2,8 @@
 
 [CSS在线文档 | MDN (developer.mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
+[你不知道的CSS！CSDN博客](https://blog.csdn.net/muguli2008/article/details/107707664)
+
 
 
 [CSS可视化工具](https://css.bqrdh.com)
@@ -10,7 +12,7 @@
 
 - [SVG压缩 | CSS可视化 (bqrdh.com)](https://css.bqrdh.com/svg/compress)
 
-![CSS](https://www.runoob.com/wp-content/uploads/2013/07/css-logo.png)
+![CSS](https://i-blog.csdnimg.cn/blog_migrate/3b33e0587ae213d7ea2eabf7af7d2b08.webp?x-image-process=image/format,png#pic_center)
 
 > **CSS** (**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，**CSS** 文件扩展名为 **.css**。
 >
@@ -18,7 +20,7 @@
 >
 > 在我们的 **CSS** 教程中，您会学到如何使用 CSS 同时控制多重网页的样式和布局。
 >
-> **CSS3* 现在已被大部分现代浏览器支持，而 **从CSS3开始，CSS规范就被拆成众多模块（module）单独进行升级，或者将新需求作为一个新模块来立项并进行标准化。因此今后不会再有CSS4、CSS5这种所谓大版本号的变更，有的只是CSS某个模块级别的跃迁。。
+> **CSS3  现在已被大部分现代浏览器支持！ **从`CSS3`开始，CSS规范就被拆成众多模块（module）单独进行升级，或者将新需求作为一个新模块来立项并进行标准化。因此今后不会再有CSS4、CSS5这种所谓大版本号的变更，有的只是CSS某个模块级别的跃迁。。
 
 
 
@@ -48,7 +50,7 @@
 
 
 
-## 关于CSS 模块化（CSS Modules）
+## CSS Modules （CSS 模块化）
 
 >  [CSS Modules](https://github.com/css-modules/css-modules)CSS Modules 指的是我们像 import'js' 一样去引入我们的 css 代码，代码中的每一个类名都是引入对象的一个属性，通过这种方式，即可在使用时明确指定所引用的 css 样式。
 >
