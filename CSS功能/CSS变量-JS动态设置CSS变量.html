@@ -9,6 +9,11 @@
         h1 {
             text-align: center;
         }
+
+        :root {
+            --bg: red;
+        }
+
         .box {
             width: 80%;
             height: 150px;
@@ -17,23 +22,28 @@
             border: 1px solid #000;
             margin: 50px auto;
         }
-        .bar{
+
+        .bar {
             margin-top: 15px;
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background-color: blue;
+            background-color: var(--bg);
+            border: solid 1px #000;
 
-            animation: 3s identifier infinite;
+            animation: 3s identifier ease-out infinite;
         }
 
         @keyframes identifier {
+
             /* 0% {
                 transform: translateX(0%);
             } */
             50% {
-                transform: translateX(calc(var(--pw) - 100%)); /* 注：这里的 100% 是当前引用动画元素自身的宽度（就相当于 120px）*/
+                transform: translateX(calc(var(--pw) - 100%));
+                /* 注：这里的 100% 是当前引用动画元素自身的宽度（就相当于 120px）*/
             }
+
             /* 100% {
                 transform: translateX(0%);
             } */
@@ -54,6 +64,16 @@
 
         // JS动态设置CSS变量
         box.style.setProperty('--pw', box.clientWidth + 'px');
+        box.style.setProperty('--ph', box.clientHeight + 'px');
+
+        setInterval(() => {
+            const r = parseInt(Math.random() * 255);
+            const g = parseInt(Math.random() * 255);
+            const b = parseInt(Math.random() * 255);
+            // const a = Math.random();
+            // box.style.setProperty('--bg', `rgba(${r}, ${g}, ${b}, ${a})`);
+            box.style.setProperty('--bg', `rgb(${r}, ${g}, ${b})`);
+        }, 1500);
     </script>
 </body>
 
