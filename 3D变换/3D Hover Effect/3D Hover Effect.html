@@ -83,9 +83,9 @@
             // const {} = card.getBoundingClientRect();
             // console.log(offsetX, offsetY, offsetWidth, offsetHeight);
 
-            // 注意：y轴旋转方向为反向
-            const rx = getRotateDeg(xRotate, offsetY, offsetHeight);
-            const ry = -getRotateDeg(yRotate, offsetX, offsetWidth);
+            // 注意：y轴旋转方向为反向，由于计算后的偏移量有多位小数，会导致鼠标移动卡片旋转有卡顿的问题，所以使用parseInt()取整。
+            const rx = parseInt(getRotateDeg(xRotate, offsetY, offsetHeight));
+            const ry = parseInt(-getRotateDeg(yRotate, offsetX, offsetWidth));
 
             // 给CSS旋转角度变量赋值
             card.style.setProperty('--rx', rx + 'deg');
