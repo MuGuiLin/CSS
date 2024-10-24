@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS变量-JS动态设置CSS变量方法 style.setProperty()</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .box {
+            width: 80%;
+            height: 150px;
+            border-radius: 100px;
+            background-color: #fff;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+        .bar{
+            margin-top: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: blue;
+
+            animation: 3s identifier infinite;
+        }
+
+        @keyframes identifier {
+            /* 0% {
+                transform: translateX(0%);
+            } */
+            50% {
+                transform: translateX(calc(var(--pw) - 100%)); /* 注：这里的 100% 是当前引用动画元素自身的宽度（就相当于 120px）*/
+            }
+            /* 100% {
+                transform: translateX(0%);
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS变量-JS动态设置CSS变量方法 style.setProperty()</h1>
+    <hr />
+    <p>注：关于CSS变量var()的用法时，子元素可直接使用，父元素的变量！！</p>
+
+    <div class="box">
+        <div class="bar"></div>
+    </div>
+    <script>
+        const box = document.querySelector('.box');
+
+        // JS动态设置CSS变量
+        box.style.setProperty('--pw', box.clientWidth + 'px');
+    </script>
+</body>
+
+</html>
