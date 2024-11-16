@@ -124,6 +124,13 @@
 			}
 		}
 
+		@keyframes rotate2 {
+			to {
+				transform: rotate(360deg)
+			}
+		}
+
+
 		.box2 {
 			width: 500px;
 			background: none;
@@ -136,6 +143,18 @@
 
 		.box2::after {
 			background: palegreen;
+		}
+
+		
+		.box3 {
+			width: 1000px;
+			background: none;
+		}
+
+		.box3::before {
+			width: 200%;
+			animation: rotate2 6s linear infinite;
+			background: conic-gradient(transparent 50deg, rgba(0, 0, 255, .8) 80deg, transparent 90deg);
 		}
 	</style>
 </head>
@@ -151,6 +170,9 @@
 	</div>
 	<div class="box box2">
 		<h3>DIV盒子边框线流动效果2</h3>
+	</div>
+	<div class="box box3">
+		<h3>DIV盒子边框线流动效果3</h3>
 	</div>
 </body>
 
