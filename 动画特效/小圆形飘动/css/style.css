@@ -1,11 +1,12 @@
 .alt-over-url {
-    position  : fixed;
-    top       : 0;
-    left      : 0;
-    width     : 100%;
-    height    : 100%;
-    z-index   : 999999;
-    background: rgba(0, 0, 0, 0.5) url(../img//img.jpg) no-repeat;
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    height         : 100%;
+    z-index        : 999999;
+    background     : rgba(0, 0, 0, 0.5) url(../img//img.jpg) no-repeat;
+    background-size: cover;
 }
 
 bokeh {
