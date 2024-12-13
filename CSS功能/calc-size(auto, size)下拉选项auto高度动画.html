@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc-size(auto, size)下拉选项auto高度动画</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            gap: 20px;
+        }
+
+        ul {
+            padding: 0;
+            width: 200px;
+            height: 0;
+            border: 1px solid #ccc;
+            transition: all .5s;
+            overflow: hidden;
+        }
+
+        li {
+            box-sizing: border-box;
+            padding: 10px 20px;
+            width: 100%;
+            list-style: none;
+        }
+
+        li:hover {
+            color: #fff;
+            background-color: #00b560;
+            cursor: pointer;
+        }
+
+        .li1:hover~.ul1 {
+            background-color: red;
+            /* height: calc-size(auto, size); */
+        }
+
+        .btn1:hover~.ul1 {
+            /*单值设置*/
+            height: calc-size(auto, size);  /* calc-size(fit-content, size)*/
+
+            /*执行计算*/
+            height: calc-size(min-content, size + 100px);
+            height: calc-size(max-content, size - 50em);
+            height: calc-size(fit-content, size / 2);
+
+            /*函数计算*/
+            height: calc-size(auto, round(up, size, 100px));
+        }
+
+        .box {
+            /* 开启CSS插值尺寸 支持 关键字属性值（默认值 interpolate-size: numeric-only;）*/
+            interpolate-size: allow-keywords;
+        }
+
+        .btn2:hover~.ul2 {
+            /* 在祖先元素 或父元素中 加上 interpolate-size: allow-keywords; 使用auto 这样属性值也可以实现动画 */
+            height: auto;
+
+            /*宽度根据内容自适应*/
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>calc-size(auto, size); 或 interpolate-size: allow-keywords; 实现下拉选项auto高度动画</h1>
+    <hr />
+    <main>
+        <div>
+            <button class="btn1">下接选项显示 height: auto 动画 calc-size(auto, size);</button>
+            <ul class="ul1">
+                <li class="li1">选项1</li>
+                <li class="li1">选项2</li>
+                <li class="li1">选项3</li>
+                <li class="li1">选项4</li>
+                <li class="li1">选项5</li>
+                <li class="li1">选项6</li>
+                <li class="li1">选项7</li>
+                <li class="li1">选项8</li>
+                <li class="li1">选项9</li>
+            </ul>
+        </div>
+        <div class="box">
+            <button class="btn2">下接选项显示 height: auto 动画 interpolate-size: allow-keywords;</button>
+            <ul class="ul2">
+                <li class="li2">选项1</li>
+                <li class="li2">选项2</li>
+                <li class="li2">选项3</li>
+                <li class="li2">选项4</li>
+                <li class="li2">选项5</li>
+                <li class="li2">选项6</li>
+                <li class="li2">选项7</li>
+                <li class="li2">选项8</li>
+                <li class="li2">选项9</li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

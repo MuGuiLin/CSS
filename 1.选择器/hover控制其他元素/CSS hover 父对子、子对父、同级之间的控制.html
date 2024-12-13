@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS hover 父对子、子对父、同级之间的控制</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            gap: 20px;
+        }
+
+        div {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .d1:hover .p1 {
+            background-color: red;
+        }
+
+        .p2:hover~.d2 {
+            background-color: green;
+        }
+
+        .h3:hover+.p3 {
+            background-color: blue;
+        }
+
+        .d1:hover .d2 h3,
+        .d1:hover .d3 h3 {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS hover 父对子、子对父、同级之间的控制</h1>
+    <hr />
+
+    <main>
+        <div class="d1">
+            <h3>父元素控制子元素：</h3>
+            <p class="p1">CSS hover 父对子、子对父、同级之间的控制</p>
+        </div>
+        <div class="d2">
+            <h3>子元素控制父元素：</h3>
+            <p class="p2">CSS hover 父对子、子对父、同级之间的控制</p>
+        </div>
+        <div class="d3">
+            <h3 class="h3">同级元素控制：</h3>
+            <p class="p3">CSS hover 父对子、子对父、同级之间的控制</p>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
