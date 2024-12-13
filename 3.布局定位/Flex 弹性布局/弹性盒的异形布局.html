@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹性盒的异形布局</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .contiainer {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            /* 元素之间的最小间距 */
+            margin: 2em auto;
+            width: 80%;
+        }
+
+        .column {
+            flex: 1 1 0;
+            /* 1平均分配 1自动压缩 0基准尺寸 */
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            /* 垂直方向 */
+            gap: 30px;
+        }
+
+        .content img {
+            padding: 0.3em;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 0 5px #ccc;
+            transition: transform .22s ease-in-out;
+        }
+
+        .content img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>弹性盒的异形布局</h1>
+    <hr />
+    <a href="https://huaban.com" target="_blank" rel="noopener noreferrer">灵感来自花瓣网 - huaban.com</a>
+    <div class="contiainer">
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/600?r=1" alt="" />
+                <img src="https://picsum.photos/400/500?r=01" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/600?r=2" alt="" />
+                <img src="https://picsum.photos/400/400?r=02" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/300?r=3" alt="" />
+                <img src="https://picsum.photos/400/200?r=03" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/500?r=4" alt="" />
+                <img src="https://picsum.photos/400/600?r=04" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/300?r=5" alt="" />
+                <img src="https://picsum.photos/400/400?r=05" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/550?r=6" alt="" />
+                <img src="https://picsum.photos/400/450?r=06" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/350?r=7" alt="" />
+                <img src="https://picsum.photos/400/500?r=07" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/500?r=8" alt="" />
+                <img src="https://picsum.photos/400/200?r=08" alt="" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <img src="https://picsum.photos/400/400?r=9" alt="" />
+                <img src="https://picsum.photos/400/600?r=09" alt="" />
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
