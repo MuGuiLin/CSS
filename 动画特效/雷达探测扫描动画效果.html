@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷达探测扫描动画效果</title>
+    <style>
+        html {
+            height: 100%;
+            display: grid;
+            place-items: center;
+            background: #020;
+        }
+
+        .circle {
+            width: 60vmin;
+            height: 60vmin;
+            border-radius: 50%;
+            --border-size: 3px;
+            --border-angle: 0turn;
+            --grid-bg: radial-gradient(transparent 69%,
+                    limegreen 69%,
+                    limegreen 70%,
+                    transparent 70%);
+            --line-bg: transparent 50%, limegreen 50%, transparent 50.5%;
+            background-image: conic-gradient(from var(--border-angle), transparent 10%, #0d0a 99%, limegreen 99.5%), linear-gradient(0deg, var(--line-bg)), linear-gradient(45deg, var(--line-bg)), linear-gradient(90deg, var(--line-bg)), linear-gradient(135deg, var(--line-bg)), var(--grid-bg), var(--grid-bg), var(--grid-bg);
+            background-size: cover, cover, cover, cover, cover, 25% 25%, 50% 50%, 75% 75%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            border: solid 0.5vmin limegreen;
+            -webkit-animation: bg-spin 3s linear infinite;
+            animation: bg-spin 3s linear infinite;
+            position: relative;
+            filter: drop-shadow(0px 0px 10vmin black) blur(0.5px) contrast(200%);
+        }
+
+        @-webkit-keyframes bg-spin {
+            to {
+                --border-angle: 1turn;
+            }
+        }
+
+        @keyframes bg-spin {
+            to {
+                --border-angle: 1turn;
+            }
+        }
+
+        .circle::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 2vmin;
+            height: 2vmin;
+            background: limegreen;
+            border-radius: 50%;
+            -webkit-animation: move 18s steps(6) infinite;
+            animation: move 18s steps(6) infinite;
+        }
+
+        @-webkit-keyframes move {
+            33% {
+                transform: translate(25vmin, 10vmin);
+            }
+
+            66% {
+                transform: translate(15vmin, 30vmin);
+            }
+
+            100% {
+                transform: translate(0vmin, 0vmin);
+            }
+        }
+
+        @keyframes move {
+            33% {
+                transform: translate(25vmin, 10vmin);
+            }
+
+            66% {
+                transform: translate(15vmin, 30vmin);
+            }
+
+            100% {
+                transform: translate(0vmin, 0vmin);
+            }
+        }
+
+        .circle::before {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: solid 1vmin limegreen;
+            -webkit-animation: scale 3s linear infinite;
+            animation: scale 3s linear infinite;
+        }
+
+        @-webkit-keyframes scale {
+            from {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes scale {
+            from {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            inherits: true;
+            initial-value: 0turn;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
