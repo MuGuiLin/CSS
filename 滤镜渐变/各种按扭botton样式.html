@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<title>CSS3_按扭 botton样式</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CSS3按扭botton样式</title>
 		<style type="text/css">
 			:root{
 				--el-color-info: #909399;
@@ -23,7 +24,6 @@
 
 			.disabled { opacity: 0.6; cursor: not-allowed; outline: none; }
 			
-			
 			.btn_bor { background-color: white; border: 2px solid var(--el-color-primary); color: var(--el-color-primary);}
 			.btn_bor:hover {background-color: var(--el-color-primary); color: white;}
 			.btn_bor2 { background-color: white; border: 2px solid var(--el-color-success); color: var(--el-color-success);}
@@ -39,9 +39,7 @@
 			.btn_bor3_f:hover {background-color: white; border: 2px solid var(--el-color-error); color: var(--el-color-error);}
 			
 			.btn_show{ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
-			
 			.btn_showhov:hover{box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19); -webkit-transition-duration: 0.4s;}
-			
 			
 			.btn-group {display: flex;}
 			.btn_Blue_GU{background-color: var(--el-color-primary); margin: 0px; border-radius: 0px;}
@@ -49,19 +47,9 @@
 			.btn_Blue_GU:first-child{border-top-left-radius: 4px; border-bottom-left-radius: 4px;}
 			.btn_Blue_GU:last-child{border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
 
-			.btn-slant{
-				position: relative;
-				transform: skewX(-15deg);
-				border-radius: 20px 0 20px 0;
-			}
+			.btn-slant{ position: relative; transform: skewX(-15deg); border-radius: 20px 0 20px 0;}
 			.btn-slant::after,
-			.btn-slant::before {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: -19px;
-				width: 20px;
-				height: 20px;
+			.btn-slant::before { content: ""; position: absolute; bottom: 0; left: -19px; width: 20px; height: 20px;
 				/* background: inherit; */
 				background: radial-gradient( /*径向渐变*/
 					circle at 0% 0%,  /*从中心点向外渐变*/
@@ -69,29 +57,17 @@
 					var(--el-color-primary) 21px /*注：渐变颜色之间的占比不要完全相等，不然会出现锯齿*/
 				);
 			}
-			.btn-slant::after {
-				content: "";
-				position: absolute;
-				top:  0;
-				left: auto;
-				right: -19px;
+			.btn-slant::after { top: 0; left: auto; right: -19px;
 				background: radial-gradient(
 					circle at 100% 100%,  /*从右下角向内渐变*/
 					transparent 20px,
 					var(--el-color-primary) 21px
 				);
 			}
-			.btn-slant span {
-				display: block;
-				transform: skewX(15deg);
-			}
+			.btn-slant span { display: block; transform: skewX(15deg);}
 
-			.radial1{
-				display: inline-block;
-				width: 100px;
-				height: 100px;
-				font-size: 12px;
-				color: #fff;
+			.radial1, .radial2{
+				display: inline-block; width: 100px; height: 100px; font-size: 12px; color: #fff;
 				background: radial-gradient( /*径向渐变*/
 					circle at 0% 0%,  /*从中心点向外渐变*/
 					red 100px,
@@ -99,11 +75,6 @@
 				);
 			}
 			.radial2{
-				display: inline-block;
-				width: 100px;
-				height: 100px;
-				font-size: 12px;
-				color: #fff;
 				background: radial-gradient(
 					circle at 100% 100%,  /*从右下角向内渐变*/
 					red 100px,
@@ -111,65 +82,37 @@
 				);
 			}
 			
-			.btn_dh{ width: 160px;}
+			.btn_dh{ width: 160px; }
 			.btn_dh span{cursor: pointer;display: inline-block; position: relative; transition: 0.5s;}
 			.btn_dh span:after { content: '»'; position: absolute; opacity: 0; top: 0; right: -20px; transition: 0.5s;}
 			.btn_dh:hover span{padding-right: 25px;}
 			.btn_dh:hover span:after { opacity: 1; right: 0;}
 			
-			.btn_dh2{ 
-			    position: relative;
-			    background-color: var(--el-color-success);
-			    padding: 20px;
-			    width: 200px;
+			.btn_dh2{ position: relative; padding: 20px; width: 200px; background-color: var(--el-color-success); overflow: hidden;
 			    -webkit-transition-duration: 0.4s; /* Safari */
 			    transition-duration: 0.4s;
-			    overflow: hidden;
-				}
-			
-			.btn_dh2::before {
-			    content: "";
-			    display: block;
-			    background: #90EE90;
-			    position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			    opacity: 0;
-				transform: scale(0);
-			    transition: all 0.2s
 			}
+			
+			.btn_dh2::before { content: ""; position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; background: #fff; transform: scale(0); transition: all 0.2s ease-out;}
 			.btn_dh2:active:before { opacity: 0.5; transform: scale(1);}
- 			
- 			
- 			.btn_dh3{
- 				  display: inline-block;
-				  padding: 15px 25px;
-				  font-size: 24px;
-				  cursor: pointer;
-				  text-align: center;   
-				  text-decoration: none;
-				  outline: none;
-				  color: #fff;
-				  background-color: var(--el-color-success);
-				  border: none;
-				  border-radius: 15px;
-				  box-shadow: 0 9px #999;
- 			}
+
+ 			.btn_dh3{ display: inline-block; padding: 15px 25px; font-size: 24px; text-align: center; text-decoration: none; outline: none; color: #fff; background-color: var(--el-color-success); border: none; border-radius: 15px; cursor: pointer; box-shadow: 0 9px #999;}
  			.btn_dh3:hover{background-color: #469546;}
  			
  			.btn_dh3:active {
-				  background-color: #3e8e41;
-				  box-shadow: 0 4px #666;
-				  -webkit-transform: translateY(4px);
-				}
+				background-color: #3e8e41;
+				box-shadow: 0 4px #666;
+				-webkit-transform: translateY(4px);
+			}
 		</style>
 	</head>
 	<body>
-		<h1>CSS3_按扭 botton样式</h1><hr />
+		<h1>CSS3_按扭 botton样式</h1>
+		<hr />
+
 		<h3>圆角边框：border-radius，文字阴影：text-shadow， 边框阴影：box-shadow，图片边框：border-image</h3>
 		
+
 		<h2>基本按钮样式</h2>
 		<button>默认按扭</button>
 		<a href="#" class="btn">a标签按扭</a>
@@ -223,11 +166,13 @@
 		</div>
 		<br /><br /><br /><br />
 
+
 		<h2>倾斜按钮</h2>
 		<button class="btn btn-primary btn-slant"><span>倾斜按钮</span></button>
 		<button class="btn btn-primary btn-slant"><span>倾斜按钮</span></button>
 		<br />
-		<div class="radial1">radial-gradient径向渐变-从中心点向外渐变<br /><br /><br /></div> &nbsp; <div class="radial2"><br /><br /><br />radial-gradient径向渐变-中心点从右下角向内渐变</div>
+		<div class="radial1">radial-gradient径向渐变-从中心点向外渐变<br /><br /><br /></div> &nbsp; 
+		<div class="radial2"><br /><br /><br />radial-gradient径向渐变-中心点从右下角向内渐变</div>
 		<br /><br /><br /><br />
 		
 		
