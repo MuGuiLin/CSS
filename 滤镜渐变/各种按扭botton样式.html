@@ -20,6 +20,8 @@
 			.btn-success {background-color: var(--el-color-success);}
 			.btn-warning {background-color: var(--el-color-warning);}
 			.btn-error {background-color: var(--el-color-error);}
+
+			.disabled { opacity: 0.6; cursor: not-allowed; outline: none; }
 			
 			
 			.btn_bor { background-color: white; border: 2px solid var(--el-color-primary); color: var(--el-color-primary);}
@@ -40,12 +42,74 @@
 			
 			.btn_showhov:hover{box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19); -webkit-transition-duration: 0.4s;}
 			
-			.disabled { opacity: 0.6; cursor: not-allowed; outline: none; }
-			.btn_group {display: flex;}
+			
+			.btn-group {display: flex;}
 			.btn_Blue_GU{background-color: var(--el-color-primary); margin: 0px; border-radius: 0px;}
 			.btn_Blue_GU:hover{background-color: #0079A0;}
 			.btn_Blue_GU:first-child{border-top-left-radius: 4px; border-bottom-left-radius: 4px;}
 			.btn_Blue_GU:last-child{border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+
+			.btn-slant{
+				position: relative;
+				transform: skewX(-15deg);
+				border-radius: 20px 0 20px 0;
+			}
+			.btn-slant::after,
+			.btn-slant::before {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: -19px;
+				width: 20px;
+				height: 20px;
+				/* background: inherit; */
+				background: radial-gradient( /*径向渐变*/
+					circle at 0% 0%,  /*从中心点向外渐变*/
+					transparent 20px,
+					var(--el-color-primary) 21px /*注：渐变颜色之间的占比不要完全相等，不然会出现锯齿*/
+				);
+			}
+			.btn-slant::after {
+				content: "";
+				position: absolute;
+				top:  0;
+				left: auto;
+				right: -19px;
+				background: radial-gradient(
+					circle at 100% 100%,  /*从右下角向内渐变*/
+					transparent 20px,
+					var(--el-color-primary) 21px
+				);
+			}
+			.btn-slant span {
+				display: block;
+				transform: skewX(15deg);
+			}
+
+			.radial1{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				font-size: 12px;
+				color: #fff;
+				background: radial-gradient( /*径向渐变*/
+					circle at 0% 0%,  /*从中心点向外渐变*/
+					red 100px,
+					blue 101px /*注：渐变颜色之间的占比不要完全相等，不然会出现锯齿*/
+				);
+			}
+			.radial2{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				font-size: 12px;
+				color: #fff;
+				background: radial-gradient(
+					circle at 100% 100%,  /*从右下角向内渐变*/
+					red 100px,
+					blue 101px
+				);
+			}
 			
 			.btn_dh{ width: 160px;}
 			.btn_dh span{cursor: pointer;display: inline-block; position: relative; transition: 0.5s;}
@@ -149,13 +213,20 @@
 		
 		
 		<h2>按钮组</h2>
-		<div class="btn_group">
+		<div class="btn-group">
 			<button class="btn btn_Blue_GU">button</button>
 			<button class="btn btn_Blue_GU">button</button>
 			<a href="#" class="btn btn_Blue_GU">button</a>
 			<button class="btn btn_Blue_GU">button</button>
 			<input class="btn btn_Blue_GU" type="button" value="button" />
 		</div>
+		<br /><br /><br /><br />
+
+		<h2>倾斜按钮</h2>
+		<button class="btn btn-primary btn-slant"><span>倾斜按钮</span></button>
+		<button class="btn btn-primary btn-slant"><span>倾斜按钮</span></button>
+		<br />
+		<div class="radial1">radial-gradient径向渐变-从中心点向外渐变<br /><br /><br /></div> &nbsp; <div class="radial2"><br /><br /><br />radial-gradient径向渐变-中心点从右下角向内渐变</div>
 		<br /><br /><br /><br />
 		
 		
@@ -175,8 +246,6 @@
 		<button class="btn btn_dh3">动画按扭</button>
 		<button class="btn btn_dh3 ">按钮动画</button>
 		<br /><br /><br /><br />
-		
-		
 		
 	</body>
 </html>
