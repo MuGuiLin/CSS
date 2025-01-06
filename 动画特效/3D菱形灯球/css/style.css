@@ -1,0 +1,847 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1125px;
+    background-image: radial-gradient(circle, #000, #222);
+  }
+  
+  .ball {
+    position: relative;
+    transform-style: preserve-3d;
+    -webkit-animation: ball 60s infinite linear;
+            animation: ball 60s infinite linear;
+    --rx: 0deg;
+    --ry: 0deg;
+  }
+  @-webkit-keyframes ball {
+    from {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+    }
+  }
+  @keyframes ball {
+    from {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+    }
+  }
+  .ball > :nth-child(1) {
+    -webkit-animation-delay: -1.8875s;
+            animation-delay: -1.8875s;
+    -webkit-animation-duration: 4.9s;
+            animation-duration: 4.9s;
+  }
+  .ball > :nth-child(1)::before {
+    background-color: #7e3dff;
+  }
+  .ball > :nth-child(2) {
+    -webkit-animation-delay: -4.875s;
+            animation-delay: -4.875s;
+    -webkit-animation-duration: 4.7s;
+            animation-duration: 4.7s;
+  }
+  .ball > :nth-child(2)::before {
+    background-color: #7733ff;
+  }
+  .ball > :nth-child(3) {
+    -webkit-animation-delay: -3.25s;
+            animation-delay: -3.25s;
+    -webkit-animation-duration: 5.7s;
+            animation-duration: 5.7s;
+  }
+  .ball > :nth-child(3)::before {
+    background-color: #b894ff;
+  }
+  .ball > :nth-child(4) {
+    -webkit-animation-delay: -4.5125s;
+            animation-delay: -4.5125s;
+    -webkit-animation-duration: 4.75s;
+            animation-duration: 4.75s;
+  }
+  .ball > :nth-child(4)::before {
+    background-color: #c9adff;
+  }
+  .ball > :nth-child(5) {
+    -webkit-animation-delay: -4.6625s;
+            animation-delay: -4.6625s;
+    -webkit-animation-duration: 4.5s;
+            animation-duration: 4.5s;
+  }
+  .ball > :nth-child(5)::before {
+    background-color: #8b52ff;
+  }
+  .ball > :nth-child(6) {
+    -webkit-animation-delay: -2.225s;
+            animation-delay: -2.225s;
+    -webkit-animation-duration: 6s;
+            animation-duration: 6s;
+  }
+  .ball > :nth-child(6)::before {
+    background-color: #cfb8ff;
+  }
+  .ball > :nth-child(7) {
+    -webkit-animation-delay: -3.8s;
+            animation-delay: -3.8s;
+    -webkit-animation-duration: 5.85s;
+            animation-duration: 5.85s;
+  }
+  .ball > :nth-child(7)::before {
+    background-color: #925cff;
+  }
+  .ball > :nth-child(8) {
+    -webkit-animation-delay: -0.7875s;
+            animation-delay: -0.7875s;
+    -webkit-animation-duration: 5.75s;
+            animation-duration: 5.75s;
+  }
+  .ball > :nth-child(8)::before {
+    background-color: #d3bdff;
+  }
+  .ball > :nth-child(9) {
+    -webkit-animation-delay: -0.2875s;
+            animation-delay: -0.2875s;
+    -webkit-animation-duration: 4.85s;
+            animation-duration: 4.85s;
+  }
+  .ball > :nth-child(9)::before {
+    background-color: #cfb8ff;
+  }
+  .ball > :nth-child(10) {
+    -webkit-animation-delay: -2.125s;
+            animation-delay: -2.125s;
+    -webkit-animation-duration: 5.05s;
+            animation-duration: 5.05s;
+  }
+  .ball > :nth-child(10)::before {
+    background-color: #9c6bff;
+  }
+  .ball > :nth-child(11) {
+    -webkit-animation-delay: -2.5875s;
+            animation-delay: -2.5875s;
+    -webkit-animation-duration: 5.6s;
+            animation-duration: 5.6s;
+  }
+  .ball > :nth-child(11)::before {
+    background-color: #c2a3ff;
+  }
+  .ball > :nth-child(12) {
+    -webkit-animation-delay: -0.1125s;
+            animation-delay: -0.1125s;
+    -webkit-animation-duration: 3.75s;
+            animation-duration: 3.75s;
+  }
+  .ball > :nth-child(12)::before {
+    background-color: #9c6bff;
+  }
+  .ball > :nth-child(13) {
+    -webkit-animation-delay: -1.1125s;
+            animation-delay: -1.1125s;
+    -webkit-animation-duration: 5.2s;
+            animation-duration: 5.2s;
+  }
+  .ball > :nth-child(13)::before {
+    background-color: #7029ff;
+  }
+  .ball > :nth-child(14) {
+    -webkit-animation-delay: -3.45s;
+            animation-delay: -3.45s;
+    -webkit-animation-duration: 4.05s;
+            animation-duration: 4.05s;
+  }
+  .ball > :nth-child(14)::before {
+    background-color: #d3bdff;
+  }
+  .ball > :nth-child(15) {
+    -webkit-animation-delay: -2.2125s;
+            animation-delay: -2.2125s;
+    -webkit-animation-duration: 4.8s;
+            animation-duration: 4.8s;
+  }
+  .ball > :nth-child(15)::before {
+    background-color: #b48fff;
+  }
+  .ball > :nth-child(16) {
+    -webkit-animation-delay: -2.175s;
+            animation-delay: -2.175s;
+    -webkit-animation-duration: 6.1s;
+            animation-duration: 6.1s;
+  }
+  .ball > :nth-child(16)::before {
+    background-color: #8b52ff;
+  }
+  .ball > :nth-child(17) {
+    -webkit-animation-delay: -4.0625s;
+            animation-delay: -4.0625s;
+    -webkit-animation-duration: 4.8s;
+            animation-duration: 4.8s;
+  }
+  .ball > :nth-child(17)::before {
+    background-color: #be9eff;
+  }
+  .ball > :nth-child(18) {
+    -webkit-animation-delay: -2.3625s;
+            animation-delay: -2.3625s;
+    -webkit-animation-duration: 5.05s;
+            animation-duration: 5.05s;
+  }
+  .ball > :nth-child(18)::before {
+    background-color: #c9adff;
+  }
+  .ball > :nth-child(19) {
+    -webkit-animation-delay: -4.675s;
+            animation-delay: -4.675s;
+    -webkit-animation-duration: 4.8s;
+            animation-duration: 4.8s;
+  }
+  .ball > :nth-child(19)::before {
+    background-color: #ad85ff;
+  }
+  .ball > :nth-child(20) {
+    -webkit-animation-delay: -4.1s;
+            animation-delay: -4.1s;
+    -webkit-animation-duration: 3.95s;
+            animation-duration: 3.95s;
+  }
+  .ball > :nth-child(20)::before {
+    background-color: #925cff;
+  }
+  .ball > :nth-child(21) {
+    -webkit-animation-delay: -1.975s;
+            animation-delay: -1.975s;
+    -webkit-animation-duration: 6.1s;
+            animation-duration: 6.1s;
+  }
+  .ball > :nth-child(21)::before {
+    background-color: #9661ff;
+  }
+  .ball > :nth-child(22) {
+    -webkit-animation-delay: -4.925s;
+            animation-delay: -4.925s;
+    -webkit-animation-duration: 4.05s;
+            animation-duration: 4.05s;
+  }
+  .ball > :nth-child(22)::before {
+    background-color: #b48fff;
+  }
+  .ball > :nth-child(23) {
+    -webkit-animation-delay: -1.875s;
+            animation-delay: -1.875s;
+    -webkit-animation-duration: 3.75s;
+            animation-duration: 3.75s;
+  }
+  .ball > :nth-child(23)::before {
+    background-color: #8b52ff;
+  }
+  .ball > :nth-child(24) {
+    -webkit-animation-delay: -0.5625s;
+            animation-delay: -0.5625s;
+    -webkit-animation-duration: 3.95s;
+            animation-duration: 3.95s;
+  }
+  .ball > :nth-child(24)::before {
+    background-color: #aa80ff;
+  }
+  .ball > :nth-child(25) {
+    -webkit-animation-delay: -3.2s;
+            animation-delay: -3.2s;
+    -webkit-animation-duration: 5.65s;
+            animation-duration: 5.65s;
+  }
+  .ball > :nth-child(25)::before {
+    background-color: #925cff;
+  }
+  .ball > :nth-child(26) {
+    -webkit-animation-delay: -4.4375s;
+            animation-delay: -4.4375s;
+    -webkit-animation-duration: 5.05s;
+            animation-duration: 5.05s;
+  }
+  .ball > :nth-child(26)::before {
+    background-color: #ad85ff;
+  }
+  .ball > :nth-child(27) {
+    -webkit-animation-delay: -4.2375s;
+            animation-delay: -4.2375s;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+  }
+  .ball > :nth-child(27)::before {
+    background-color: #925cff;
+  }
+  .ball > :nth-child(28) {
+    -webkit-animation-delay: -0.575s;
+            animation-delay: -0.575s;
+    -webkit-animation-duration: 3.85s;
+            animation-duration: 3.85s;
+  }
+  .ball > :nth-child(28)::before {
+    background-color: #d6c2ff;
+  }
+  .ball > :nth-child(29) {
+    -webkit-animation-delay: -1.1125s;
+            animation-delay: -1.1125s;
+    -webkit-animation-duration: 4.7s;
+            animation-duration: 4.7s;
+  }
+  .ball > :nth-child(29)::before {
+    background-color: #a070ff;
+  }
+  .ball > :nth-child(30) {
+    -webkit-animation-delay: -1.7375s;
+            animation-delay: -1.7375s;
+    -webkit-animation-duration: 4.15s;
+            animation-duration: 4.15s;
+  }
+  .ball > :nth-child(30)::before {
+    background-color: #ccb3ff;
+  }
+  .ball > :nth-child(31) {
+    -webkit-animation-delay: -1.9s;
+            animation-delay: -1.9s;
+    -webkit-animation-duration: 3.85s;
+            animation-duration: 3.85s;
+  }
+  .ball > :nth-child(31)::before {
+    background-color: #b18aff;
+  }
+  .ball > :nth-child(32) {
+    -webkit-animation-delay: -0.1375s;
+            animation-delay: -0.1375s;
+    -webkit-animation-duration: 4.25s;
+            animation-duration: 4.25s;
+  }
+  .ball > :nth-child(32)::before {
+    background-color: #d3bdff;
+  }
+  .ball > :nth-child(33) {
+    -webkit-animation-delay: -4.325s;
+            animation-delay: -4.325s;
+    -webkit-animation-duration: 6.15s;
+            animation-duration: 6.15s;
+  }
+  .ball > :nth-child(33)::before {
+    background-color: #be9eff;
+  }
+  .ball > :nth-child(34) {
+    -webkit-animation-delay: -1.8625s;
+            animation-delay: -1.8625s;
+    -webkit-animation-duration: 5.9s;
+            animation-duration: 5.9s;
+  }
+  .ball > :nth-child(34)::before {
+    background-color: #8f57ff;
+  }
+  .ball > :nth-child(35) {
+    -webkit-animation-delay: -1.7625s;
+            animation-delay: -1.7625s;
+    -webkit-animation-duration: 3.75s;
+            animation-duration: 3.75s;
+  }
+  .ball > :nth-child(35)::before {
+    background-color: #7733ff;
+  }
+  .ball > :nth-child(36) {
+    -webkit-animation-delay: -4.45s;
+            animation-delay: -4.45s;
+    -webkit-animation-duration: 4.5s;
+            animation-duration: 4.5s;
+  }
+  .ball > :nth-child(36)::before {
+    background-color: #a375ff;
+  }
+  .ball > :nth-child(37) {
+    -webkit-animation-delay: -4.55s;
+            animation-delay: -4.55s;
+    -webkit-animation-duration: 6.2s;
+            animation-duration: 6.2s;
+  }
+  .ball > :nth-child(37)::before {
+    background-color: #be9eff;
+  }
+  .ball > :nth-child(38) {
+    -webkit-animation-delay: -1.9875s;
+            animation-delay: -1.9875s;
+    -webkit-animation-duration: 5.05s;
+            animation-duration: 5.05s;
+  }
+  .ball > :nth-child(38)::before {
+    background-color: #b894ff;
+  }
+  .ball > :nth-child(39) {
+    -webkit-animation-delay: -4.1875s;
+            animation-delay: -4.1875s;
+    -webkit-animation-duration: 5.8s;
+            animation-duration: 5.8s;
+  }
+  .ball > :nth-child(39)::before {
+    background-color: #a375ff;
+  }
+  .ball > :nth-child(40) {
+    -webkit-animation-delay: -2.975s;
+            animation-delay: -2.975s;
+    -webkit-animation-duration: 5.4s;
+            animation-duration: 5.4s;
+  }
+  .ball > :nth-child(40)::before {
+    background-color: #c2a3ff;
+  }
+  .ball > :nth-child(41) {
+    -webkit-animation-delay: -4.125s;
+            animation-delay: -4.125s;
+    -webkit-animation-duration: 6.05s;
+            animation-duration: 6.05s;
+  }
+  .ball > :nth-child(41)::before {
+    background-color: #b894ff;
+  }
+  .ball > :nth-child(42) {
+    -webkit-animation-delay: -0.1s;
+            animation-delay: -0.1s;
+    -webkit-animation-duration: 4.7s;
+            animation-duration: 4.7s;
+  }
+  .ball > :nth-child(42)::before {
+    background-color: #a77aff;
+  }
+  .ball > :nth-child(43) {
+    -webkit-animation-delay: -2.675s;
+            animation-delay: -2.675s;
+    -webkit-animation-duration: 4.25s;
+            animation-duration: 4.25s;
+  }
+  .ball > :nth-child(43)::before {
+    background-color: #8142ff;
+  }
+  .ball > :nth-child(44) {
+    -webkit-animation-delay: -0.6625s;
+            animation-delay: -0.6625s;
+    -webkit-animation-duration: 4.6s;
+            animation-duration: 4.6s;
+  }
+  .ball > :nth-child(44)::before {
+    background-color: #742eff;
+  }
+  .ball > :nth-child(45) {
+    -webkit-animation-delay: -2.05s;
+            animation-delay: -2.05s;
+    -webkit-animation-duration: 4.1s;
+            animation-duration: 4.1s;
+  }
+  .ball > :nth-child(45)::before {
+    background-color: #ad85ff;
+  }
+  .ball > :nth-child(46) {
+    -webkit-animation-delay: -3.7625s;
+            animation-delay: -3.7625s;
+    -webkit-animation-duration: 5.15s;
+            animation-duration: 5.15s;
+  }
+  .ball > :nth-child(46)::before {
+    background-color: #aa80ff;
+  }
+  .ball > :nth-child(47) {
+    -webkit-animation-delay: -3.575s;
+            animation-delay: -3.575s;
+    -webkit-animation-duration: 5.95s;
+            animation-duration: 5.95s;
+  }
+  .ball > :nth-child(47)::before {
+    background-color: #8547ff;
+  }
+  .ball > :nth-child(48) {
+    -webkit-animation-delay: -2.4625s;
+            animation-delay: -2.4625s;
+    -webkit-animation-duration: 4.5s;
+            animation-duration: 4.5s;
+  }
+  .ball > :nth-child(48)::before {
+    background-color: #742eff;
+  }
+  .ball > :nth-child(49) {
+    -webkit-animation-delay: -0.6625s;
+            animation-delay: -0.6625s;
+    -webkit-animation-duration: 3.85s;
+            animation-duration: 3.85s;
+  }
+  .ball > :nth-child(49)::before {
+    background-color: #884dff;
+  }
+  .ball > :nth-child(50) {
+    -webkit-animation-delay: -4.0625s;
+            animation-delay: -4.0625s;
+    -webkit-animation-duration: 6.05s;
+            animation-duration: 6.05s;
+  }
+  .ball > :nth-child(50)::before {
+    background-color: #d3bdff;
+  }
+  .ball > :nth-child(51) {
+    -webkit-animation-delay: -0.125s;
+            animation-delay: -0.125s;
+    -webkit-animation-duration: 5.85s;
+            animation-duration: 5.85s;
+  }
+  .ball > :nth-child(51)::before {
+    background-color: #d6c2ff;
+  }
+  .ball > :nth-child(52) {
+    -webkit-animation-delay: -4.0625s;
+            animation-delay: -4.0625s;
+    -webkit-animation-duration: 5.25s;
+            animation-duration: 5.25s;
+  }
+  .ball > :nth-child(52)::before {
+    background-color: #7e3dff;
+  }
+  .ball > :nth-child(53) {
+    -webkit-animation-delay: -1.3375s;
+            animation-delay: -1.3375s;
+    -webkit-animation-duration: 6.2s;
+            animation-duration: 6.2s;
+  }
+  .ball > :nth-child(53)::before {
+    background-color: #8142ff;
+  }
+  .ball > :nth-child(54) {
+    -webkit-animation-delay: -0.2375s;
+            animation-delay: -0.2375s;
+    -webkit-animation-duration: 5.55s;
+            animation-duration: 5.55s;
+  }
+  .ball > :nth-child(54)::before {
+    background-color: #925cff;
+  }
+  .ball > :nth-child(55) {
+    -webkit-animation-delay: -0.375s;
+            animation-delay: -0.375s;
+    -webkit-animation-duration: 3.8s;
+            animation-duration: 3.8s;
+  }
+  .ball > :nth-child(55)::before {
+    background-color: #d6c2ff;
+  }
+  .ball > :nth-child(56) {
+    -webkit-animation-delay: -4.625s;
+            animation-delay: -4.625s;
+    -webkit-animation-duration: 5.2s;
+            animation-duration: 5.2s;
+  }
+  .ball > :nth-child(56)::before {
+    background-color: #d6c2ff;
+  }
+  
+  .hexa {
+    position: absolute;
+    width: 90px;
+    height: 75px;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    -webkit-animation: p infinite ease-in-out;
+            animation: p infinite ease-in-out;
+  }
+  .hexa::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#0000, #000a);
+    -webkit-clip-path: polygon(0 50%, 25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%);
+            clip-path: polygon(0 50%, 25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%);
+  }
+  .hexa::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000a;
+    transform: translateZ(-1px) scale(1.05);
+    -webkit-clip-path: polygon(0 50%, 25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%);
+            clip-path: polygon(0 50%, 25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%);
+  }
+  .hexa:nth-child(1) {
+    --rx: 90deg;
+  }
+  .hexa:nth-child(2) {
+    --ry: 0deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(3) {
+    --ry: 60deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(4) {
+    --ry: 120deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(5) {
+    --ry: 180deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(6) {
+    --ry: 240deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(7) {
+    --ry: 300deg;
+    --rx: 60deg;
+  }
+  .hexa:nth-child(8) {
+    --ry: 0deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(9) {
+    --ry: 60deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(10) {
+    --ry: 120deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(11) {
+    --ry: 180deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(12) {
+    --ry: 240deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(13) {
+    --ry: 300deg;
+    --rx: 30deg;
+  }
+  .hexa:nth-child(14) {
+    --ry: 0deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(15) {
+    --ry: 60deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(16) {
+    --ry: 120deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(17) {
+    --ry: 180deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(18) {
+    --ry: 240deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(19) {
+    --ry: 300deg;
+    --rx: 0deg;
+  }
+  .hexa:nth-child(20) {
+    --ry: 0deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(21) {
+    --ry: 60deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(22) {
+    --ry: 120deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(23) {
+    --ry: 180deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(24) {
+    --ry: 240deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(25) {
+    --ry: 300deg;
+    --rx: -30deg;
+  }
+  .hexa:nth-child(26) {
+    --ry: 0deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(27) {
+    --ry: 60deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(28) {
+    --ry: 120deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(29) {
+    --ry: 180deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(30) {
+    --ry: 240deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(31) {
+    --ry: 300deg;
+    --rx: -60deg;
+  }
+  .hexa:nth-child(32) {
+    --rx: -90deg;
+  }
+  .hexa:nth-child(33) {
+    --ry: 30deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(39) {
+    --ry: 30deg;
+    --rx: -15deg;
+  }
+  .hexa:nth-child(34) {
+    --ry: 90deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(40) {
+    --ry: 90deg;
+    --rx: -15deg;
+  }
+  .hexa:nth-child(35) {
+    --ry: 150deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(41) {
+    --ry: 150deg;
+    --rx: -15deg;
+  }
+  .hexa:nth-child(36) {
+    --ry: 210deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(42) {
+    --ry: 210deg;
+    --rx: -15deg;
+  }
+  .hexa:nth-child(37) {
+    --ry: 270deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(43) {
+    --ry: 270deg;
+    --rx: -15deg;
+  }
+  .hexa:nth-child(38) {
+    --ry: 330deg;
+    --rx: 15deg;
+  }
+  .hexa:nth-child(44) {
+    --ry: 330deg;
+    --rx: -15deg;
+  }
+  
+  .penta {
+    position: absolute;
+    width: 67.5px;
+    height: 71.25px;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    -webkit-animation: p infinite ease-in-out;
+            animation: p infinite ease-in-out;
+  }
+  .penta::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#0000, #000a);
+    -webkit-clip-path: polygon(0 40%, 50% 0, 100% 40%, 82% 100%, 18% 100%);
+            clip-path: polygon(0 40%, 50% 0, 100% 40%, 82% 100%, 18% 100%);
+  }
+  .penta::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000a;
+    transform: translateZ(-1px) scale(1.05);
+    -webkit-clip-path: polygon(0 40%, 50% 0, 100% 40%, 82% 100%, 18% 100%);
+            clip-path: polygon(0 40%, 50% 0, 100% 40%, 82% 100%, 18% 100%);
+  }
+  .penta:nth-child(45) {
+    --ry: 30deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(51) {
+    --ry: 30deg;
+    --rx: 222.25deg;
+  }
+  .penta:nth-child(46) {
+    --ry: 90deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(52) {
+    --ry: 90deg;
+    --rx: 222.25deg;
+  }
+  .penta:nth-child(47) {
+    --ry: 150deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(53) {
+    --ry: 150deg;
+    --rx: 222.25deg;
+  }
+  .penta:nth-child(48) {
+    --ry: 210deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(54) {
+    --ry: 210deg;
+    --rx: 222.25deg;
+  }
+  .penta:nth-child(49) {
+    --ry: 270deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(55) {
+    --ry: 270deg;
+    --rx: 222.25deg;
+  }
+  .penta:nth-child(50) {
+    --ry: 330deg;
+    --rx: 42.25deg;
+  }
+  .penta:nth-child(56) {
+    --ry: 330deg;
+    --rx: 222.25deg;
+  }
+  
+  @-webkit-keyframes p {
+    0%, 80%, 100% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(168.75px) scale(1);
+    }
+    85% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(126.5625px) scale(0.75);
+    }
+    95% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(210.9375px) scale(1.25);
+    }
+  }
+  
+  @keyframes p {
+    0%, 80%, 100% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(168.75px) scale(1);
+    }
+    85% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(126.5625px) scale(0.75);
+    }
+    95% {
+      transform: translate(-50%, -50%) rotateY(var(--ry)) rotateX(var(--rx)) translateZ(210.9375px) scale(1.25);
+    }
+  }
