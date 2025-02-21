@@ -1,11 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS默认属性值的妙用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px;
+        }
+
+        h3 {
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        div {
+            border: 1px solid gray;
+            margin: 20px;
+        }
+
+        .lh2 {
+            line-height: 2;
+        }
+
+        .lh3 {
+            line-height: 3;
+        }
+
+        .lh-default {
+            /* 默认值 */
+            /* line-height: normal; */
+            /* 继承默认值 */
+            line-height: initial;
+            /* 
+        每个css属性的默认值不一定都一样
+        但是使用initial就可以解决所有属性不同的默认值
+        initial表示继承该属性的默认值值
+    */
+        }
+
+
+        ul {
+            /* 设置单独属性的默认样式值 */
+            /* margin: unset;
+            padding: unset;
+            font-size: unset; */
+            /* 
+                能继承就继承，不能继承就直接使用默认样式。
+                这里的默认样式表示的是w3c的默认值，而不是浏览器的默认值
+            */
+            /* 重置所有属性的默认值 */
+            all: unset;
+        }
+
+        button {
+            all: unset;
+            background-color: #589ff8;
+            color: #ffffff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+
+        .default,
+        .default:hover,
+        .default:active {
+            /* 回到w3c的默认样式值 */
+            /* all: initial; */
+            /* 回到浏览器的默认样式值 */
+            all: revert;
+        }
+    </style>
 </head>
+
 <body>
     <h1>CSS默认属性值的妙用</h1>
+    <hr />
+    <div>
+        <h3>initia</h3>
+        <p class="initia">
+            initial关键字用于将CSS属性设置为其默认值。<br>
+            initial关键字可用于任何CSS属性和任何HTML元素。<br>
+            CSS关键字initial将属性的初始(或默认)值应用于元素。不应将初始值与浏览器样式表指定的值混淆。它可以应用于任何CSS属性。这包括CSS简写all，initial可用于将所有CSS属性恢复到其初始状态。<br>
+            备注：在继承的属性上，初始值可能是意外的。你应该考虑使用inherit，unset，或revert(en-US)关键字代替。
+        </p>
+        <button onclick="para.className='lh2'">2倍行高</button>
+        <button onclick="para.className='lh3'">3倍行高</button>
+        <button onclick="para.className='lh-default'">默认行高</button>
+        <p id="para">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia odio laudantium ratione dolore velit
+            maiores a sapiente fugiat quia? Maiores ex similique, nam alias ipsa cum iusto officiis nostrum
+            reprehenderit! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Impedit id odio, quae est, aperiam nemo magnam consequatur labore sapiente iure, incidunt
+            natus voluptatibus eveniet debitis repellendus suscipit commodi. Neque, fuga! Lorem ipsum dolor sit amet
+            consectetur adipisicing elit.
+            Mollitia iste nesciunt nisi, aliquam pariatur, nostrum neque omnis sequi dolores esse rem ratione quaerat
+            beatae, cum molestias voluptate adipisci corporis doloremque! Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Quaerat, eos, dicta
+            est eveniet debitis consequuntur accusantium quisquam corporis officiis officia voluptatibus. Explicabo
+            asperiores eos architecto totam eius, ad dolorem veritatis. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Exercitationem voluptatem
+            consequatur error et aperiam non voluptates quis rem cumque, quasi deserunt repellendus eligendi id rerum
+            provident, delectus vitae quo earum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab eveniet
+            eligendi deserunt accusantium? Soluta
+            dolorem maxime sapiente ratione, accusantium velit. Veniam neque commodi iusto! Quam repellendus cumque
+            voluptatum? Aspernatur, veritatis!
+        </p>
+
+    </div>
+
+    <div>
+        <h3>inherit</h3>
+        <p class="inherit">
+            inherit关键字使得元素获取其父元素的计算值。它可以应用于任何CSS属性，包括CSS简写all。
+            对于继承属性，inherit关键字只是增强了属性的默认行为，通常只在覆盖原有的值的时候使用。
+            继承始终来自文档树中的父元素，即使父元素不是包含块
+        </p>
+    </div>
+
+    <div>
+        <h3>unset</h3>
+        <p>CSS关键字unset可以分为两种情况，如果这个属性本来有从父级继承的值(这个属性默认可以继承，且父级有定义)，则将该属性重新设置为继承的值，如果没有继承父级样式，则将该属性重新设置为初始值。换句话说，在第一种情况下(继承属性)它的行为类似于inherit
+            ，在第二种情况下(非继承属性)类似于initial。它可以应用于任何CSS属性，包括CSS简写属性all。</p>
+        <br>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript2015</li>
+            <li>Node.js</li>
+            <li>PHP</li>
+            <li>Go</li>
+            <li>Python</li>
+            <li>MySQL</li>
+            <li>Nginx</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>revert</h3>
+        <p>将属性的值设置为用户代理样式表中定义的值，如果没有这样的值，则行为类似于initial。
+            这是一个相对较新的关键字，它将属性的值重置为用户代理样式表中定义的值。如果用户代理样式表中未定义该属性，则revert会回到initial的行为，将属性值重置为浏览器的默认值。
+        </p>
+        <p class="revert">
+            <button>提交</button>
+            <button>添加</button>
+            <button>修改</button>
+            <button class="default">默认样式的按钮</button>
+        </p>
+    </div>
+
 </body>
+
 </html>
