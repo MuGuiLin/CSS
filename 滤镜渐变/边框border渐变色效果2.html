@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background-clip边框渐变色</title>
+
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      div {
+        margin: 50px auto;
+        width: 800px;
+        height: 400px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: linear-gradient(#fff, #fff), linear-gradient(#6675f1, #b46afe);
+        background-clip: padding-box, border-box;
+        box-shadow: 0 0 0 2px rgba(102, 117, 241, 0.15) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>background-clip边框渐变色</h1>
+    <hr />
+    <div></div>
+  </body>
+</html>
