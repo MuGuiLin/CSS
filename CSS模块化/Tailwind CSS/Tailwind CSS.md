@@ -144,7 +144,7 @@ export default defineConfig({
 
 #### 4、引入tailwindcss
 
-在项目工程src目录中的style.css文件中引入 tailwindcss 核心库
+在项目工程src目录中的全局`style.css`样式文件中引入 tailwindcss 核心库
 
 ```css
 @import "tailwindcss";
@@ -160,7 +160,7 @@ export default defineConfig({
 
 #### 6、使用Tailwind CSS
 
-完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，
+完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，同时还支持响应试设计：`sm`，`md`， `lg`，`xs`、`xl`等，例如`w-lg`表示在中等屏幕及以上的
 
 **使用实用程序类（Utility Classes）进行样式设置**
 
@@ -168,39 +168,54 @@ export default defineConfig({
 
 [🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/installation/using-vite)
 
-| Tailwind CSS 原子类    | 原生CSS样式属性                               |
-| ---------------------- | --------------------------------------------- |
-| `flex`                 | `display: flex;`                              |
-| `box-border`           | `box-sizing: border-box;`                     |
-| `float-left`           | `float: left;`                                |
-| `relative`             | `position: relative;`                         |
-| `absolute`             | `position: absolute;`                         |
-| `text-center`          | `text-align: center;`                         |
-| `text-white`           | `color: #fff;`                                |
-| `font-bold`            | `font-weight: 700;`                           |
-| `bg-white`             | `background-color: #000;`                     |
-| `text-xs`              | `font-size: 0.75rem(12px) ;`                  |
-| `text-<size>/<number>` | `font-size: <size>;`                          |
-| `shadow-2xs`           | `box-shadow: 0 1px rgb(0 0 0 / 0.05);`        |
-| `text-shadow-xs`       | `text-shadow: 0px 1px 1px rgb(0 0 0 / 0.2); ` |
-| `w-px`                 | `width: 1px;`                                 |
-| `w-full`               | `width: 100%;`                                |
-| `rounded-xs`           | `border-radius: 0.125rem (2px);`              |
-| `cursor-pointer`       | `cursor: pointer;`                            |
+| Tailwind CSS 原子类              | 原生CSS样式属性                                    |
+| -------------------------------- | -------------------------------------------------- |
+| `flex`、`grid`                   | `display: flex;`、`display: grid;`                 |
+| `justify-center`、`items-center` | `justify-content: center;`、`align-items: center;` |
+| `box-border`                     | `box-sizing: border-box;`                          |
+| `float-left`                     | `float: left;`                                     |
+| `absolute`、`relative`           | `position: absolute;`、`position: relative;`       |
+| `w-px`、`w-[50px]`、`w-full`     | `width: 1px;`、`width: 50px;`、`width: 100%;`      |
+| `text-xs`                        | `font-size: 0.75rem(12px) ;`                       |
+| `text-<size>/<number>`           | `font-size: <size>;`                               |
+| `text-center`                    | `text-align: center;`                              |
+| `text-white`                     | `color: #fff;`                                     |
+| `font-bold`                      | `font-weight: 700;`                                |
+| `bg-white`                       | `background-color: #000;`                          |
+| `bg-red-500`                     | `background-color: #fb2c36;`                       |
+| `shadow-2xs`                     | `box-shadow: 0 1px rgb(0 0 0 / 0.05);`             |
+| `text-shadow-xs`                 | `text-shadow: 0px 1px 1px rgb(0 0 0 / 0.2); `      |
+| `rounded-xs`                     | `border-radius: 0.125rem (2px);`                   |
+| `cursor-pointer`                 | `cursor: pointer;`                                 |
 
 **悬停、焦点 等状态（State Modifiers）**
 
-[🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/hover-focus-and-other-states)
+[🚀查看更多Tailwind CSS 状态](https://tailwindcss.com/docs/hover-focus-and-other-states)
 
-| Tailwind CSS 原子类 | 原生CSS样式属性 |
-| ------------------- | --------------- |
-|                     |                 |
-|                     |                 |
-|                     |                 |
-|                     |                 |
-|                     |                 |
+| Tailwind CSS 原子类       | 原生CSS样式属性 |
+| ------------------------- | --------------- |
+|                           |                 |
+| oklch(64.5% 0.246 16.439) |                 |
+|                           |                 |
+|                           |                 |
+|                           |                 |
+
+**颜色（Colors）**
+
+[🚀Tailwind CSS 色值体系](https://tailwindcss.com/docs/colors) 
+
+```html
+<div class="text-red-500">
+    红色文字
+</div>
+<div class="bg-blue-500">
+    蓝色背景
+</div>
+```
 
 
+
+![image-20250717140148922](D:\GitHub\CSS\CSS模块化\Tailwind CSS\Tailwind CSS Colors调色板.md)
 
 通过添加前缀修饰符，可以为不同状态应用样式，语法极其直观 **状态：工具类**
 

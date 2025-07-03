@@ -1,6 +1,6 @@
 <template>
   <div class="flex relative !mt-[2rem]">
-    <i class="flex items-end size-[32px] text-green-500 ">
+    <i class="flex items-center h-[85px] text-green-500 ">
       <slot name="icon"></slot>
     </i>
     <div class="flex-1 !ml-[3rem] ">
