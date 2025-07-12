@@ -2,7 +2,7 @@
 
 ### 🏡前言
 
-> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的手写原生CSS -》 CSS预处理(Less/Sass/Stylus) -》CSS-in-JS(Styled-Components/Emotion) -》Utility-First 原子化CSS。每一种演进方案本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡。
+> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的`原生CSS`  到  `CSS预处理(Less/Sass/Stylus)`   到  `CSS-in-JS(Styled-Components/Emotion) `  到  `Utility-First 原子化CSS`。每一种演进方案本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡。
 
 
 
@@ -144,18 +144,36 @@ export default defineConfig({
 
 完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，
 
-使用实用程序类（Utility Classes）进行样式设置，这是Tailwind的基石，每一个类名都代表一个 单一、不可再分的 CSS样式属性，如以下是常用的Tailwind CSS 原子类 与 原生CSS样式属性 对照情况。
+**使用实用程序类（Utility Classes）进行样式设置**
 
-| Tailwind CSS 原子类 | 原生CSS样式属性     |
-| ------------------- | ------------------- |
-| font-bold           | font-weight: 700;   |
-| text-center         | text-align: center; |
-|                     |                     |
+这是Tailwind的基石，每一个类名都代表一个 **单一**、**不可再分**的CSS样式属性，例如，以下是常用的Tailwind CSS 原子类 与 原生CSS样式属性 对照情况。
 
+[🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/installation/using-vite)
 
+| Tailwind CSS 原子类    | 原生CSS样式属性                               |
+| ---------------------- | --------------------------------------------- |
+| `flex`                 | `display: flex;`                              |
+| `box-border`           | `box-sizing: border-box;`                     |
+| `float-left`           | `float: left;`                                |
+| `relative`             | `position: relative;`                         |
+| `absolute`             | `position: absolute;`                         |
+| `text-center`          | `text-align: center;`                         |
+| `text-white`           | `color: #fff;`                                |
+| `font-bold`            | `font-weight: 700;`                           |
+| `bg-white`             | `background-color: #000;`                     |
+| `text-xs`              | `font-size: 0.75rem(12px) ;`                  |
+| `text-<size>/<number>` | `font-size: <size>;`                          |
+| `shadow-2xs`           | `box-shadow: 0 1px rgb(0 0 0 / 0.05);`        |
+| `text-shadow-xs`       | `text-shadow: 0px 1px 1px rgb(0 0 0 / 0.2); ` |
+| `w-px`                 | `width: 1px;`                                 |
+| `w-full`               | `width: 100%;`                                |
+| `rounded-xs`           | `border-radius: 0.125rem (2px);`              |
+| `cursor-pointer`       | `cursor: pointer;`                            |
 
-布局：[flex - Flexbox & Grid - Tailwind CSS](https://tailwindcss.com/docs/flex)
+**悬停、焦点 等状态（State Modifiers）**
+
+通过添加前缀修饰符，可以为不同状态应用样式，语法极其直观 **状态：工具类**
 
 #### 7、自定义Tailwind CSS原子类
 
-喹
+基
