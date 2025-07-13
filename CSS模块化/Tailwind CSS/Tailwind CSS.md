@@ -172,6 +172,29 @@ export default defineConfig({
 
 **悬停、焦点 等状态（State Modifiers）**
 
+[🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/installation/using-vite)
+
+| Tailwind CSS 原子类    | 原生CSS样式属性                               |
+| ---------------------- | --------------------------------------------- |
+| `flex`                 | `display: flex;`                              |
+| `box-border`           | `box-sizing: border-box;`                     |
+| `float-left`           | `float: left;`                                |
+| `absolute`             | `position: absolute;`                         |
+| `text-center`          | `text-align: center;`                         |
+| `text-white`           | `color: #fff;`                                |
+| `font-bold`            | `font-weight: 700;`                           |
+| `bg-white`             | `background-color: #000;`                     |
+| `text-xs`              | `font-size: 0.75rem(12px) ;`                  |
+| `text-<size>/<number>` | `font-size: <size>;`                          |
+| `shadow-2xs`           | `box-shadow: 0 1px rgb(0 0 0 / 0.05);`        |
+| `text-shadow-xs`       | `text-shadow: 0px 1px 1px rgb(0 0 0 / 0.2); ` |
+| `w-px`                 | `width: 1px;`                                 |
+| `w-full`               | `width: 100%;`                                |
+| `rounded-xs`           | `border-radius: 0.125rem (2px);`              |
+| `cursor-pointer`       | `cursor: pointer;`                            |
+
+
+
 通过添加前缀修饰符，可以为不同状态应用样式，语法极其直观 **状态：工具类**
 
 #### 7、自定义Tailwind CSS原子类
