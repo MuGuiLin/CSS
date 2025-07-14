@@ -6,20 +6,28 @@
 
 
 
-#### 原生CSS & CSS预处理(Less/Sass/Stylus)
+#### 原生CSS & CSS预处理（Less / Sass / Stylus）
 
-> 开发人员手动编写`.css`文件，通过`<link>`标签引入使用
+> 开发人员手动编写`.css文件`，通过`<link>标签`引入使用
 
-- **面临痛点：**当随着项目变大，很快就会面临命名冲突、代码冗余、缺乏逻辑组织、难以维护等
+- **存在问题：**当随着项目变大，很快就会面临命名冲突、代码冗余、缺乏逻辑组织、难以维护等
 - **解决方案：**
-  - **CSS命名规范(BEM)：**通过严格的命名约定来约束作用域，增强代码的可读性和可维护性，[CSS-BEM 命名规范](https://bemcss.com)j 一种用于CSS模块化开发的命名约定规范，但它依赖于开发人员的自觉性，且class类名很长。
-  - **CSS预处理(Less/Sass/Stylus)：**引入了变量、嵌套、混入、继承等编程概念，虽然增强了CSS的组织性和可复用性，但是并未从根本上解决命名他全局污染的问题。
+  - **CSS命名规范(BEM)：**[CSS-BEM 命名规范](https://bemcss.com)通过严格的命名约定来约束作用域，增强代码的可读性和可维护性，是一种用于CSS模块化开发的命名约定规范，但它依赖于开发人员的自觉性，且class类名很长。
+  - **CSS预处理([Less](https://lesscss.cn/) / [Sass](https://www.sass.hk/) / [Stylus](https://github.com/stylus/stylus))：**引入了变量、嵌套、混入、继承等编程概念，虽然增强了CSS的组织性和可复用性，但是并未从根本上解决命名他全局污染的问题。
 
 
 
-#### CSS-in-JS(Styled-Components/Emotion) 
+#### CSS-in-JS（Styled-Components / Emotion)）
 
-> 在React JSX/TSX 
+> CSS-IN-JS这种解决方案，它提倡我们把CSS代码写在JavaScript代码当中，在React JSX/TSX等类似的组件化框架兴起后，也将CSS样式视为组件的一部分。
+
+- **核心：**[styled-components](https://github.com/styled-components/styled-components)、[Emotion ](https://emotion.sh/docs/introduction)将CSS样式直接写在JavaScript文件中，为每个组件生成唯一的、带哈希值的类名，从而实现“作用域化样式”，彻底避免了全局污染的问题。
+- **优势：**
+  - **组件化：**样式与逻辑类聚，方便复用和维护。
+  - **动态样式：**可以方便的基于组件的`state` 或 `props`来动态改变样式。
+- **问题：**
+  - **心智负担：**要在JavaScript 和 CSS 之间来回的切换语法，而且需要学习定库的API。
+  - **运行开销：**需要在运行时解析JavaScript并生成CSS，所带来一定的性能损耗。
 
 
 
