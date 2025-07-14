@@ -2,13 +2,13 @@
 
 ### 🏡前言
 
-> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的手写原生CSS -》 CSS预处理(Less/Sass/Stylus) -》CSS-in-JS(Styled-Components/Emotion) -》CSS原子化。每一种演进方案本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡。
+> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的手写原生CSS -》 CSS预处理(Less/Sass/Stylus) -》CSS-in-JS(Styled-Components/Emotion) -》Utility-First 原子化CSS。每一种演进方案本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡。
 
 
 
 #### 原生CSS & CSS预处理（Less / Sass / Stylus）
 
-> 开发人员手动编写`.css文件`，通过`<link>标签`引入使用
+> 开发人员手动编写`.css文件` 、`.less文件等`，然后通过`<link>标签` 或 `@import`引入使用
 
 - **存在问题：**当随着项目变大，很快就会面临命名冲突、代码冗余、缺乏逻辑组织、难以维护等
 - **解决方案：**
@@ -26,10 +26,14 @@
   - **组件化：**样式与逻辑类聚，方便复用和维护。
   - **动态样式：**可以方便的基于组件的`state` 或 `props`来动态改变样式。
 - **问题：**
-  - **心智负担：**要在JavaScript 和 CSS 之间来回的切换语法，而且需要学习定库的API。
-  - **运行开销：**需要在运行时解析JavaScript并生成CSS，所带来一定的性能损耗。
+  - **心智负担：**要在JavaScript 和 CSS 之间来回的切换语法，而且需要一定的学习成本去学习特定库的API。
+  - **运行开销：**CSS样式不是提前生成的，而是在运行时解析JavaScript并动态生成CSS，所带来一定的性能损耗。
 
 
+
+#### Utility-First 原子化CSS(Tailwind CSS / UnoCSS)
+
+> 
 
 ### 🏡Tailwind CSS简介
 
