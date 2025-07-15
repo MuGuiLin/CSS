@@ -64,8 +64,98 @@
 
 ### 🏡Tailwind CSS简介
 
+[Tailwind CSS 官网 https://tailwindcss.com](https://tailwindcss.com)
+
 > Tailwind CSS 是一个实用优先的 CSS 框架，与传统的框架（如 Bootstrap、Foundation）不同，它没有预定义的组件，而是提供了一系列原子化的 CSS 类，允许你直接在 HTML 中应用样式。
 >
 > Tailwind CSS 是一个工具优先的框架，意味着它提供了大量的预定义类，而不是预设的组件,这使得开发者可以构建几乎任何设计，而不需要编写 CSS。
 >
 > 简而言之，只需要知道类名以及对应的属性和值范围就OK了！
+
+
+
+
+
+### 📊Vite项目实例
+
+这里以Vite + Vue3 + TypeScript + Tailwind CSS 4 为项目实例
+
+#### 1、创建项目
+
+```shell
+pnpm create vite
+
+# 输入项目名，这里以vite-tailwind-css-demo为例
+vite-tailwind-css-demo
+
+# 进入vite-tailwind-css-demo项目根目录
+cd vite-tailwind-css-demo
+```
+
+#### 2、安装依赖
+
+```shell
+# 安装vite项目依赖
+pnpm install
+
+# 安装Tailwind CSS引擎依赖 和@tailwindcss/vite插件
+pnpm add -D tailwindcss @tailwindcss/vite
+
+```
+
+#### 3、配置 vite.config.ts
+
+Tailwind CSS 4.x最大的变化就是**“零配置”** 优先，无需再配置tailwind.config.js 和 postcss.config.js 文件，所有配置都可以直接在vite.config.ts中完成
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// 引入@tailwindcss/vite插件，在编译时自动将class类名对应的样式提取出来添加到style标签中
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    tailwindcss(),  // 注入tailwindcss
+  ],
+})
+
+```
+
+#### 4、引入tailwindcss
+
+在项目工程src目录中的style.css文件中引入 tailwindcss 核心库
+
+```css
+@import "tailwindcss";
+
+# https://tailwindcss.com/docs/preflight
+```
+
+#### 5、编辑器扩展：Tailwind CSS IntelliSense
+
+[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
+
+在编辑器，如VSCode应用商店中搜索 ：Tailwind CSS IntelliSense 安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+
+#### 6、使用Tailwind CSS
+
+完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，
+
+使用实用程序类（Utility Classes）进行样式设置，这是Tailwind的基石，每一个类名都代表一个 单一、不可再分的 CSS样式属性，如以下是常用的Tailwind CSS 原子类 与 原生CSS样式属性 对照情况。
+
+| Tailwind CSS 原子类 | 原生CSS样式属性     |
+| ------------------- | ------------------- |
+| font-bold           | font-weight: 700;   |
+| text-center         | text-align: center; |
+|                     |                     |
+
+
+
+布局：[flex - Flexbox & Grid - Tailwind CSS](https://tailwindcss.com/docs/flex)
+
+#### 7、自定义Tailwind CSS原子类
+
+喹

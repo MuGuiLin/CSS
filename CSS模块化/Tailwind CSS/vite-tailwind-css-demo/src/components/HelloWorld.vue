@@ -7,12 +7,12 @@ const count = ref(0)
 </script>
 
 <template>
-  <h1 class="my-5 bg-purple-500 text-center text-white shadow-lg">{{ msg }}</h1>
+  <h1 class="my-5 bg-purple-500 text-center text-white text shadow-lg">{{ msg }}</h1>
   <section class="relative p-10 h-100 border-1 border-gray-500">
 
     <div>
       <button type="button" class="p-3 text-white bg-blue-500 rounded-md" @click="count++">count is {{ count }}</button>
-      <p>
+      <p class="p-3 text-black  hover:bg-blue-500 text-white">
         Edit
         <code>components/HelloWorld.vue</code> to test HMR
       </p>
