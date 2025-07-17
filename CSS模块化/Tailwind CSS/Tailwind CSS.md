@@ -83,7 +83,8 @@
 #### 1、创建项目
 
 ```shell
-pnpm create vite
+# pnpm create vite
+pnpm create vue@latest
 
 # 输入项目名，这里以vite-tailwind-css-demo为例
 vite-tailwind-css-demo
