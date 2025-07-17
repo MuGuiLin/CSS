@@ -4,23 +4,22 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
+  <header class="text-center">
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+      <HelloWorld msg="Tailwind CSS" />
+      
+      <nav class="flex gap-4 px-4 py-2 text-2xl text-white bg-purple-500">
+        <RouterLink class="hover:text-blue-700 hover:!font-bold" to="/">🏡 Home</RouterLink>
+        <RouterLink class="hover:text-blue-700 hover:!font-bold" to="/about">📊 About</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
+
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -82,4 +81,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->

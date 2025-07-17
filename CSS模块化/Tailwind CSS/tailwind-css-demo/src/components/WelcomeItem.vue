@@ -1,10 +1,10 @@
 <template>
-  <div class="item">
-    <i>
+  <div class="flex relative !mt-[2rem]">
+    <i class="flex items-end size-[32px] text-green-500 ">
       <slot name="icon"></slot>
     </i>
-    <div class="details">
-      <h3>
+    <div class="flex-1 !ml-[3rem] ">
+      <h3 class="!mt-[0.4rem] text-white text-[1.2rem] font-[500] ">
         <slot name="heading"></slot>
       </h3>
       <slot></slot>
@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .item {
   margin-top: 2rem;
   display: flex;
@@ -84,4 +84,4 @@ h3 {
     display: none;
   }
 }
-</style>
+</style> -->
