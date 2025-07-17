@@ -86,11 +86,11 @@
 # pnpm create vite
 pnpm create vue@latest
 
-# 输入项目名，这里以vite-tailwind-css-demo为例
-vite-tailwind-css-demo
+# 输入项目名，这里以tailwind-css-demo为例
+tailwind-css-demo
 
-# 进入vite-tailwind-css-demo项目根目录
-cd vite-tailwind-css-demo
+# 进入tailwind-css-demo项目根目录
+cd tailwind-css-demo
 ```
 
 #### 2、安装依赖
@@ -109,8 +109,12 @@ pnpm add -D tailwindcss @tailwindcss/vite
 Tailwind CSS 4.x最大的变化就是**“零配置”** 优先，无需再配置tailwind.config.js 和 postcss.config.js 文件，所有配置都可以直接在vite.config.ts中完成
 
 ```ts
+import { fileURLToPath, URL } from 'node:url'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // 引入@tailwindcss/vite插件，在编译时自动将class类名对应的样式提取出来添加到style标签中
 import tailwindcss from '@tailwindcss/vite'
@@ -119,8 +123,21 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     vue(),
+    vueJsx(),
+    vueDevTools(),
     tailwindcss(),  // 注入tailwindcss
   ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  server: {
+    // host: '0.0.0.0',
+    // port: 8080,
+    open: true,
+    cors: true,
+  },
 })
 
 ```
