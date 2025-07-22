@@ -206,14 +206,11 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
 
 ```html
 <body>
-    <div class="text-red-500">
-    红色文字
+    <div class="text-red-500 bg-blue-500">
+    	红色文字, 蓝色背景
     </div>
-    <div class="bg-blue-500">
-        蓝色背景
-    </div>
-    <div class="bg-[#FFF]">
-        自定义白色背景
+    <div class="text=[#FFF] bg-[#000]">
+        自定义：白色文字，黑色背景
     </div>
 </body>
 ```
@@ -305,7 +302,6 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
     --mu-info: #909399;
     --mu-info-hover: #7c7c7c;
   }
-  
   ```
 
   
@@ -319,8 +315,6 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
   	@apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer
   }
   ```
-
-  
 
   ```html
   <body>
@@ -363,8 +357,6 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
     }
   }
   ```
-
-  
 
   ```html
   <body>
