@@ -1,12 +1,12 @@
 # Tailwind CSS
 
-### 🏡前言
+### 📚前言
 
-> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的`原生CSS`  到  `CSS预处理(Less/Sass/Stylus)`   到  `CSS-in-JS(Styled-Components/Emotion) `  到  `Utility-First 原子化CSS`。每一种演进方案本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡。
+> 在Web前端开发的历史长河中，CSS的编写方式经历了多次演进，从早期的`原生CSS`  到  `CSS预处理(Less/Sass/Stylus)`   到  `CSS-in-JS(Styled-Components/Emotion) `  到  `Utility-First 原子化CSS`。每一种演进方案其本质都是围绕“开发效率”、“运行性能”、”可维护性“ 这三个核心点之间寻找最佳平衡而衍生出各类工具/库。
 
+![Tailwind CSS IntelliSense](https://tailwindcss.com/_next/static/media/intellisense.c22de782.png)
 
-
-#### 原生CSS & CSS预处理（Less / Sass / Stylus）
+#### 🍀原生CSS & CSS预处理（Less / Sass / Stylus）
 
 > 开发人员手动编写`.css文件` 、`.less文件等`，然后通过`<link>标签` 或 `@import`引入使用
 
@@ -17,7 +17,7 @@
 
 
 
-#### CSS-in-JS（Styled-Components / Emotion)）
+#### 🍀CSS-in-JS（Styled-Components / Emotion)）
 
 > CSS-IN-JS这种解决方案，它提倡我们把CSS代码写在JavaScript代码当中，在React JSX/TSX等类似的组件化框架兴起后，也将CSS样式视为组件的一部分。
 
@@ -31,9 +31,9 @@
 
 
 
-#### Utility-First CSS(Tailwind CSS / UnoCSS)
+#### 🍀Utility-First CSS(Tailwind CSS / UnoCSS)
 
-> 原子化CSS 是一种与传统“语义化CSS”截然不同的思路，它提供了一系列高度可组合的、功能单一的“原子类”(Atomic CSS / Utility Classes)。
+> Utility-First(功能优先)原子化CSS 是一种与传统“语义化CSS”截然不同的思路，它提供了一系列高度可组合的、功能单一的“原子类”(Atomic CSS / Utility Classes)。
 
 - **核心：**开发人员无需再为组件编写专门的CSS类，而是直接在HTML中组合这些原则来构建样式。
 
@@ -62,7 +62,9 @@
 
 
 
-### 🏡Tailwind CSS简介
+
+
+## 🏡Tailwind CSS简介
 
 [Tailwind CSS 官网 https://tailwindcss.com](https://tailwindcss.com)
 
@@ -80,13 +82,13 @@
 
 ### 📊Vite项目实例
 
-这里以Vite + Vue3 + TypeScript + Tailwind CSS 4 为项目实例
+为了便于项目演示，这里就以常用的 [Vite + Vue3 + TypeScript](https://cn.vuejs.org/guide/quick-start.html) + [Tailwind CSS 4](https://tailwindcss.com) 为项目实例，从项目的安装、初始化配置等流程逐一说明。
 
 #### 1、创建项目
 
 ```shell
-# pnpm create vite
-pnpm create vue@latest
+# 构建Vue项目
+bun create vue@latest
 
 # 输入项目名，这里以tailwind-css-demo为例
 tailwind-css-demo
@@ -101,18 +103,17 @@ cd tailwind-css-demo
 
 ```shell
 # 安装vite项目依赖
-pnpm install
+bun install
 
 # 安装Tailwind CSS引擎依赖 和@tailwindcss/vite插件
-pnpm add -D tailwindcss @tailwindcss/vite
-
+bun add -D tailwindcss @tailwindcss/vite
 ```
 
 
 
 #### 3、配置 vite.config.ts
 
-Tailwind CSS 4.x最大的变化就是**“零配置”** 优先，无需再配置tailwind.config.js 和 postcss.config.js 文件，所有配置都可以直接在vite.config.ts中完成
+Tailwind CSS 4.x最大的变化就是**“零配置”** 优先，无需再配置tailwind.config.js 和 postcss.config.js 文件，所有配置都可以直接在vite.config.ts中完成。
 
 ```ts
 import { fileURLToPath, URL } from 'node:url'
@@ -131,7 +132,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
-    tailwindcss(),  // 注入tailwindcss
+    tailwindcss(),  // 注入tailwindcss插件
   ],
   resolve: {
     alias: {
@@ -150,33 +151,38 @@ export default defineConfig({
 
 
 
-#### 4、引入tailwindcss
+#### 4、Tailwind CSS IntelliSense 扩展
 
-在前端项目工程`src`目录中的全局`style.css`样式文件中引入 tailwindcss 核心库
+在代码编辑器中，例如：常见的 [Visual Studio Code ](https://code.visualstudio.com/Download)、[Cursor AI Code Editor](https://cursor.com/cn) 、[Trae - IDE ](https://www.trae.cn/)等编辑器，在扩展管理中搜索 ：**Tailwind CSS IntelliSense** 关键字，直接安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)，安装成功后，在HTML中编写class原子类时就会自动辅助提示，以便高效的开发。
+
+![Tailwind CSS IntelliSense](https://tailwindcss.com/_next/static/media/intellisense.c22de782.png)
+
+具体了解更多[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
+
+![prettier](https://tailwindcss.com/_next/static/media/prettier-banner.79c40690.jpg)
+
+
+
+#### 5、引入tailwindcss
+
+在前端项目工程`src`目录中的全局的`style.css` 或 `main.css` 样式文件中引入 tailwindcss 核心库
 
 ```css
+<!-- https://tailwindcss.com/docs/preflight -->
 @import "tailwindcss";
-
-# https://tailwindcss.com/docs/preflight
 ```
-
-
-
-#### 5、编辑器扩展：Tailwind CSS IntelliSense
-
-在编辑器，如VSCode应用商店中搜索 ：**Tailwind CSS IntelliSense** 安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)，具体使用了解更多[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
 
 
 
 #### 6、使用Tailwind CSS
 
-完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，同时还支持响应试设计：`sm`，`md`， `lg`，`xs`、`xl`等，例如`w-lg`表示在中等屏幕，通过不同的修饰符，快速得到对应状态样式。
+完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，同时还支持响应试设计：`sm`，`md`， `lg`，`xs`、`xl`等，例如`w-lg`表示在中等屏幕，以及悬停 [伪类](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-classes)、[伪元素 ](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-elements)、焦点和其他状态[Hover, focus, and other states - Core concepts - Tailwind CSS](https://tailwindcss.com/docs/hover-focus-and-other-states)等等，都可以通过不同的修饰符，快速得到对应状态样式。
 
 **使用实用程序类（Utility Classes）进行样式设置**
 
 这是Tailwind的基石，每一个类名都代表一个 **单一**、**不可再分**的CSS样式属性，例如，以下是常用的Tailwind CSS 原子类 与 原生CSS样式属性 对照情况。
 
-[🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/installation/using-vite)
+[🚀查看更多Tailwind CSS 原子类](https://tailwindcss.com/docs/installation/using-vite)、[🛠️线在尝试 Tailwind Play](https://play.tailwindcss.com/)
 
 | Tailwind CSS 原子类              | 原生CSS样式属性                                    |
 | -------------------------------- | -------------------------------------------------- |
@@ -209,8 +215,8 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
     <div class="text-red-500 bg-blue-500">
     	红色文字, 蓝色背景
     </div>
-    <div class="text=[#FFF] bg-[#000]">
-        自定义：白色文字，黑色背景
+    <div class="text-[#000] bg-[#fff]">
+        自定义：黑色文字，白色背景
     </div>
 </body>
 ```
@@ -221,17 +227,17 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
 
 #### 7、自定义Tailwind CSS原子类
 
-- **@layer** 如果在Tailwind CSS中，原有的原子类不能满足需求时，可在全局`style.css`样式文件中通过使用`@layer{...}`来添加自定义的原子类。
+- **@layer 自定义原子类** 如果在Tailwind CSS中，原有的原子类不能满足需求时，可在全局`style.css` 或 `main.css` 样式文件中通过使用`@layer{...}`来添加自定义的原子类。
 
   ```css
   @import "tailwindcss";
   
   :root {
-      --color-primary: 
-      --color-primary-100:
+      --color-primary: #409eff;
+      --color-primary-hover: #155dfc;
           
-      --color-success:
-      --color-success-100:
+      --color-success: #67c23a;
+      --color-success-hover: #4c8b2f;
   }
   
   @layer {
@@ -258,12 +264,12 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
   
   	.type_primary {
   		border: 2px solid var(--color-primary);
-  		background-color: var(--color-primary-100);
+  		background-color: var(--color-primary-hover);
   	}
   
   	.type_success {
   		color: var(--color-success);
-  		background-color: var(--color-success-100);
+  		background-color: var(--color-success-hover);
   	}
   }
   ```
@@ -271,9 +277,9 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
   ```html
   <body>
       <ul class="m-5 p-2">
-          <li class="item">
-          	<span class="type_primary">primary</span>
-              <span class="type_success">success</span>
+          <li class="mb-10 item">
+          	<span class="p-2 type_primary">primary</span>
+              <span class="p-2 type_success">success</span>
           </li>
       </ul>
   </body>
@@ -281,7 +287,7 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
 
   
 
-- **@theme 主题、变量定义**，在
+- **@theme 主题、变量定义**，在自定义CSS中，自定义设计令牌，如：颜色值，宽高、间距等，可通过`@theme{...}`来定义（类似原生CSS中的`:root{...}`），以保证项目整体样式的一致性。
 
   ```css
   @import "tailwindcss";
@@ -312,7 +318,7 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
   @import "tailwindcss";
   
   .btn-primary {
-  	@apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer
+  	@apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer;
   }
   ```
 
@@ -327,7 +333,7 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
 
   
 
-- @utility 
+- **@utility 创建动态工具类，**这是Tailwind CSS 4 新增的强大功能，它可以创建全新的、可被修饰的、组合式工具类，通过`@utility 类名-*{...}` 来动态匹配对应的样式类，其中*****表示动态变化的样式类。
 
   ```css
   @import "tailwindcss";
@@ -336,8 +342,14 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
     --mu-primary: #409eff;
     --mu-primary-hover: #155dfc;
   
+    --mu-primary-dark: #fff;
+    --mu-primary-hover-dark: #409eff;
+  
     --mu-success: #67c23a;
     --mu-success-hover: #4c8b2f;
+  
+    --mu-success-dark: #fff;
+    --mu-success-hover-dark: #67c23a;
   
     --mu-warning: #e6a23c;
     --mu-warning-hover: #c88b2f;
@@ -355,6 +367,15 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
     &:hover {
       background-color: --value(--mu-*-hover);
     }
+  	
+     <!-- 暗色主题时的颜色 -->
+    @variant dark {
+      @apply text-black;
+      background-color: --value(--mu-*-dark);
+      &:hover {
+        background-color: --value(--mu-*-hover-dark);
+      }
+    }
   }
   ```
 
@@ -368,9 +389,12 @@ Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要�
 
   
 
-  
+#### 8、扩展
 
+除了 [Tailwind CSS 功能优先的原子化 CSS 框架](https://tailwind.nodejs.cn/)原子类以外，其他还有类似的原子化 CSS引擎，如：[Uno CSS 即时按需的原子化 CSS 引擎](https://unocss.nodejs.cn/)，它不会预先生成任何 CSS，而是根据你在代码中实际使用的类名，动态地、即时地生成对应的 CSS 规则。
 
+**Tailwind CSS**：目前依然是一个功能强大、可靠且值得信赖的选择，它定义了 Utility-First 的最佳实践。
 
+**Uno CSS** 将是CSS工具未来的演进方向。它以更智能、更高效的方式解决了同样的问题，进一步提升了性能和灵活性。
 
-
+最后、无论是原子化CSS框架，还是原子化CSS引擎，都会给你带来不样的开发体验，都可以去尝试用一下。

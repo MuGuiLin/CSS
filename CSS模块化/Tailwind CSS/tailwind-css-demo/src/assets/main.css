@@ -41,8 +41,14 @@ a,
   --mu-primary: #409eff;
   --mu-primary-hover: #155dfc;
 
+  --mu-primary-dark: #fff;
+  --mu-primary-hover-dark: #409eff;
+
   --mu-success: #67c23a;
   --mu-success-hover: #4c8b2f;
+
+  --mu-success-dark: #fff;
+  --mu-success-hover-dark: #67c23a;
 
   --mu-warning: #e6a23c;
   --mu-warning-hover: #c88b2f;
@@ -53,19 +59,30 @@ a,
   --mu-info: #909399;
   --mu-info-hover: #7c7c7c;
 }
+.btn {
+  @apply m-1;
+}
 
-.btn-primary {
-  @apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer
+/* .btn-primary {
+  @apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer;
 }
 
 @utility btn-success {
-  @apply px-5 py-2 rounded-md text-white bg-green-500 hover:bg-green-600 hover:cursor-pointer
-}
+  @apply px-5 py-2 rounded-md text-white bg-green-500 hover:bg-green-600 hover:cursor-pointer;
+} */
 
 @utility btn-* {
   @apply px-5 py-2 rounded-md text-white hover:cursor-pointer;
   background-color: --value(--mu-*);
   &:hover {
     background-color: --value(--mu-*-hover);
+  }
+
+  @variant dark {
+    @apply text-black;
+    background-color: --value(--mu-*-dark);
+    &:hover {
+      background-color: --value(--mu-*-hover-dark);
+    }
   }
 }
