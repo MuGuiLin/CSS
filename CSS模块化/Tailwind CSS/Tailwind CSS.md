@@ -66,6 +66,8 @@
 
 [Tailwind CSS 官网 https://tailwindcss.com](https://tailwindcss.com)
 
+<img width="300" src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg" />
+
 > Tailwind CSS 是一个实用优先的 CSS 框架，与传统的框架（如 Bootstrap、Foundation）不同，它没有预定义的组件，而是提供了一系列原子化的 CSS 类，允许你直接在 HTML 中应用样式。
 >
 > Tailwind CSS 是一个工具优先的框架，意味着它提供了大量的预定义类，而不是预设的组件,这使得开发者可以构建几乎任何设计，而不需要编写 CSS。
@@ -93,6 +95,8 @@ tailwind-css-demo
 cd tailwind-css-demo
 ```
 
+
+
 #### 2、安装依赖
 
 ```shell
@@ -103,6 +107,8 @@ pnpm install
 pnpm add -D tailwindcss @tailwindcss/vite
 
 ```
+
+
 
 #### 3、配置 vite.config.ts
 
@@ -142,6 +148,8 @@ export default defineConfig({
 
 ```
 
+
+
 #### 4、引入tailwindcss
 
 在前端项目工程`src`目录中的全局`style.css`样式文件中引入 tailwindcss 核心库
@@ -152,13 +160,17 @@ export default defineConfig({
 # https://tailwindcss.com/docs/preflight
 ```
 
+
+
 #### 5、编辑器扩展：Tailwind CSS IntelliSense
 
 在编辑器，如VSCode应用商店中搜索 ：**Tailwind CSS IntelliSense** 安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)，具体使用了解更多[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
 
+
+
 #### 6、使用Tailwind CSS
 
-完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，同时还支持响应试设计：`sm`，`md`， `lg`，`xs`、`xl`等，例如`w-lg`表示在中等屏幕及以上的
+完成以上步骤以后，就可以在项目任意HTML标签中的class属性中添加原子类了，同时还支持响应试设计：`sm`，`md`， `lg`，`xs`、`xl`等，例如`w-lg`表示在中等屏幕，通过不同的修饰符，快速得到对应状态样式。
 
 **使用实用程序类（Utility Classes）进行样式设置**
 
@@ -188,64 +200,185 @@ export default defineConfig({
 
 **颜色（Colors）**
 
-Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要选择使用，当然如果在不满足你的需求时可以自定义任意色值。
+Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要选择使用，当然如果在不满足你的需求时可以在方括号中，如`text-[#000]` 来自定义任意色值。
 
 [🚀Tailwind CSS 色值体系](https://tailwindcss.com/docs/colors) 
 
 ```html
-<div class="text-red-500">
+<body>
+    <div class="text-red-500">
     红色文字
-</div>
-<div class="bg-blue-500">
-    蓝色背景
-</div>
-<div class="bg-[#FFF]">
-    自定义白色背景
-</div>
+    </div>
+    <div class="bg-blue-500">
+        蓝色背景
+    </div>
+    <div class="bg-[#FFF]">
+        自定义白色背景
+    </div>
+</body>
 ```
 
 ![image-20250717140148922](D:\GitHub\CSS\CSS模块化\Tailwind CSS\Tailwind CSS Colors调色板.png)
 
-通过添加前缀修饰符，可以为不同状态应用样式，语法极其直观 **状态：工具类**
+
 
 #### 7、自定义Tailwind CSS原子类
 
-在全局`style.css`样式文件中的`@layer{...}`中添加自定义原子类。
+- **@layer** 如果在Tailwind CSS中，原有的原子类不能满足需求时，可在全局`style.css`样式文件中通过使用`@layer{...}`来添加自定义的原子类。
 
-``` css
-@layer {
-	.mute {
-		position: relative;
+  ```css
+  @import "tailwindcss";
+  
+  :root {
+      --color-primary: 
+      --color-primary-100:
+          
+      --color-success:
+      --color-success-100:
+  }
+  
+  @layer {
+      .item {
+  		position: relative;
+  
+  		&::after {
+  			content: '';
+  			display: inline-block;
+  			position: relative;
+  			top: 1px;
+  			width: 18px;
+  			height: 12px;
+  			background: url('@/assets/img/not.webp') no-repeat center center;
+  			background-size: contain !important;
+  		}
+  	}
+  
+  	.item_active {
+  		b::after {
+  			background: url('@/assets/img/yes.webp') no-repeat center center;
+  		}
+  	}
+  
+  	.type_primary {
+  		border: 2px solid var(--color-primary);
+  		background-color: var(--color-primary-100);
+  	}
+  
+  	.type_success {
+  		color: var(--color-success);
+  		background-color: var(--color-success-100);
+  	}
+  }
+  ```
 
-		b::after {
-			content: '';
-			display: inline-block;
-			position: relative;
-			top: 1px;
-			width: 18px;
-			height: 12px;
-			background: url('$lib/img/not-mute.webp') no-repeat center center;
-			background-size: contain !important;
-		}
-	}
+  ```html
+  <body>
+      <ul class="m-5 p-2">
+          <li class="item">
+          	<span class="type_primary">primary</span>
+              <span class="type_success">success</span>
+          </li>
+      </ul>
+  </body>
+  ```
 
-	.mute_active {
-		b::after {
-			background: url('$lib/img/yes-mute.webp') no-repeat center center;
-		}
-	}
+  
 
-	.item_active {
-		border: 2px solid var(--color-primary);
-		background-color: var(--color-primary-100);
-	}
+- **@theme 主题、变量定义**，在
 
-	.type_success {
-		color: var(--color-success);
-		background-color: var(--color-success-100);
-	}
-}
-```
+  ```css
+  @import "tailwindcss";
+  
+  @theme {
+    --mu-primary: #409eff;
+    --mu-primary-hover: #155dfc;
+  
+    --mu-success: #67c23a;
+    --mu-success-hover: #4c8b2f;
+  
+    --mu-warning: #e6a23c;
+    --mu-warning-hover: #c88b2f;
+  
+    --mu-danger: #f56c6c;
+    --mu-danger-hover: #d33f3f;
+  
+    --mu-info: #909399;
+    --mu-info-hover: #7c7c7c;
+  }
+  
+  ```
+
+  
+
+- **@apply 组合现有工具类**，如果有一些原子类经常被反复的使用时，就可以通过`@apply{...}`将它们组合成一个新的原子类，在使用时，只需使用那个新的原子类名即可！
+
+  ```css
+  @import "tailwindcss";
+  
+  .btn-primary {
+  	@apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer
+  }
+  ```
+
+  
+
+  ```html
+  <body>
+      <button class="px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer">反复使用时</button>
+      
+      <!-- 调用新的组合原子类名 -->
+      <button class="btn-primary">组合使用后</button>
+  </body>
+  ```
+
+  
+
+- @utility 
+
+  ```css
+  @import "tailwindcss";
+  
+  @theme {
+    --mu-primary: #409eff;
+    --mu-primary-hover: #155dfc;
+  
+    --mu-success: #67c23a;
+    --mu-success-hover: #4c8b2f;
+  
+    --mu-warning: #e6a23c;
+    --mu-warning-hover: #c88b2f;
+  
+    --mu-danger: #f56c6c;
+    --mu-danger-hover: #d33f3f;
+  
+    --mu-info: #909399;
+    --mu-info-hover: #7c7c7c;
+  }
+  
+  @utility btn-* {
+    @apply px-5 py-2 rounded-md text-white hover:cursor-pointer;
+    background-color: --value(--mu-*);
+    &:hover {
+      background-color: --value(--mu-*-hover);
+    }
+  }
+  ```
+
+  
+
+  ```html
+  <body>
+      <button class="btn-primary">主要样式颜色</button>
+      <button class="btn-success">成功样式颜色</button>
+      <button class="btn-warning">警告样式颜色</button>
+  </body>
+  ```
+
+  
+
+  
+
+
 
 
 

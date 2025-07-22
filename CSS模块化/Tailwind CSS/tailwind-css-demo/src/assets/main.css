@@ -35,3 +35,37 @@ a,
     padding: 0 2rem;
   }
 } */
+
+
+@theme {
+  --mu-primary: #409eff;
+  --mu-primary-hover: #155dfc;
+
+  --mu-success: #67c23a;
+  --mu-success-hover: #4c8b2f;
+
+  --mu-warning: #e6a23c;
+  --mu-warning-hover: #c88b2f;
+
+  --mu-danger: #f56c6c;
+  --mu-danger-hover: #d33f3f;
+
+  --mu-info: #909399;
+  --mu-info-hover: #7c7c7c;
+}
+
+.btn-primary {
+  @apply px-5 py-2 rounded-md text-white bg-blue-500 hover:bg-blue-600 hover:cursor-pointer
+}
+
+@utility btn-success {
+  @apply px-5 py-2 rounded-md text-white bg-green-500 hover:bg-green-600 hover:cursor-pointer
+}
+
+@utility btn-* {
+  @apply px-5 py-2 rounded-md text-white hover:cursor-pointer;
+  background-color: --value(--mu-*);
+  &:hover {
+    background-color: --value(--mu-*-hover);
+  }
+}
