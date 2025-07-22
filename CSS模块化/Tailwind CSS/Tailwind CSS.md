@@ -144,7 +144,7 @@ export default defineConfig({
 
 #### 4、引入tailwindcss
 
-在项目工程src目录中的全局`style.css`样式文件中引入 tailwindcss 核心库
+在前端项目工程`src`目录中的全局`style.css`样式文件中引入 tailwindcss 核心库
 
 ```css
 @import "tailwindcss";
@@ -154,9 +154,7 @@ export default defineConfig({
 
 #### 5、编辑器扩展：Tailwind CSS IntelliSense
 
-[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
-
-在编辑器，如VSCode应用商店中搜索 ：Tailwind CSS IntelliSense 安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+在编辑器，如VSCode应用商店中搜索 ：**Tailwind CSS IntelliSense** 安装即可，[Tailwind CSS IntelliSense - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)，具体使用了解更多[扩展配置说明https://tailwindcss.com/docs/editor-setup](https://tailwindcss.com/docs/editor-setup)
 
 #### 6、使用Tailwind CSS
 
@@ -188,19 +186,9 @@ export default defineConfig({
 | `rounded-xs`                     | `border-radius: 0.125rem (2px);`                   |
 | `cursor-pointer`                 | `cursor: pointer;`                                 |
 
-**悬停、焦点 等状态（State Modifiers）**
-
-[🚀查看更多Tailwind CSS 状态](https://tailwindcss.com/docs/hover-focus-and-other-states)
-
-| Tailwind CSS 原子类       | 原生CSS样式属性 |
-| ------------------------- | --------------- |
-|                           |                 |
-| oklch(64.5% 0.246 16.439) |                 |
-|                           |                 |
-|                           |                 |
-|                           |                 |
-
 **颜色（Colors）**
+
+Tailwind CSS 定义了一系列符合大众UI的色阶，可根据自己需要选择使用，当然如果在不满足你的需求时可以自定义任意色值。
 
 [🚀Tailwind CSS 色值体系](https://tailwindcss.com/docs/colors) 
 
@@ -211,13 +199,53 @@ export default defineConfig({
 <div class="bg-blue-500">
     蓝色背景
 </div>
+<div class="bg-[#FFF]">
+    自定义白色背景
+</div>
 ```
 
-
-
-![image-20250717140148922](D:\GitHub\CSS\CSS模块化\Tailwind CSS\Tailwind CSS Colors调色板.md)
+![image-20250717140148922](D:\GitHub\CSS\CSS模块化\Tailwind CSS\Tailwind CSS Colors调色板.png)
 
 通过添加前缀修饰符，可以为不同状态应用样式，语法极其直观 **状态：工具类**
 
 #### 7、自定义Tailwind CSS原子类
+
+在全局`style.css`样式文件中的`@layer{...}`中添加自定义原子类。
+
+``` css
+@layer {
+	.mute {
+		position: relative;
+
+		b::after {
+			content: '';
+			display: inline-block;
+			position: relative;
+			top: 1px;
+			width: 18px;
+			height: 12px;
+			background: url('$lib/img/not-mute.webp') no-repeat center center;
+			background-size: contain !important;
+		}
+	}
+
+	.mute_active {
+		b::after {
+			background: url('$lib/img/yes-mute.webp') no-repeat center center;
+		}
+	}
+
+	.item_active {
+		border: 2px solid var(--color-primary);
+		background-color: var(--color-primary-100);
+	}
+
+	.type_success {
+		color: var(--color-success);
+		background-color: var(--color-success-100);
+	}
+}
+```
+
+
 
