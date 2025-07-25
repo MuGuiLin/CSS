@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <link rel="icon" href="favicon.ico" />
+    <title>微信H5上中下布局</title>
+    <style>
+        header {
+            position: fixed;
+            height: 50px;
+            left: 0;
+            right: 0;
+            top: 0;
+            text-align: center;
+            background: #7d7d7d;
+        }
+
+        main {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            bottom: 50px;
+            left: 0;
+            /* 如果要设置高度，可以使用 calc() */
+            /* height: calc(100vh - 100px); */
+            overflow-y: auto;
+            /* 让滚动更平滑 */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .content {
+            /* 测试高度，在项目中根据实际情况调整*/
+            height: 3000px;
+        }
+
+        footer {
+            position: fixed;
+            height: 50px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            background: #0062ff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- fixed定位的头部 -->
+        header
+    </header>
+
+    <!-- 可以滚动的区域 -->
+    <main>
+        <div class="content"><!-- 主体内容 --></div>
+    </main>
+
+    <footer>
+        <!-- fixed定位的底部 -->
+        <input type="text" placeholder="请输入" />
+        <button type="submit">发送</button>
+    </footer>
+</body>
+
+</html>
