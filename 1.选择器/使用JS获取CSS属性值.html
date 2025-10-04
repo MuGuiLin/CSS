@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用JS获取CSS属性值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .bg {
+            width: 500px;
+            height: 500px;
+            background-image: url(https://picsum.photos/500/500);
+            margin: 20px auto;
+            line-height: 50px;
+
+            &::after {
+                content: '我是伪元素::after';
+                display: block;
+                font-size: large;
+                background-color: rgba(50, 100, 150, 0.5);
+                font-weight: bold;
+                color: #fff;
+            }
+
+            &::before {
+                content: '我是伪元素::before';
+                display: block;
+                font-size: large;
+                 background-color: rgba(150, 100, 50, 0.5);
+                color: #fff;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>使用JS获取CSS属性值</h1>
+    <hr />
+    <div class="bg">
+        <p id="get1"></p>
+        <p id="get2"></p>
+        <p id="get3"></p>
+        <p id="get4"></p>
+    </div>
+
+    <script>
+        function getStyle(obj, attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return globalThis.getComputedStyle(obj, false)[attr];
+            }
+        }
+
+        function getCssAttr(element, attr) {
+            try {
+                const computedStyle = globalThis.getComputedStyle(element, false) || element.currentStyle;
+                return computedStyle.getPropertyValue(attr);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function getCssContent(element, attr = '::before') {
+            try {
+                const computedStyle = globalThis.getComputedStyle(element, attr)
+                return computedStyle['content'];
+            } catch (e) {
+                return null;
+            }
+        }
+
+        const bg = document.querySelector('.bg');
+        console.log(getStyle(bg, 'background-image'));
+        console.log(getCssAttr(bg, 'background-image'));
+
+        document.querySelector('#get1').innerHTML = getStyle(bg, 'background-image');
+        document.querySelector('#get2').innerHTML = getCssAttr(bg, 'background-image');
+        document.querySelector('#get3').innerHTML = getCssContent(bg, '::before');
+        document.querySelector('#get4').innerHTML = getCssContent(bg, '::after');
+    </script>
+
+</body>
+
+</html>
