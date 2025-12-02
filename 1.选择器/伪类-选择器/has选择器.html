@@ -10,6 +10,27 @@
             text-align: center;
         }
 
+        
+        .level1 {
+            margin: 50px auto;
+            width: 500px;
+            border: 1px solid red;
+
+            div {
+                margin: 20px;
+                border: 1px solid red;
+            }
+        }
+
+        .level2:has(.level5:hover) {
+            border: 5px solid green;
+        }
+
+        .level5:hover {
+            cursor: pointer;
+            background-color: yellow;
+        }
+
         .boxs {
             margin: auto;
             width: 360px;
@@ -32,13 +53,38 @@
             content: "*";
             color: red;
         }
+
     </style>
 </head>
 
 <body>
     <h1>has选择器</h1>
     <hr />
-    <p>只有当 input元素上有required属性存在时，label元素后面才会有*出现！</p>
+    <pre>
+        CSS3中的 :has伪类是一种选择器，它允许你根据其后代元素来选择一个 父级元素 或 祖先元素。
+            :has 伪类在 CSS 选择器中非常有用，因为它可以基于更复杂的条件来选择元素。
+            :has 伪类在 CSS 中是相对较新的功能，可能不被所有浏览器支持。在使用之前，建议检查浏览器的兼容性。
+            :has 伪类不能与 * 选择器一起使用，它只能与类型选择器（如 div、span 等）或类选择器一起使用。
+    </pre>
+    <div class="level1">
+        <h1>level1</h1>
+        <div class="level2">
+            <h1>level2</h1>
+            <div class="level3">
+                <h1>level3</h1>
+                <div class="level4">
+                    <h1>level4</h1>
+                    <div class="level5">
+                        <h1>level5</h1>
+                        <p>鼠标指向level5时，会改变祖先level2元素的样式！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+    <h1>实例：只有当 input元素上有required属性存在时，label元素后面才会有*出现！</h1>
     <div class="boxs">
         <p>
             <label for="">用户：</label>
@@ -53,6 +99,7 @@
             <input type="password" required placeholder="请输入密码！" />
         </p>
     </div>
+
 </body>
 
 </html>
