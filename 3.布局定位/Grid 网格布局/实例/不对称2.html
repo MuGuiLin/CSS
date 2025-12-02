@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid网格布局</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .parent {
+            display: grid;
+            /* grid-template-columns: repeat(4, 1fr); */
+            /* grid-template-rows: repeat(8, 1fr); */
+            grid-template-rows: auto;
+            grid-template-columns: 1020px 360px 1fr;
+            grid-template-areas: "div1 div2 div3" 
+                                 "div1 div2 div5" 
+                                 "div4 div4 div5";
+            gap: 6px;
+        }
+
+        .parent div {
+            box-sizing: border-box;
+            font-size: 20px;
+            border: 1px solid gray;
+        }
+
+        .div1 {
+            grid-area: div1;
+            height: 567px;
+            background-color: red;
+        }
+
+        .div2 {
+            grid-area: div2;
+            height: 567px;
+            background-color: cyan;
+        }
+
+        .div3 {
+            grid-area: div3;
+            height: 392px;
+            background-color: green;
+        }
+
+        .div4 {
+            grid-area: div4;
+            height: 340px;
+            background-color: purple;
+        }
+
+        .div5 {
+            grid-area: div5;
+            height: 516px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="div1">1</div>
+        <div class="div2">2</div>
+        <div class="div3">3</div>
+        <div class="div4">4</div>
+        <div class="div5">5</div>
+    </div>
+</body>
+
+</html>
