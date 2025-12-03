@@ -23,11 +23,15 @@
         transition     : 0.5s;
     }
 
-    .loop(9);
+    // 启动函数递归调用
+    // .my_fun(1);
+
+    // 调用each循环
+    .my_for();
 }
 
 
-.loop(@i) when(@i > 0) {
+.my_fun(@i) when(@i < 10) {
     .item:nth-child(@{i}) {
         background: hsl(@i * 40, 100%, 50%);
     }
@@ -39,8 +43,50 @@
     &:has(.item:nth-child(@{i}):hover) {
         grid-template-rows   : 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
-
     }
 
-    .loop((@i - 1));
+    // 递归调用
+    .my_fun((@i + 1));
+}
+
+.my_for() {
+
+    // 设置each中的变量名称 可使用 #() 或 .() 的形式
+    // each(range(9), #(@v, @k, @i) {
+    each(range(9), .(@v, @k, @i) {
+            // @{k}-@{i}: @v;
+
+            .item:nth-child(@{i}) {
+                background: hsl(@i * 40, 100%, 50%);
+            }
+
+            .item:nth-child(@{i}):hover {
+                font-size: 32px;
+            }
+
+            &:has(.item:nth-child(@{i}):hover) {
+                /*
+                @r    : ((@i - 1) / 3) + 1;
+                // @c : ((@i - 1) % 3) + 1; // 注意less的取余运算符为mod
+                @c    : mod(@i - 1, 3) + 1;
+                */
+
+                .grid-template(@i);
+                grid-template-rows   : @rows; // 输出: 1fr 2fr 2fr
+                grid-template-columns: @cols; // 输出: 1fr 2fr 2fr
+
+            }
+        }
+
+    )
+}
+
+@row-templates: ~"2fr 1fr 2fr", ~"1fr 2fr 2fr", ~"1fr 1fr 2fr";
+@col-templates: ~"2fr 1fr 2fr", ~"1fr 2fr 2fr", ~"1fr 1fr 2fr";
+
+.grid-template(@i) {
+    @r   : ((@i - 1) / 3)+1;
+    @c   : mod(@i - 1, 3)+1;
+    @rows: extract(@row-templates, floor(@r));
+    @cols: extract(@col-templates, @c);
 }
