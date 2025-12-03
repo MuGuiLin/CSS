@@ -1,0 +1,46 @@
+// out: ../css/
+
+// 注：在VSCode编辑器中安装了Easy LESS 插件后，在.less文件中设置好.css文件输入路径out: ../css/，在修改样式保存时，会自动将LESS编译后生成到对应的.css文件中。
+.grid {
+    margin: 50px auto;
+    width : 500px;
+    height: 500px;
+
+    display   : grid;
+    gap       : 10px;
+    transition: 0.5s;
+
+    // grid-template-rows   : repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-rows   : 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .item {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        border         : 1px solid gray;
+        transition     : 0.5s;
+    }
+
+    .loop(9);
+}
+
+
+.loop(@i) when(@i > 0) {
+    .item:nth-child(@{i}) {
+        background: hsl(@i * 40, 100%, 50%);
+    }
+
+    .item:nth-child(@{i}):hover {
+        font-size: 32px;
+    }
+
+    &:has(.item:nth-child(@{i}):hover) {
+        grid-template-rows   : 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+
+    .loop((@i - 1));
+}
