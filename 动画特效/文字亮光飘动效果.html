@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字亮光飘动效果</title>
+    <style>
+        body {}
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            margin: 50px;
+            padding: 20px;
+            /* width: fit-content; */
+            font-size: 100px;
+            text-align: center;
+            background: linear-gradient(90deg, currentColor 0%, currentColor 40%, rgba(0, 218, 15, 0.9) 50%, currentColor 60%, currentColor 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: sweep-shine 3s linear infinite;
+        }
+
+        @keyframes sweep-shine {
+            0% {
+                background-position: 200% 0
+            }
+
+            to {
+                background-position: -200% 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>文字亮光飘动效果</h1>
+    <hr>
+
+    <h1 class="box">
+        文字亮光飘动效果文字亮光飘动效果
+    </h1>
+</body>
+
+</html>
