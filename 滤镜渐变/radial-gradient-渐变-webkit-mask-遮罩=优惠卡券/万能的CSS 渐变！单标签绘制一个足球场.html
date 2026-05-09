@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>万能的CSS 渐变！单标签绘制一个足球场</title>
+  <style>
+    h1 {
+      text-align: center;
+    }
+
+    /*
+    万能的CSS 渐变！单标签绘制一个足球场：https://mp.weixin.qq.com/s/RXgjADgzP9iJciYvrflKwA
+
+    足球场的构造：
+      1.整体是矩形，边线和底线，长度是 109~131码（90~120m），宽度是 49-98码（45~90m）
+      2.中线，贯穿球场
+      3.开球点，位于中线的中心
+      4.中圈，以开球点为圆形，半径为 10码（9.15m）圆
+      5.罚球区（大禁区），长度是44码（40.3m），宽度是18码（16.5m）
+      6.球门区（小禁区），长度是20码（18.3m），宽度是6码（5.5m）
+      7.球门，长度是8码（7.32m）
+      8.罚球点（点球点），距离球门12码（11m）
+      9.罚球弧（禁区弧），以罚球点为圆心，半径为 10码（9.15m）的圆弧
+      10.角球区，以4个角为圆心，半径为 1m的 1/4 圆弧
+
+      注：现代足球运动起源于【英国】，当时英制的长度单位是“码”，1码等于0.9144米，约0.915米。 那么，英制长度10码换算成公制长度就是9.15米。 这就是9.15米的来源。
+    */
+    .filed {
+      font-size: 10px; /*整体大小*/
+      margin: 50px auto;
+      width: 115em;
+      height: 74em;
+      --中线: linear-gradient(#fff, #fff) center/2px 100% no-repeat;
+      --中圈: radial-gradient(closest-side circle, #fff 2px, transparent 0 calc(100% - 2px), #fff 0 100%, transparent 0) center/20em 20em no-repeat;
+      --大禁区: linear-gradient(to right, #43A63C calc(18em - 2px), transparent 0) 0 center/calc(100% - 18em + 2px) calc(44em - 4px) repeat-x, linear-gradient(to right, #fff 18em, transparent 0) 0 center/calc(100% - 18em) 44em repeat-x;
+      --小禁区: linear-gradient(to right, #43A63C calc(6em - 2px), transparent 0) 0 center/calc(100% - 6em + 2px) calc(20em - 4px) repeat-x, linear-gradient(to right, #fff 6em, transparent 0) 0 center/calc(100% - 6em) 20em repeat-x;
+      --球门: linear-gradient(to right, #43A63C calc(3em - 4px), transparent 0) calc(-3em + 2px) center/calc(100% + 3em) calc(8em - 4px) repeat-x, linear-gradient(to right, #fff 3em, transparent 0) -3em center/calc(100% + 3em) 8em repeat-x;
+      --罚球弧: radial-gradient(circle at 12em center, transparent calc(10em - 2px), #fff 0 10em, transparent 0) 0 center/calc(100% - 24em) 100%;
+      --罚球点: radial-gradient(circle at 12em center, #fff 2px, transparent 0) 0 center/calc(100% - 24em) 100%;
+      --角球弧: radial-gradient(circle at 1em 1em, transparent calc(1em - 2px), #fff 0 1em, transparent 0) -1em -1em/100% 100% content-box;
+      --草坪: linear-gradient(90deg, transparent 50%, rgba(0, 0, 0, .5) 0% 100%) center/10% 100%;
+      background:
+        var(--草坪),
+        var(--角球弧),
+        var(--罚球点),
+        var(--球门),
+        var(--小禁区),
+        var(--大禁区),
+        var(--罚球弧),
+        var(--中线),
+        var(--中圈),
+        #43A63C;
+      background-blend-mode: soft-light, normal, normal, normal, normal, normal, normal, normal, normal, normal, normal, normal;
+      border: 5em solid transparent;
+      outline: 2px solid #fff;
+      outline-offset: -5em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>万能的CSS 渐变！单标签绘制一个足球场</h1>
+  <hr />
+  <div class="filed"></div>
+</body>
+
+</html>
