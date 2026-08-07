@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>边框线流动效果</title>
+	<style>
+		body {
+			color: #fff;
+			background: #000;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		.box {
+			position: relative;
+			width: 619px;
+			height: 130px;
+			line-height: 130px;
+			text-align: center;
+			-webkit-backdrop-filter: blur(15px);
+			backdrop-filter: blur(15px);
+
+			&:after,
+			&:before {
+				content: "";
+				position: absolute;
+				opacity: 1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 12px;
+				background: radial-gradient(ellipse 120px 120px, #00d3ff, transparent);
+				background-repeat: no-repeat;
+				background-size: 280px 280px;
+				animation: border-flow 8s linear infinite;
+				-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+				padding: 1px;
+				pointer-events: none;
+				transition: border-radius .3s, background-color .3s, border .3s, opacity .3s;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				opacity: 1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 12px;
+				background: radial-gradient(ellipse 120px 120px, #00d3ff, transparent);
+				background-repeat: no-repeat;
+				background-size: 280px 280px;
+
+				transform: rotate(180deg);
+				animation: border-flow 8s linear infinite;
+				-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+				padding: 1px;
+				pointer-events: none;
+				transition: border-radius .3s, background-color .3s, border .3s, opacity .3s
+			}
+		}
+
+		@keyframes border-flow {
+			0% {
+				background-position: -140px 0
+			}
+
+			40% {
+				background-position: calc(100% + 140px) 0
+			}
+
+			50% {
+				background-position: calc(100% + 140px) 100%
+			}
+
+			90% {
+				background-position: -140px 100%
+			}
+
+			to {
+				background-position: -140px 0
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>边框线流动效果</h1>
+	<hr />
+	<div class="box">
+		<h3>DIV盒子边框线流动效果1</h3>
+	</div>
+
+</body>
+
+</html>
