@@ -59,11 +59,15 @@
 			-moz-transform: scale(1);
 			transform: scale(1);
 		}
-
+		
+		label:has(> input[type="radio"]:disabled),
+		label:has(> input[type="checkbox"]:disabled),
 		input[type="radio"]:disabled,
 		input[type="checkbox"]:disabled::after {
 			border-color: #aaa;
 			cursor: no-drop;
+			color: #aaa;
+
 		}
 
 

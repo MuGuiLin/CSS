@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mask列表淡入淡出沈渐变</title>
+  <style>
+    body {
+      background-color: #000b22;
+      padding: 100px;
+    }
+
+    ul {
+      max-height: 240px;
+      overflow-y: auto;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: #fff;
+
+      -webkit-mask-image: linear-gradient(to bottom,
+          transparent 0%,
+          black 12%,
+          black 88%,
+          transparent 100%);
+      mask-image: linear-gradient(to bottom,
+          transparent 0%,
+          black 12%,
+          black 88%,
+          transparent 100%);
+
+      li {
+        padding: 20px;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+  </ul>
+</body>
+
+</html>
