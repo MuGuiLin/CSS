@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网格卡片自适应布局</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .grid {
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /*让每一列grid的宽度最小是300px(因为图片宽为300px)，最大平分剩余空间（1fr）*/
+            gap: 10px;
+
+            .card {
+                list-style: none;
+                border: 1px solid gray;
+
+                img {
+                    width: 100%;
+                    aspect-ratio: 3 / 2; /* 保证图片以3:2的比例(因为图片宽高为300px/200px)进行缩放显示 */
+                    object-fit: cover;
+                }
+
+                p {
+                    padding: 10px;
+                }
+
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>网格卡片自适应布局</h1>
+    <hr>
+    <ul class="grid">
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=1" alt="photos" />
+            <p>
+                1
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=2" alt="photos" />
+            <p>
+                2
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=3" alt="photos" />
+            <p>
+                3
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=4" alt="photos" />
+            <p>
+                4
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=5" alt="photos" />
+            <p>
+                5
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=6" alt="photos" />
+            <p>
+                6
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=7" alt="photos" />
+            <p>
+                7
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=8" alt="photos" />
+            <p>
+                8
+            </p>
+        </li>
+        <li class="card">
+            <img src="https://picsum.photos/300/200?random=9" alt="photos" />
+            <p>
+                9
+            </p>
+        </li>
+    </ul>
+</body>
+
+</html>
