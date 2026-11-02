@@ -13,7 +13,8 @@
         .grid {
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /*让每一列grid的宽度最小是300px(因为图片宽为300px)，最大平分剩余空间（1fr）*/
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            /*让每一列grid的宽度最小是300px(因为图片宽为300px)，最大平分剩余空间（1fr）*/
             gap: 10px;
 
             .card {
@@ -22,15 +23,17 @@
                 overflow: hidden;
 
                 img {
-                    width: 100%; 
+                    width: 100%;
                     /*aspect-ratio: 1; /* 1就是使图片保持宽度和高度都一样（1:1正方形）的比例缩放显示 */
-                    aspect-ratio: 3 / 2; /* 使图片保持以3:2的比例(因为图片宽高为300px/200px)进行缩放显示 */
+                    aspect-ratio: 3 / 2;
+                    /* 使图片保持以3:2的比例(因为图片宽高为300px/200px)进行缩放显示 */
                     object-fit: cover;
                     border-bottom: 1px solid gray;
                     transition: transform 0.3s ease-in-out;
-                    
+
                     &:hover {
-                        transform: scale(1.1); /* 鼠标悬停时，图片缩放1.1倍 */
+                        transform: scale(1.1);
+                        /* 鼠标悬停时，图片缩放1.1倍 */
                     }
                 }
 
@@ -43,12 +46,19 @@
                 }
             }
         }
+
+        label:has(input[required]):before {
+            content: "*";
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <h1>网格卡片自适应布局</h1>
     <hr>
+    
     <ul class="grid">
         <li class="card">
             <img src="https://picsum.photos/300/200?random=1" alt="photos" />
