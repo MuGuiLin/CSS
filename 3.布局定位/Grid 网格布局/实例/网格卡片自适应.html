@@ -19,11 +19,18 @@
             .card {
                 list-style: none;
                 border: 1px solid gray;
+                overflow: hidden;
 
                 img {
                     width: 100%;
                     aspect-ratio: 3 / 2; /* 保证图片以3:2的比例(因为图片宽高为300px/200px)进行缩放显示 */
                     object-fit: cover;
+                    border-bottom: 1px solid gray;
+                    transition: transform 0.3s ease-in-out;
+                    
+                    &:hover {
+                        transform: scale(1.1); /* 鼠标悬停时，图片缩放1.1倍 */
+                    }
                 }
 
                 p {
@@ -45,55 +52,55 @@
         <li class="card">
             <img src="https://picsum.photos/300/200?random=1" alt="photos" />
             <p>
-                1
+                1-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=2" alt="photos" />
             <p>
-                2
+                2-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=3" alt="photos" />
             <p>
-                3
+                3-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=4" alt="photos" />
             <p>
-                4
+                4-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=5" alt="photos" />
             <p>
-                5
+                5-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=6" alt="photos" />
             <p>
-                6
+                6-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=7" alt="photos" />
             <p>
-                7
+                7-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=8" alt="photos" />
             <p>
-                8
+                8-图片等比例缩放描述
             </p>
         </li>
         <li class="card">
             <img src="https://picsum.photos/300/200?random=9" alt="photos" />
             <p>
-                9
+                9-图片等比例缩放描述
             </p>
         </li>
     </ul>
