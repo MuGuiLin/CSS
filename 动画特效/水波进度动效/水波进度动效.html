@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>水波进度动效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .box {
+            position: relative;
+            margin: 50px auto;
+            width: 200px;
+            height: 400px;
+            background: #061E35;
+            border-radius: 4px;
+        }
+
+        /* 进度条外框容器 */
+        .progress {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid #1E557B;
+            overflow: hidden;
+            /* 核心：裁切掉圆溢出的部分 */
+            transition: height 0.6s ease;
+        }
+
+        /* 显示文字 */
+        .progress::after {
+            content: attr(data-bar);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        /* 水波圆 */
+        .progress::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -120px;
+            width: 400px;
+            height: 400px;
+            border-radius: 35%;
+            /* 使用不规则圆，旋转起来波浪起伏更自然 */
+            background: linear-gradient(90deg, #337FEB 0%, #10D2ED 100%);
+
+            z-index: 1;
+            /* 执行旋转动画 */
+            animation: sweep-shine 3s linear infinite;
+        }
+
+        /* 关键帧动画：必须在旋转的同时，把原本定位的 translate 带上 */
+        @keyframes sweep-shine {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform:  rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>水波进度动效</h1>
+    <hr>
+    <div class="box">
+        <!-- 改变 style="--progress" 的值即可看到水位上下浮动，波浪翻滚 -->
+        <div class="progress" data-bar="50%" style="--progress: 50%;"></div>
+    </div>
+</body>
+
+</html>

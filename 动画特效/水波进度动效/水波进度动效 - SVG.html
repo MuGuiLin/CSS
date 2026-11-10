@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自然水波进度</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b1622;
+            color: #eaf2f8;
+            font-family: system-ui, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 32px 0 8px;
+            font-weight: 600;
+        }
+
+        .box {
+            position: relative;
+            margin: 32px auto;
+            width: 220px;
+            height: 420px;
+            background: #061E35;
+            border: 1px solid #12395c;
+            border-radius: 14px;
+            overflow: hidden;
+            /* 圆角裁切 */
+        }
+
+        /* 水体：高度 = 进度 */
+        .water {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: var(--progress, 0%);
+            background: linear-gradient(180deg, #1fb6d8 0%, #1668c7 60%, #0f4c9c 100%);
+            /* 逐帧驱动时过渡要短，避免拖影 */
+            transition: height .12s linear;
+        }
+
+        /* 波面：贴在 .water 顶部，向上溢出 */
+        .wave {
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 200%;
+            height: 26px;
+            /* 2 倍宽，平移 50% 正好一个循环 */
+            background-repeat: repeat-x;
+            background-size: 50% 100%;
+            /* 一张波形占一半 */
+        }
+
+        .wave.back {
+            opacity: .55;
+            animation: flow 7s linear infinite;
+        }
+
+        .wave.front {
+            opacity: .95;
+            animation: flow 4.2s linear infinite reverse;
+            /* 反向，层次更活 */
+        }
+
+        @keyframes flow {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 正弦波形，用 data-uri 内联，颜色与水体顶部一致 */
+        .wave.back {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 26' preserveAspectRatio='none'><path d='M0 14 Q25 0 50 14 T100 14 T150 14 T200 14 L200 26 L0 26 Z' fill='%231fb6d8'/></svg>");
+        }
+
+        .wave.front {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 26' preserveAspectRatio='none'><path d='M0 16 Q25 4 50 16 T100 16 T150 16 T200 16 L200 26 L0 26 Z' fill='%231fb6d8'/></svg>");
+        }
+
+        /* 高光，让水面有反光 */
+        .water::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, .18) 50%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+            z-index: 3;
+        }
+
+        .btns {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin: 0 6px;
+            cursor: pointer;
+            background: #12395c;
+            color: #eaf2f8;
+            border: 1px solid #1e557b;
+            border-radius: 8px;
+        }
+
+        button:hover {
+            background: #1a4d78;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>水波进度</h1>
+
+    <div class="box">
+        <div class="water" id="water">
+            <div class="wave back"></div>
+            <div class="wave front"></div>
+        </div>
+        <div class="label" id="label">0%</div>
+    </div>
+
+    <div class="btns">
+        <button onclick="run(0,100,6000)">0 → 100</button>
+        <button onclick="run(100,0,2500)">放空</button>
+        <button onclick="run(0,73,3000)">到 73%</button>
+    </div>
+
+    <script>
+        const water = document.getElementById('water');
+        const label = document.getElementById('label');
+        let raf = null;
+
+        function setProgress(v) {
+            v = Math.max(0, Math.min(100, v));
+            // 0% 时给 0 高度即可，波面会自然贴在最底部
+            water.style.setProperty('--progress', v + '%');
+            label.textContent = Math.round(v) + '%';
+        }
+
+        function run(from, to, duration) {
+            cancelAnimationFrame(raf);
+            const t0 = performance.now();
+            const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; // easeInOutCubic
+
+            (function frame(now) {
+                const t = Math.min((now - t0) / duration, 1);
+                setProgress(from + (to - from) * ease(t));
+                if (t < 1) raf = requestAnimationFrame(frame);
+            })(t0);
+        }
+
+        run(0, 100, 6000);   // 打开自动演示
+    </script>
+</body>
+
+</html>
