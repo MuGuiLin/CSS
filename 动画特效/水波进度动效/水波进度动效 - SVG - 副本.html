@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SVG clipPath 圆弧水波动画</title>
+    <style>
+        :root {
+            --tank-w: min(420px, 86vw);
+            --tank-h: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #0a1626;
+            font: 14px/1.6 system-ui, -apple-system, "PingFang SC", sans-serif;
+            color: #cfe6ff;
+        }
+
+        /* ===== 容器 ===== */
+        .tank {
+            position: relative;
+            width: var(--tank-w);
+            height: var(--tank-h);
+            border-radius: 20px;
+            overflow: hidden;
+            /* 关键：裁掉 200% 宽水层溢出的部分 */
+            background: linear-gradient(180deg, #0d2138, #123257);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+        }
+
+        /* ===== 水层：宽 200% = 两个完整周期 ===== */
+        .waveLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            clip-path: url(#waveWide);
+            -webkit-clip-path: url(#waveWide);
+            transform: translateZ(0);
+            /* 提升为合成层，减少裁剪抖动 */
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        .w1 {
+            background: rgba(64, 158, 255, .55);
+            animation: flow 8s linear infinite;
+        }
+
+        .w2 {
+            background: rgba(140, 210, 255, .30);
+            animation: flow 13s linear infinite reverse;
+            /* 反向 → 相位干涉更自然 */
+        }
+
+        .w3 {
+            background: rgba(255, 255, 255, .10);
+            animation: flow 20s linear infinite;
+        }
+
+        /* 平移 -50%（200% 宽度的一半）= 正好一个周期 → 无缝循环 */
+        @keyframes flow {
+            from {
+                transform: translateX(0) translateZ(0);
+            }
+
+            to {
+                transform: translateX(-50%) translateZ(0);
+            }
+        }
+
+        /* ===== 纵向“呼吸”，让水不只是平移 ===== */
+        .bobber {
+            position: absolute;
+            inset: 0;
+            animation: bob 3.4s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        @keyframes bob {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(5px);
+            }
+        }
+
+        /* ===== 前景文字 ===== */
+        .label {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 14px;
+            text-align: center;
+            letter-spacing: .08em;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+            z-index: 2;
+        }
+
+        /* ===== 降级：不支持 clip-path: url() 时退化为圆角色块 ===== */
+        @supports not (clip-path: url(#waveWide)) {
+            .waveLayer {
+                clip-path: none;
+                width: 100%;
+                top: auto;
+                bottom: -40%;
+                height: 120%;
+                border-radius: 45%;
+                animation: spin 10s linear infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
+        /* 尊重系统“减少动态效果” */
+        @media (prefers-reduced-motion: reduce) {
+
+            .waveLayer,
+            .bobber {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== 波形定义：必须留在渲染树里，不能用 display:none ===== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <!--
+        clipPathUnits="objectBoundingBox" → 坐标为 0~1 相对值，天然响应式
+        横向铺到 x=2，即两个完整周期，配合 translateX(-50%) 无缝
+        Q  = 二次贝塞尔（圆弧感来源）
+        T  = 平滑延续上一个 Q，省写控制点
+        基准 y=0.55 为水位；Q 控制点 y=0.45 与基准差 0.10 即振幅
+      -->
+            <clipPath id="waveWide" clipPathUnits="objectBoundingBox">
+                <path d="M0,0.55
+                 Q0.125,0.45 0.25,0.55
+                 T0.50,0.55
+                 T0.75,0.55
+                 T1.00,0.55
+                 T1.25,0.55
+                 T1.50,0.55
+                 T1.75,0.55
+                 T2.00,0.55
+                 L2,1 L0,1 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="tank">
+        <div class="bobber">
+            <div class="waveLayer w3"></div>
+            <div class="waveLayer w2"></div>
+            <div class="waveLayer w1"></div>
+        </div>
+        <div class="label">水位 55% · 振幅 0.10 · 双层错速</div>
+    </div>
+
+</body>
+
+</html>
