@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>radial-gradient 完整示例</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f6f8; padding: 24px; color: #333;
+    }
+    h1 { font-size: 22px; margin-bottom: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card { border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .demo { height: 160px; }
+    .label { padding: 10px 12px; font-size: 13px; line-height: 1.6; color: #666; }
+    .label code { display: block; font-size: 12px; color: #d6336c; word-break: break-all; }
+
+    /* 1. 最简写法：默认 ellipse + farthest-corner + center */
+    .d1 { background: radial-gradient(red, yellow, green); }
+    /* 2. 指定色标位置（不均匀分布） */
+    .d2 { background: radial-gradient(red 5%, yellow 15%, green 60%); }
+    /* 3. 圆形 */
+    .d3 { background: radial-gradient(circle, red, yellow, green); }
+    /* 4. 改变中心位置 */
+    .d4 { background: radial-gradient(circle at 20% 30%, #ff9a9e, #fad0c4, #fbc2eb); }
+    /* 5. size 关键字对比：closest-side */
+    .d5 { background: radial-gradient(closest-side at 60% 55%, red, yellow, black); }
+    /* 6. size 关键字对比：farthest-side */
+    .d6 { background: radial-gradient(farthest-side at 60% 55%, red, yellow, black); }
+    /* 7. 显式尺寸：circle 用单个长度（半径） */
+    .d7 { background: radial-gradient(circle 60px at center, #fff, #4a90d9); }
+    /* 8. 显式尺寸：ellipse 用两个值（水平半径 垂直半径） */
+    .d8 { background: radial-gradient(120px 60px at center, #fff, #7b4397); }
+    /* 9. 重复径向渐变（同心圆纹理） */
+    .d9 { background: repeating-radial-gradient(red, yellow 10%, green 15%); }
+    /* 10. 透明光晕（按钮/卡片常用） */
+    .d10 {
+      background: radial-gradient(circle at center, rgba(255,255,255,.9), rgba(255,255,255,0) 70%), #2c3e50;
+      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;
+    }
+    /* 11. 多层径向渐变叠加（星空/光斑） */
+    .d11 {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.8), transparent 12%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,.6), transparent 10%),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,.7), transparent 8%),
+        linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    }
+    /* 12. 色彩空间插值 */
+    .d12 { background: radial-gradient(circle in oklab, #00f, #f00); }
+  </style>
+</head>
+<body>
+  <h1>radial-gradient()径向渐变函数</h1>
+  <hr>
+  <p>
+    radial-gradient() 是径向渐变函数，颜色从中心点向外辐射过渡，形状为圆形或椭圆。<br>
+    语法：radial-gradient([ shape-形状 | angle-角度 | side-侧向 | corner-角向 ]?, color-stop-list-颜色标列表)
+    <br>
+    shape-形状：可选，指定渐变的形状，可选值为 circle 或 ellipse。默认值为 ellipse。<br>
+    angle-角度：可选，指定渐变的角度，可选值为 0 到 360 度。默认值为 0 度。<br>
+    side-侧向：可选，指定渐变的侧向，可选值为 closest-side 或 farthest-side。默认值为 farthest-side。<br>
+    corner-角向：可选，指定渐变的角向，可选值为 closest-corner 或 farthest-corner。默认值为 farthest-corner。<br>
+    color-stop-list-颜色标列表：颜色标列表，每个颜色标由颜色值和可选的百分比组成。<br>
+     </p>
+  <div class="grid">
+    <div class="card"><div class="demo d1"></div><div class="label">1. 最简写法<code>radial-gradient(red, yellow, green)</code></div></div>
+    <div class="card"><div class="demo d2"></div><div class="label">2. 自定义色标位置<code>red 5%, yellow 15%, green 60%</code></div></div>
+    <div class="card"><div class="demo d3"></div><div class="label">3. 圆形<code>circle</code></div></div>
+    <div class="card"><div class="demo d4"></div><div class="label">4. 指定中心<code>at 20% 30%</code></div></div>
+    <div class="card"><div class="demo d5"></div><div class="label">5. closest-side<code>closest-side at 60% 55%</code></div></div>
+    <div class="card"><div class="demo d6"></div><div class="label">6. farthest-side<code>farthest-side at 60% 55%</code></div></div>
+    <div class="card"><div class="demo d7"></div><div class="label">7. circle 显式半径<code>circle 60px</code></div></div>
+    <div class="card"><div class="demo d8"></div><div class="label">8. ellipse 显式尺寸<code>120px 60px</code></div></div>
+    <div class="card"><div class="demo d9"></div><div class="label">9. 重复渐变<code>repeating-radial-gradient</code></div></div>
+    <div class="card"><div class="demo d10">光晕效果</div><div class="label">10. 透明光晕<code>rgba → transparent</code></div></div>
+    <div class="card"><div class="

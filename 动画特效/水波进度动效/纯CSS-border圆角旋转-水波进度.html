@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS-旋转的圆角-水波进度</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            background: #f4f6f8;
+            font-family: system-ui, sans-serif;
+        }
+
+        input[name="p"] { display: none; }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 300px;
+            background: #111e30;
+            border-radius: 12px;
+        }
+
+        .wave-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            overflow: hidden;
+            /* 底层直接放完整的水体渐变色 */
+            background: linear-gradient(180deg, #10D2ED 0%, #337FEB 100%);
+        }
+
+        .card-text {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+        .card-text::after { content: var(--text, "50%"); }
+
+        /* 用两个旋转的圆角大方块遮住上半部分，下方露出的就是波浪 */
+        .wave-box::before,
+        .wave-box::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            /* 根据进度向上抬升遮罩层 */
+            bottom: var(--percent, 50%);
+            width: 380px;
+            height: 380px;
+            transition: bottom 0.6s ease;
+        }
+
+        /* 后层半透明波浪（稍微露出一点水体边缘形成层次感） */
+        .wave-box::before {
+            background: rgba(17, 30, 48, 0.55);
+            border-radius: 36%;
+            animation: spin 5s linear infinite;
+        }
+
+        /* 前层主遮罩（与卡片背景同色 #111e30） */
+        .wave-box::after {
+            background: #111e30;
+            border-radius: 40%;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, 0) rotate(0deg); }
+            to   { transform: translate(-50%, 0) rotate(360deg); }
+        }
+
+        /* 进度状态控制 */
+        #p0:checked   ~ .card { --percent: -5%;  --text: "0%"; }
+        #p25:checked  ~ .card { --percent: 25%;  --text: "25%"; }
+        #p50:checked  ~ .card { --percent: 50%;  --text: "50%"; }
+        #p75:checked  ~ .card { --percent: 75%;  --text: "75%"; }
+        #p100:checked ~ .card { --percent: 105%; --text: "100%"; }
+
+        /* 100% 时隐藏遮罩，水体完全平整 */
+        #p100:checked ~ .card .wave-box::before,
+        #p100:checked ~ .card .wave-box::after {
+            opacity: 0;
+        }
+
+        .controls { margin-top: 20px; display: flex; gap: 8px; }
+        .controls label {
+            padding: 6px 12px;
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #p0:checked   ~ .controls label[for="p0"],
+        #p25:checked  ~ .controls label[for="p25"],
+        #p50:checked  ~ .controls label[for="p50"],
+        #p75:checked  ~ .controls label[for="p75"],
+        #p100:checked ~ .controls label[for="p100"] {
+            background: #337FEB;
+            color: #fff;
+            border-color: #337FEB;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>纯CSS-旋转的圆角-水波进度</h1>
+    <hr>
+    <input type="radio" name="p" id="p0">
+    <input type="radio" name="p" id="p25">
+    <input type="radio" name="p" id="p50" checked>
+    <input type="radio" name="p" id="p75">
+    <input type="radio" name="p" id="p100">
+
+    <div class="card">
+        <div class="wave-box">
+            <div class="card-text"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="p0">0%</label>
+        <label for="p25">25%</label>
+        <label for="p50">50%</label>
+        <label for="p75">75%</label>
+        <label for="p100">100%</label>
+    </div>
+</body>
+
+</html>

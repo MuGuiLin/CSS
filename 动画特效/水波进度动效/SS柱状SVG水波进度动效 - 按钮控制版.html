@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS柱状SVG水波进度动效 - 按钮控制版</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        /* 隐藏用于纯CSS交互的 radio */
+        input[name="progress"] {
+            display: none;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 300px;
+            background: #111e30;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(17, 30, 48, 0.3);
+        }
+
+        .wave-box {
+            position: relative;
+            width: 180px;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            overflow: hidden;
+            /* 使用 Flexbox 让内部文字自动居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-text {
+            position: relative;
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            z-index: 2; /* 确保文字浮于水波之上 */
+            pointer-events: none;
+        }
+
+        .card-text::after {
+            content: var(--text, "50%");
+        }
+
+        /* 后层波浪 */
+        .wave-box::before,
+        .wave-box::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: calc(var(--percent, 50%) - 105%);
+            width: 200%;
+            height: 110%;
+            -webkit-clip-path: url(#wave-clip);
+            clip-path: url(#wave-clip);
+            transition: bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .wave-box::before {
+            background: rgba(16, 210, 237, 0.35);
+            animation: wave-move 4s linear infinite reverse;
+        }
+
+        /* 前层主波浪（首尾颜色闭合，无缝循环） */
+        .wave-box::after {
+            background: linear-gradient(
+                90deg,
+                #337FEB 0%,
+                #10D2ED 25%,
+                #337FEB 50%,
+                #10D2ED 75%,
+                #337FEB 100%
+            );
+            animation: wave-move 2.5s linear infinite;
+        }
+
+        @keyframes wave-move {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .svg-hidden {
+            position: absolute;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+
+        /* 纯 CSS 状态切换映射 */
+        #p0:checked ~ .card { --percent: 0%; --text: "0%"; }
+        #p25:checked ~ .card { --percent: 25%; --text: "25%"; }
+        #p50:checked ~ .card { --percent: 50%; --text: "50%"; }
+        #p75:checked ~ .card { --percent: 75%; --text: "75%"; }
+        
+        #p100:checked ~ .card { --percent: 100%; --text: "100%"; }
+        #p100:checked ~ .card .wave-box::before {
+            display: none;
+        }
+        #p100:checked ~ .card .wave-box::after {
+            animation: none;
+            -webkit-clip-path: none;
+            clip-path: none;
+            bottom: 0%;
+            height: 100%;
+        }
+
+        /* 按钮组样式 */
+        .controls {
+            margin-top: 24px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .controls label {
+            padding: 6px 14px;
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #111e30;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .controls label:hover {
+            border-color: #337FEB;
+            color: #337FEB;
+        }
+
+        #p0:checked ~ .controls label[for="p0"],
+        #p25:checked ~ .controls label[for="p25"],
+        #p50:checked ~ .controls label[for="p50"],
+        #p75:checked ~ .controls label[for="p75"],
+        #p100:checked ~ .controls label[for="p100"] {
+            background: #337FEB;
+            border-color: #337FEB;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS柱状SVG水波进度动效 - 按钮控制版</h1>
+    <hr>
+    
+    <svg class="svg-hidden" aria-hidden="true">
+        <defs>
+            <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
+                <path d="M0,0.05
+                    Q0.0625,0.09 0.125,0.05
+                    T0.25,0.05
+                    T0.375,0.05
+                    T0.50,0.05
+                    T0.625,0.05
+                    T0.75,0.05
+                    T0.875,0.05
+                    T1.00,0.05
+                    L1,1 L0,1 Z"></path>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- 纯 CSS 状态控制器 -->
+    <input type="radio" name="progress" id="p0">
+    <input type="radio" name="progress" id="p25">
+    <input type="radio" name="progress" id="p50" checked>
+    <input type="radio" name="progress" id="p75">
+    <input type="radio" name="progress" id="p100">
+
+    <!-- 进度卡片主体 -->
+    <div class="card">
+        <div class="wave-box">
+            <!-- 文字已成功移入 wave-box 内部 -->
+            <div class="card-text"></div>
+        </div>
+    </div>
+
+    <!-- 纯 CSS 切换按钮 -->
+    <div class="controls">
+        <label for="p0">0%</label>
+        <label for="p25">25%</label>
+        <label for="p50">50%</label>
+        <label for="p75">75%</label>
+        <label for="p100">100%</label>
+    </div>
+</body>
+
+</html>

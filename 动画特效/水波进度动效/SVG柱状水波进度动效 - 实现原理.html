@@ -33,7 +33,7 @@
             width: 100%;
             height: 280px;
             border: 1px solid #fff;
-            overflow: hidden;
+            /* overflow: hidden; */
 
             &::after {
                 content: "";
@@ -42,13 +42,14 @@
                 /* 两倍宽度，用于无缝滚动波浪形状 */
                 display: block;
                 width: 200%;
-                height: 330px;
-                background: linear-gradient(90deg, #337FEB 0%, #10D2ED 100%, #337FEB 0%);
+                height: 310px;
+                background: linear-gradient(90deg, #337FEB, #10D2ED, #337FEB);
                 transform: translateY(var(--percent, 0%));
+       
                 /* 关键：引用下方定义（利用 clip-path 裁剪）的波浪形状 */
                 -webkit-clip-path: url(#wave-clip);
                 clip-path: url(#wave-clip);
-                animation: wave-move 3s linear infinite;
+                /* animation: wave-move 3s linear infinite; */
             }
 
             &::before {
@@ -58,7 +59,7 @@
                 /* 两倍宽度，用于无缝滚动波浪形状 */
                 display: block;
                 width: 200%;
-                height: 330px;
+                height: 310px;
                 border: 1px solid red;
                 transform: translateY(var(--percent, 0%));
             }
@@ -119,7 +120,7 @@
             <!-- 靠顶部的波浪 -->
             <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
                 <path d="M0,0.05
-                    Q0.125,0.15 0.25,0.05
+                    Q0.125,0.13 0.25,0.05
                     T0.50,0.05
                     T0.75,0.05
                     T1.00,0.05

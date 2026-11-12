@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>linear-gradient 完整示例</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f6f8;
+      padding: 24px;
+      color: #333;
+    }
+    h1 { font-size: 22px; margin-bottom: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .demo { height: 160px; }
+    .label {
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #666;
+      background: #fff;
+    }
+    .label code {
+      display: block;
+      font-size: 12px;
+      color: #d6336c;
+      word-break: break-all;
+    }
+
+    /* 1. 基础方向：关键字 */
+    .d1 { background: linear-gradient(to right, #ff7e5f, #feb47b); }
+    /* 2. 对角方向 */
+    .d2 { background: linear-gradient(to bottom right, #667eea, #764ba2); }
+    /* 3. 角度写法（0deg 向上，90deg 向右，180deg 向下） */
+    .d3 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    /* 4. 多色标 + 指定位置 */
+    .d4 { background: linear-gradient(to right, #ff6b6b 0%, #4ecdc4 25%, #f9ca24 75%, #6c5ce7 100%); }
+    /* 5. 硬边分界（同位置色标 → 无过渡） */
+    .d5 { background: linear-gradient(to right, red 17%, orange 17% 34%, yellow 34% 51%, green 51% 68%, blue 68%); }
+    /* 6. 透明渐变（遮罩淡出） */
+    .d6 {
+      background:
+        linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0)),
+        url('https://picsum.photos/400/200') center/cover;
+    }
+    /* 7. 重复渐变（条纹纹理） */
+    .d7 {
+      background: repeating-linear-gradient(
+        45deg,
+        #666 0 10px,
+        #999 10px 20px
+      );
+    }
+    /* 8. 多层渐变叠加 */
+    .d8 {
+      background:
+        linear-gradient(45deg, rgba(255,0,0,.5), transparent),
+        linear-gradient(-45deg, rgba(0,0,255,.5), transparent),
+        #eee;
+      background-blend-mode: multiply;
+    }
+    /* 9. 色彩空间插值（避免中间发灰） */
+    .d9 { background: linear-gradient(in oklab, #00f, #f00); }
+    /* 10. 渐变文字（配合 background-clip） */
+    .d10 {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>linear-gradient()线性渐变函数</h1>
+  <hr>
+  <p>
+    linear-gradient() 是线性渐变函数，颜色从起点到终点过渡，形状为矩形。<br>
+    语法：linear-gradient([ angle-角度 | to-方向 ]?, color-stop-list-颜色标列表)
+    <br>
+    angle-角度：可选，指定渐变的角度，可选值为 0 到 360 度。默认值为 0 度。<br>
+    to-方向：可选，指定渐变的方向，可选值为 to right、to bottom、to left、to top。<br>
+    color-stop-list-颜色标列表：颜色标列表，每个颜色标由颜色值和可选的百分比组成。<br>
+    </p>
+  <div class="grid">
+    <div class="card"><div class="demo d1"></div><div class="label">1. 关键字方向<code>to right</code></div></div>
+    <div class="card"><div class="demo d2"></div><div class="label">2. 对角方向<code>to bottom right</code></div></div>
+    <div class="card"><div class="demo d3"></div><div class="label">3. 角度写法<code>135deg</code></div></div>
+    <div class="card"><div class="demo d4"></div><div class="label">4. 多色标定位<code>0% / 25% / 75% / 100%</code></div></div>
+    <div class="card"><div class="demo d5"></div><div class="label">5. 硬边分界<code>red 17%, orange 17% 34%</code></div></div>
+    <div class="card"><div class="demo d6"></div><div class="label">6. 透明遮罩<code>rgba → transparent</code></div></div>
+    <div class="card"><div class="demo d7"></div><div class="label">7. 重复渐变<code>repeating-linear-gradient</code></div></div>
+    <div class="card"><div class="demo d8"></div><div class="label">8. 多层叠加<code>background-blend-mode</code></div></div>
+    <div class="card"><div class="demo d9"></div><div class="label">9. 色彩空间插值<code>in oklab</code></div></div>
+    <div class="card"><div class="demo d10">渐变文字</div><div class="label">10. 渐变文字<code>background-clip: text</code></div></div>
+  </div>
+</body>
+</html>

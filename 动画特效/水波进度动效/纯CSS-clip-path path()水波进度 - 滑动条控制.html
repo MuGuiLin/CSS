@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS-clip-path: path()水波进度 - 滑动条控制</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            background: #f4f6f8;
+            font-family: system-ui, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 300px;
+            background: #111e30;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(17, 30, 48, 0.2);
+        }
+
+        .wave-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .card-text {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        .wave-box::before,
+        .wave-box::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            /* 核心：将 range 的 0~100 映射为像素高度 (0px 到 280px) */
+            bottom: calc((var(--val, 50) * 2.8px) - 290px);
+            width: 360px;
+            height: 300px;
+            /* 直接内联像素级波浪路径：每 90px 一个完整波浪，共 4 个周期 */
+            clip-path: path("M0,12 Q22.5,0 45,12 T90,12 T135,12 T180,12 T225,12 T270,12 T315,12 T360,12 L360,300 L0,300 Z");
+            transition: bottom 0.1s linear;
+        }
+
+        /* 后层波浪 */
+        .wave-box::before {
+            background: rgba(16, 210, 237, 0.35);
+            animation: wave 4s linear infinite reverse;
+        }
+
+        /* 前层主波浪 */
+        .wave-box::after {
+            background: linear-gradient(90deg, #337FEB 0%, #10D2ED 25%, #337FEB 50%, #10D2ED 75%, #337FEB 100%);
+            animation: wave 2.5s linear infinite;
+        }
+
+        @keyframes wave {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* 当滑动到 100 时，隐藏波浪裁剪，变成平整满水状态 */
+        .wave-box.is-full::before {
+            display: none;
+        }
+        .wave-box.is-full::after {
+            clip-path: none;
+            animation: none;
+            bottom: 0;
+            height: 100%;
+        }
+
+        /* 滑动条样式 */
+        .controls {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .controls input[type="range"] {
+            width: 180px;
+            accent-color: #337FEB;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>纯CSS-clip-path: path()水波进度 - 滑动条控制</h1>
+    <hr>
+    <div class="card">
+        <!-- 默认传入 --val: 50 (即 50%) -->
+        <div class="wave-box" id="waveBox" style="--val: 50;">
+            <div class="card-text" id="cardText">50%</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="slider">进度：</label>
+        <input type="range" id="slider" min="0" max="100" value="50">
+        <span id="rangeVal" style="font-weight: bold; min-width: 36px;">50%</span>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const waveBox = document.getElementById('waveBox');
+        const cardText = document.getElementById('cardText');
+        const rangeVal = document.getElementById('rangeVal');
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            
+            // 更新 CSS 自定义变量
+            waveBox.style.setProperty('--val', val);
+            cardText.textContent = val + '%';
+            rangeVal.textContent = val + '%';
+
+            // 100% 时切换平整样式，不满 100% 时恢复波浪
+            if (val == 100) {
+                waveBox.classList.add('is-full');
+            } else {
+                waveBox.classList.remove('is-full');
+            }
+        });
+    </script>
+</body>
+
+</html>
