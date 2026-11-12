@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS-border-radius圆角下旋转-水波进度</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            background: #f4f6f8;
+            font-family: system-ui, sans-serif;
+        }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 300px;
+            background: #111e30;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(17, 30, 48, 0.25);
+        }
+
+        .wave-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            overflow: hidden;
+            /* 容器保持透明或深色底，水体从下方升起 */
+            background: transparent;
+        }
+
+        .card-text {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        /* 两个巨大的圆角水体位于容器下方 */
+        .wave-box::before,
+        .wave-box::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            /* 
+             * 水体方块高 420px。
+             * 当 --val 为 0 时，top 为 280px（方块顶边刚好在容器最底端）；
+             * 当 --val 为 100 时，top 为 0px（方块顶边升至容器最顶端）。
+             */
+            top: calc(280px - (var(--val, 50) * 2.8px));
+            width: 420px;
+            height: 420px;
+            transition: top 0.1s linear, border-radius 0.3s ease;
+        }
+
+        /* 后层半透明波浪：反向旋转，营造前后浪花交错感 */
+        .wave-box::before {
+            background: rgba(16, 210, 237, 0.35);
+            border-radius: 43%;
+            animation: spin 6s linear infinite reverse;
+        }
+
+        /* 前层主水体：带有渐变色，正转 */
+        .wave-box::after {
+            background: linear-gradient(180deg, #10D2ED 0%, #337FEB 65%);
+            border-radius: 40%;
+            animation: spin 4.5s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translateX(-50%) rotate3D(0, 0, 1, 0deg); }
+            to   { transform: translateX(-50%) rotate3D(0, 0, 1, 360deg); }
+        }
+
+        /* 进度到达 100% 时：消除圆角并停止旋转，水面彻底抚平 */
+        .wave-box.is-full::before {
+            display: none;
+        }
+        .wave-box.is-full::after {
+            top: 0;
+            border-radius: 0;
+            animation: none;
+            transform: translate(-50%, 0);
+        }
+
+        /* 滑动条样式 */
+        .controls {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .controls input[type="range"] {
+            width: 180px;
+            accent-color: #337FEB;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>纯CSS-border-radius圆角下旋转-水波进度</h1>
+    <hr>
+
+    <div class="card">
+        <div class="wave-box" id="waveBox" style="--val: 50;">
+            <div class="card-text" id="cardText">50%</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="slider">进度：</label>
+        <input type="range" id="slider" min="0" max="100" value="50">
+        <span id="rangeVal" style="font-weight: bold; min-width: 36px;">50%</span>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const waveBox = document.getElementById('waveBox');
+        const cardText = document.getElementById('cardText');
+        const rangeVal = document.getElementById('rangeVal');
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+
+            waveBox.style.setProperty('--val', val);
+            cardText.textContent = val + '%';
+            rangeVal.textContent = val + '%';
+
+            if (val == 100) {
+                waveBox.classList.add('is-full');
+            } else {
+                waveBox.classList.remove('is-full');
+            }
+        });
+    </script>
+</body>
+
+</html>
