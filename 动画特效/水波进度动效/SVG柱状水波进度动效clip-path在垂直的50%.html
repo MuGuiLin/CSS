@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG柱状水波进度动效</title>
+    <style>
+        .card {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            width: 200px;
+            height: 300px;
+            background: #111e30;
+            border-radius: 10px;
+
+        }
+
+        .card-text {
+            position: absolute;
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .wave-box {
+            position: relative;
+            margin: 10px;
+            width: 100%;
+            height: 280px;
+            border: 1px solid #fff;
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                z-index: 1;
+                /* 两倍宽度，用于无缝滚动波浪形状 */
+                display: block;
+                width: 200%;
+                height: 330px;
+                background: linear-gradient(90deg, #337FEB 0%, #10D2ED 100%, #337FEB 0%);
+                transform: translateY(var(--percent, 0%));
+                /* 关键：引用下方定义（利用 clip-path 裁剪）的波浪形状 */
+                -webkit-clip-path: url(#wave-clip);
+                clip-path: url(#wave-clip);
+                /* animation: wave-move 3s linear infinite; */
+            }
+        }
+
+        /* 关键帧动画：循环的向左平移滚动波浪形状 */
+        @keyframes wave-move {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 隐藏 SVG 定义区域 */
+        .svg-hidden {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SVG柱状水波进度动效</h1>
+    <hr>
+    <!-- ★ 关键步骤：在页面中定义波浪路径（必须存在且 id 匹配 wave-clip） -->
+    <svg class="svg-hidden" aria-hidden="true" focusable="false">
+        <defs>
+            <!--
+            clipPathUnits="objectBoundingBox" → 坐标为 0~1 相对值，天然响应式
+            横向铺到 x=2，即两个完整周期，配合 translateX(-50%) 无缝滚动
+            d 属性解释：
+            Q=二次贝塞尔（圆弧感来源）
+            T=平滑延续上一个Q，省写控制点
+            基准 y=0.55 为水位；Q 控制点 y=0.45 与基准差 0.10 即振幅
+            M0,0.55 起点
+            Q0.125,0.45 0.25,0.55 上凸弧
+            T0.50,0.55 下凹弧（自动延续）
+            ...循环至 x=1.0
+            L1,1 L0,1 Z 向下、向左、闭合
+          -->
+            <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
+                <path d="M0,0.55
+                     Q0.125,0.45 0.25,0.55
+                     T0.50,0.55
+                     T0.75,0.55
+                     T1.00,0.55
+                     T1.25,0.55
+                     T1.50,0.55
+                     T1.75,0.55
+                     T2.00,0.55
+                     L2,1 L0,1 Z"></path>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- 进度卡片主体 -->
+    <div class="card">
+        <!-- 居中文字 -->
+        <div class="card-text">50%</div>
+        <!-- 水位层（修改 --percent 可改变水位高度） -->
+        <div class="wave-box" style="--percent: -50%;"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>太极图 - clip-path裁切版</title>
+	<style>
+		h1 {
+			text-align: center;
+		}
+		.taiji {
+			margin: 200px auto;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			position: relative;
+			background: #000;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+		}
+
+		/* 白色右半部分，用 clip-path 裁出 S 形 */
+		.taiji::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: #fff;
+			/*
+      路径说明（200x200 坐标系）：
+      M100,0   - 从顶部中点开始
+      A100,100 0 0,1 100,200 - 沿外圆右半弧画到底部中点
+      A50,50 0 0,0 100,100  - 以下半圆为直径，向左画半圆到中心
+      A50,50 0 0,1 100,0    - 以上半圆为直径，向右画半圆回到起点
+      Z        - 闭合
+    */
+			clip-path: path("M100,0 A100,100 0 0,1 100,200 A50,50 0 0,0 100,100 A50,50 0 0,1 100,0 Z");
+			/* clip-path: path("M100,0 A100,100 0 0,1 100,200 A50,50 0 0,1 100,100 A50,50 0 0,0 100,0 Z"); */
+		}
+
+		/* 上面白色鱼眼 */
+		.eye-white {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: #fff;
+			top: 0;
+			left: 50px;
+			z-index: 1;
+		}
+
+		/* 下面黑色鱼眼 */
+		.eye-black {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: #000;
+			bottom: 0;
+			left: 50px;
+			z-index: 1;
+		}
+
+		/* 鱼眼里的小圆点 */
+		.eye-white::after {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #000;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.eye-black::after {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #fff;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+</head>
+
+<body>
+	<h1>太极图 - clip-path裁切版</h1>
+	<hr>
+	<p>
+		太极图 - clip-path裁切版，利用clip-path属性实现太极图的旋转动画。
+	</p>
+	<div class="taiji">
+		<div class="eye-white"></div>
+		<div class="eye-black"></div>
+	</div>
+</body>
+
+</html>
