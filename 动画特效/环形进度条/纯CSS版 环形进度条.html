@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纯 CSS 环形进度条</title>
+  <style>
+    /* 页面深色背景演示 */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #032541; /* 模拟图中的深蓝背景 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* 1. 注册自定义属性，让 conic-gradient 支持平滑的 CSS 过渡动画 */
+    @property --p {
+      syntax: '<number>';
+      inherits: true;
+      initial-value: 0;
+    }
+
+    /* 2. 环形进度条主容器 */
+    .circle-progress {
+      --p: 79.7;              /* 默认进度百分比 */
+      --size: 160px;          /* 圆环外径 */
+      --thickness: 22px;      /* 圆环粗细 */
+      --track-color: rgba(145, 168, 189, 0.45); /* 未完成轨道的灰蓝色 */
+
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: --p 0.6s ease-out; /* 数值变化时的平滑过渡动画 */
+
+      /* 还原图中从深天蓝到青蓝色的渐变进度 */
+      background: conic-gradient(
+        #0099ff 0%,
+        #00d4ff calc(var(--p) * 1%),
+        var(--track-color) 0
+      );
+
+      /* 3. 核心技巧：使用 mask 镂空中间区域，真正实现“背景透明”，适应任意页面底色 */
+      -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - var(--thickness)),
+        #000 calc(100% - var(--thickness) + 0.5px)
+      );
+      mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - var(--thickness)),
+        #000 calc(100% - var(--thickness) + 0.5px)
+      );
+    }
+
+    /* 4. 中间百分比文字（独立包裹，避免被 mask 裁剪或受影响） */
+    .progress-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .progress-text {
+      position: absolute;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      user-select: none;
+    }
+
+    /* 底部测试交互滑块 */
+    .controls {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 组件结构 -->
+  <div class="progress-wrapper">
+    <div class="circle-progress" id="progressRing" style="--p: 79.7;"></div>
+    <span class="progress-text" id="progressText">79.7%</span>
+  </div>
+
+  <!-- 交互测试控件（实际使用时可删除） -->
+  <div class="controls">
+    <label for="slider">拖动测试进度：</label>
+    <input type="range" id="slider" min="0" max="100" step="0.1" value="79.7">
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const ring = document.getElementById('progressRing');
+    const text = document.getElementById('progressText');
+
+    slider.addEventListener('input', (e) => {
+      const val = e.target.value;
+      ring.style.setProperty('--p', val);
+      text.textContent = `${val}%`;
+    });
+  </script>
+
+</body>
+</html>
