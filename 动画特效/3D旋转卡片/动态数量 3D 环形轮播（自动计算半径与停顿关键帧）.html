@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>动态数量 3D 环形轮播（自动计算半径与停顿关键帧）</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #0b0f19;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: sans-serif;
+            color: #fff;
+        }
+
+        /* 调试控制栏 */
+        .controls {
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            background: #0066cc;
+            color: white;
+            border: 1px solid #00aaff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #0088ff; }
+
+        .stage {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1200px;
+        }
+
+        .ring {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            /* 动画名称和总时长将由 JS 动态赋值 */
+        }
+
+        .item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 120px;
+            height: 60px;
+            margin-left: -60px;
+            margin-top: -30px;
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.25), rgba(0, 80, 200, 0.55));
+            border: 1px solid rgba(0, 200, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            backface-visibility: visible;
+            
+            /* 核心：利用 CSS 变量自动计算每个卡片的角度和半径 */
+            --angle: calc(360deg / var(--total) * var(--i));
+            transform: rotateY(var(--angle)) translateZ(var(--radius, 250px));
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button onclick="renderCarousel(4)">4 个卡片</button>
+        <button onclick="renderCarousel(6)">6 个卡片</button>
+        <button onclick="renderCarousel(9)">9 个卡片</button>
+        <button onclick="renderCarousel(12)">12 个卡片</button>
+    </div>
+
+    <div class="stage">
+        <div class="ring" id="ring"></div>
+    </div>
+
+    <script>
+        // 模拟动态数据源
+        const allServices = [
+            "阿里云", "华为云", "腾讯云", "百度云", 
+            "火山引擎", "天翼云", "移动云", "联通云", 
+            "AWS", "Azure", "Google Cloud", "京东云"
+        ];
+
+        // 用于存放动态生成的 @keyframes 的 style 标签
+        let dynamicStyleSheet = document.createElement('style');
+        document.head.appendChild(dynamicStyleSheet);
+
+        /**
+         * 动态渲染 3D 轮播
+         * @param {number} count 卡片数量
+         * @param {number} moveTime 每次旋转耗时(秒)
+         * @param {number} pauseTime 每次停顿耗时(秒)
+         */
+        function renderCarousel(count, moveTime = 1, pauseTime = 2) {
+            const ring = document.getElementById('ring');
+            const list = allServices.slice(0, count);
+            const total = list.length;
+
+            // 1. 自动计算防重叠的最佳 3D 半径 (卡片宽120px + 留出40px间距 = 160px)
+            const cardSpace = 160; 
+            // 数学公式: r = (边长 / 2) / tan(PI / 边数)，保底半径设为 200px
+            const radius = total > 2 
+                ? Math.max(200, Math.round((cardSpace / 2) / Math.tan(Math.PI / total))) 
+                : 200;
+
+            // 2. 设置父容器 CSS 变量
+            ring.style.setProperty('--total', total);
+            ring.style.setProperty('--radius', `${radius}px`);
+
+            // 3. 渲染 DOM 节点，注入各自的索引 --i
+            ring.innerHTML = list.map((name, index) => `
+                <div class="item" style="--i: ${index};">${name}</div>
+            `).join('');
+
+            // 4. 动态计算并生成严丝合缝的 @keyframes
+            const stepTime = moveTime + pauseTime;      // 单个卡片总耗时 (如 3s)
+            const totalDuration = total * stepTime;     // 整圈总耗时
+            const degPerStep = 360 / total;             // 每次旋转角度
+
+            let keyframesCSS = `@keyframes dynamicRotate {\n`;
+            keyframesCSS += `  0% { transform: rotateY(0deg); }\n`;
+
+            for (let i = 1; i <= total; i++) {
+                // 当前步骤结束旋转的时间点（秒 -> 百分比）
+                const moveEndPercent = (((i - 1) * stepTime + moveTime) / totalDuration * 100).toFixed(4);
+                // 当前步骤结束停顿的时间点（秒 -> 百分比）
+                const pauseEndPercent = ((i * stepTime) / totalDuration * 100).toFixed(4);
+                const targetDeg = -(degPerStep * i);
+
+                keyframesCSS += `  ${moveEndPercent}% { transform: rotateY(${targetDeg}deg); }\n`;
+                keyframesCSS += `  ${pauseEndPercent}% { transform: rotateY(${targetDeg}deg); }\n`;
+            }
+            keyframesCSS += `}`;
+
+            // 5. 注入样式并重置动画以防切换数量时卡顿
+            dynamicStyleSheet.innerHTML = keyframesCSS;
+            ring.style.animation = 'none';
+            ring.offsetHeight; // 触发浏览器重绘 (Reflow)
+            ring.style.animation = `dynamicRotate ${totalDuration}s infinite linear`;
+        }
+
+        // 默认初始化 6 个卡片
+        renderCarousel(6);
+    </script>
+</body>
+</html>
