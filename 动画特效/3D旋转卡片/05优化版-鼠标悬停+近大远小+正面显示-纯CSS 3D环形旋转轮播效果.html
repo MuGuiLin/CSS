@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS 3D环形轮播（卡片始终正对屏幕 + 背面可见 + 近大远小）</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #0b0f19;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: sans-serif;
+
+            --total: 7;
+            --duration: 18s;
+            --radius: 300px;
+            --tilt: -18deg; /* 轨道俯视倾角 */
+        }
+
+        .stage {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 900px; /* 景深：让近大远小的对比更明显 */
+        }
+
+        /* 1. 轨道大环：负责整体俯仰倾斜 + 绕 Y 轴公转 */
+        .ring {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: orbitRing var(--duration) linear infinite;
+        }
+
+        .stage:hover .ring,
+        .stage:hover .item {
+            animation-play-state: paused;
+        }
+
+        /* 2. 轨道上的定位锚点：
+           先旋转到对应角度 -> 推出半径距离 -> 立刻反向旋转回相同角度，使锚点初始朝向正前方
+        */
+        .item-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0;
+            height: 0;
+            transform-style: preserve-3d;
+
+            --angle: calc(360deg / var(--total) * var(--i));
+            transform: rotateY(var(--angle)) translateZ(var(--radius)) rotateY(calc(-1 * var(--angle)));
+        }
+
+        /* 3. 卡片本体：
+           实时抵消大环的 Y 轴公转（反向旋转）和 X 轴倾角，保证在任何位置都绝对正对屏幕
+        */
+        .item {
+            position: absolute;
+            left: -60px;
+            top: -30px;
+            width: 120px;
+            height: 60px;
+
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.35), rgba(0, 80, 200, 0.75));
+            border: 1px solid rgba(0, 200, 255, 0.75);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.45);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+
+            animation: keepFront var(--duration) linear infinite;
+            transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+
+        .item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.95);
+            background: linear-gradient(135deg, rgba(0, 180, 255, 0.6), rgba(0, 100, 240, 0.9));
+        }
+
+        .item-wrapper:nth-child(1) { --i: 0; }
+        .item-wrapper:nth-child(2) { --i: 1; }
+        .item-wrapper:nth-child(3) { --i: 2; }
+        .item-wrapper:nth-child(4) { --i: 3; }
+        .item-wrapper:nth-child(5) { --i: 4; }
+        .item-wrapper:nth-child(6) { --i: 5; }
+        .item-wrapper:nth-child(7) { --i: 6; }
+
+        /* 大环动画：先俯仰，再绕自身 Y 轴旋转 */
+        @keyframes orbitRing {
+            from {
+                transform: rotateX(var(--tilt)) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(var(--tilt)) rotateY(360deg);
+            }
+        }
+
+        /* 卡片反向抵消动画（注意变换顺序与父级严格相反）：
+           大环是 rotateX(tilt) * rotateY(θ)
+           卡片就必须是 rotateY(-θ) * rotateX(-tilt)，两者相乘才能完全抵消为单位矩阵！
+        */
+        @keyframes keepFront {
+            from {
+                transform: rotateY(0deg) rotateX(calc(-1 * var(--tilt)));
+            }
+            to {
+                transform: rotateY(-360deg) rotateX(calc(-1 * var(--tilt)));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <div class="ring">
+            <div class="item-wrapper"><div class="item">阿里云</div></div>
+            <div class="item-wrapper"><div class="item">华为云</div></div>
+            <div class="item-wrapper"><div class="item">腾讯云</div></div>
+            <div class="item-wrapper"><div class="item">百度云</div></div>
+            <div class="item-wrapper"><div class="item">火山引擎</div></div>
+            <div class="item-wrapper"><div class="item">天翼云</div></div>
+            <div class="item-wrapper"><div class="item">番茄云</div></div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS 3D环形轮播效果（优化版）</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle at center, #162238 0%, #0b0f19 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .stage {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .ring {
+            /* 定义总数量变量，方便后续扩展 */
+            --total: 7; 
+            --radius: 250px;
+            
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotateRing 18s linear infinite;
+        }
+
+        /* 鼠标悬停时暂停旋转，方便查看 */
+        .stage:hover .ring {
+            animation-play-state: paused;
+        }
+
+        .item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 120px;
+            height: 60px;
+            margin-left: -60px;
+            margin-top: -30px;
+            
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.25), rgba(0, 80, 200, 0.55));
+            backdrop-filter: blur(4px); /* 增加毛玻璃质感 */
+            border: 1px solid rgba(0, 200, 255, 0.6);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.35);
+            
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s;
+
+            /* 核心公式：自动均分 360 度 */
+            transform: rotateY(calc(360deg / var(--total) * var(--i))) translateZ(var(--radius));
+            
+            /* 倒影效果（兼容 WebKit 内核浏览器） */
+            -webkit-box-reflect: below 10px linear-gradient(transparent 40%, rgba(255, 255, 255, 0.2));
+        }
+
+        .item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+            background: linear-gradient(135deg, rgba(0, 180, 255, 0.5), rgba(0, 100, 240, 0.8));
+        }
+
+        @keyframes rotateRing {
+            from {
+                transform: rotateX(-12deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(-12deg) rotateY(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <div class="ring">
+            <!-- 通过内联 CSS 变量传入索引，彻底告别冗长的 nth-child -->
+            <div class="item" style="--i: 0;">阿里云</div>
+            <div class="item" style="--i: 1;">华为云</div>
+            <div class="item" style="--i: 2;">腾讯云</div>
+            <div class="item" style="--i: 3;">百度云</div>
+            <div class="item" style="--i: 4;">火山引擎</div>
+            <div class="item" style="--i: 5;">天翼云</div>
+            <div class="item" style="--i: 6;">番茄云</div>
+        </div>
+    </div>
+
+</body>
+</html>

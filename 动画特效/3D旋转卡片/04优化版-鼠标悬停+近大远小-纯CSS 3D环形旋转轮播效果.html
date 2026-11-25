@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>纯CSS 3D环形轮播（物理透视版）</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #0b0f19;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: sans-serif;
+            
+            --total: 7;
+            --duration: 16s;
+            --radius: 320px; /* 增大半径，拉开前后卡片的物理距离，使近大远小更强烈 */
+        }
+
+        .stage {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px; /* 景深：数值越小，透视越夸张 */
+        }
+
+        .ring {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotateRing var(--duration) linear infinite;
+        }
+
+        /* 鼠标悬停时暂停 */
+        .stage:hover .ring {
+            animation-play-state: paused;
+        }
+
+        .item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 130px;
+            height: 65px;
+            margin-left: -65px;
+            margin-top: -32.5px;
+            
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.35), rgba(0, 80, 200, 0.7));
+            border: 1px solid rgba(0, 200, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.4);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+
+            --angle: calc(360deg / var(--total) * var(--i));
+
+            /* 核心：只负责空间定位，大小交由浏览器 3D 引擎根据 perspective 自动渲染！ */
+            transform: rotateY(var(--angle)) translateZ(var(--radius));
+            
+            /* 配合过渡，让鼠标悬停时有更好的反馈 */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.9);
+            background: linear-gradient(135deg, rgba(0, 180, 255, 0.55), rgba(0, 100, 240, 0.85));
+        }
+
+        .item:nth-child(1) { --i: 0; }
+        .item:nth-child(2) { --i: 1; }
+        .item:nth-child(3) { --i: 2; }
+        .item:nth-child(4) { --i: 3; }
+        .item:nth-child(5) { --i: 4; }
+        .item:nth-child(6) { --i: 5; }
+        .item:nth-child(7) { --i: 6; }
+
+        @keyframes rotateRing {
+            from {
+                transform: rotateX(-12deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(-12deg) rotateY(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <div class="ring">
+            <div class="item">阿里云</div>
+            <div class="item">华为云</div>
+            <div class="item">腾讯云</div>
+            <div class="item">百度云</div>
+            <div class="item">火山引擎</div>
+            <div class="item">天翼云</div>
+            <div class="item">番茄云</div>
+        </div>
+    </div>
+
+</body>
+</html>
