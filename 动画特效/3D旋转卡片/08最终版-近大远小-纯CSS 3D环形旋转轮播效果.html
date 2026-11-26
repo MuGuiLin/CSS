@@ -5,28 +5,31 @@
     <title>纯CSS 3D环形轮播（无缝衔接 + 强透视近大远小）</title>
     <style>
         body {
-            margin: 0;
             height: 100vh;
             background-color: #0b0f19;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: sans-serif;
+            color: #fff;
 
-            --total: 8;
-            --duration: 18s;
-            --radius: 280px;   /* 半径 */
-            --tilt: -18deg;    /* 俯视倾角 */
-            --dir: -1;         /* -1 反向旋转，1 正向旋转 */
+            h1 {
+                text-align: center;
+            }
+
+            pre {
+                font-size: 14px;
+            }
         }
 
         .stage {
             position: relative;
+            margin: 50px auto;
             width: 300px;
             height: 200px;
             /* 核心控制：景深设小一点（如 550px），自然产生极强的“近大远小”差距 */
-            perspective: 550px; 
+            perspective: 550px; /* 景深：值越小，透视感越强（近大远小的效果） */
+            --total: 8;        /* 总卡片数 */
+            --duration: 18s;    /* 旋转周期 */
+            --radius: 280px;   /* 圆环半径：改大可以拉开前后距离 */
+            --tilt: -18deg;    /* 俯视倾角 */
+            --dir: -1;         /* -1 反向旋转，1 正向旋转 */
         }
 
         .ring {
@@ -38,11 +41,12 @@
         }
 
         .stage:hover .ring,
-        .stage:hover .item {
+        .stage:hover .card {
+            /* 悬停时暂停动画，保持当前状态 */
             animation-play-state: paused;
         }
 
-        .item-wrapper {
+        .item {
             position: absolute;
             left: 50%;
             top: 50%;
@@ -54,7 +58,7 @@
             transform: rotateY(var(--angle)) translateZ(var(--radius)) rotateY(calc(-1 * var(--angle)));
         }
 
-        .item {
+        .card {
             position: absolute;
             /* 因为近处放大倍数变高，基础尺寸稍微收小一点点，避免正面过大遮挡 */
             left: -50px;
@@ -74,28 +78,28 @@
             font-weight: 600;
             text-align: center;
             cursor: pointer;
-
+            /* 绑定动画：同时处理旋转抵消与背面缩放 */
             animation: keepFront var(--duration) linear infinite;
             transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
         }
 
-        .item:hover {
+        .card:hover {
             border-color: #fff;
             box-shadow: 0 0 25px rgba(0, 200, 255, 0.95);
             background: linear-gradient(135deg, rgba(0, 180, 255, 0.6), rgba(0, 100, 240, 0.9));
         }
 
-        .item-wrapper:nth-child(1) { --i: 0; }
-        .item-wrapper:nth-child(2) { --i: 1; }
-        .item-wrapper:nth-child(3) { --i: 2; }
-        .item-wrapper:nth-child(4) { --i: 3; }
-        .item-wrapper:nth-child(5) { --i: 4; }
-        .item-wrapper:nth-child(6) { --i: 5; }
-        .item-wrapper:nth-child(7) { --i: 6; }
-        .item-wrapper:nth-child(8) { --i: 7; }
+        /* .item:nth-child(1) { --i: 0; }
+        .item:nth-child(2) { --i: 1; }
+        .item:nth-child(3) { --i: 2; }
+        .item:nth-child(4) { --i: 3; }
+        .item:nth-child(5) { --i: 4; }
+        .item:nth-child(6) { --i: 5; }
+        .item:nth-child(7) { --i: 6; }
+        .item:nth-child(8) { --i: 7; } */
 
         /* 补全 25%、50%、75% 关键帧，确保 360 度旋转路径绝对平滑、首尾完美闭合 */
-        @keyframes orbitRing {
+        /* @keyframes orbitRing {
             0%   { transform: rotateX(var(--tilt)) rotateY(0deg); }
             25%  { transform: rotateX(var(--tilt)) rotateY(calc(90deg * var(--dir))); }
             50%  { transform: rotateX(var(--tilt)) rotateY(calc(180deg * var(--dir))); }
@@ -109,23 +113,55 @@
             50%  { transform: rotateY(calc(-180deg * var(--dir))) rotateX(calc(-1 * var(--tilt))); }
             75%  { transform: rotateY(calc(-270deg * var(--dir))) rotateX(calc(-1 * var(--tilt))); }
             100% { transform: rotateY(calc(-360deg * var(--dir))) rotateX(calc(-1 * var(--tilt))); }
+        } */
+
+        @keyframes orbitRing {
+            from {
+                transform: rotateX(var(--tilt)) rotateY(0deg);
+            }
+
+            to {
+                transform: rotateX(var(--tilt)) rotateY(calc(360deg * var(--dir)));
+            }
         }
+
+        @keyframes keepFront {
+            from {
+                transform: rotateY(0deg) rotateX(calc(-1 * var(--tilt)));
+            }
+
+            to {
+                transform: rotateY(calc(-360deg * var(--dir))) rotateX(calc(-1 * var(--tilt)));
+            }
+        }
+
     </style>
 </head>
 <body>
-
+    <h1>纯CSS 3D环形旋转轮播效果</h1>
+    <hr>
     <div class="stage">
         <div class="ring">
-            <div class="item-wrapper"><div class="item">阿里云</div></div>
-            <div class="item-wrapper"><div class="item">华为云</div></div>
-            <div class="item-wrapper"><div class="item">腾讯云</div></div>
-            <div class="item-wrapper"><div class="item">百度云</div></div>
-            <div class="item-wrapper"><div class="item">火山引擎</div></div>
-            <div class="item-wrapper"><div class="item">天翼云</div></div>
-            <div class="item-wrapper"><div class="item">番茄云</div></div>
-            <div class="item-wrapper"><div class="item">科大讯飞云</div></div>
+            <div class="item" style="--i: 0;"><div class="card">阿里云</div></div>
+            <div class="item" style="--i: 1;"><div class="card">华为云</div></div>
+            <div class="item" style="--i: 2;"><div class="card">腾讯云</div></div>
+            <div class="item" style="--i: 3;"><div class="card">百度云</div></div>
+            <div class="item" style="--i: 4;"><div class="card">火山引擎</div></div>
+            <div class="item" style="--i: 5;"><div class="card">天翼云</div></div>
+            <div class="item" style="--i: 6;"><div class="card">番茄云</div></div>
+            <div class="item" style="--i: 7;"><div class="card">科大讯飞云</div></div>
         </div>
     </div>
 
+    <div class="code-container">
+<pre>
+    <h5>纯CSS 3D环形旋转轮播效果代码解析：基于物理 Z 轴坐标，每一张卡片只要一转到背面就自动变小，一转到正面就自动变大，首尾 100% 无缝衔接！</h5>
+<ol>
+    <li>外环（.ring）做水平面上的 3D 倾斜与公转：整个圆环往后仰（rotateX(-18deg)），然后绕自身的 Y 轴做 360 度旋转。</li>
+    <li>定位包裹层（.item）的变换顺序：先 rotateY(初始角度)，再 translateZ(半径) 把卡片推到圆周上，最后必须紧跟一个 rotateY(-初始角度) 把卡片自身的朝向先掰回正前方！</li>
+    <li>卡片本体（.card）抵消公转与俯仰：外环转了多少度，卡片本体就反向转多少度；外环往后仰了 -18deg，卡片本体就往前倾 +18deg，这样卡片在 3D 空间中的法线方向就永远垂直于屏幕，不会产生任何镜像翻转，也不会侧身。</li>
+    <li>完全可见 + 真实物理透视：去掉 backface-visibility: hidden，背面的卡片完全可见，且因为处于 translateZ 的远端，浏览器会根据 perspective 自动渲染出真实的“近大远小”效果。</li>
+</pre>
+    </div>
 </body>
 </html>
