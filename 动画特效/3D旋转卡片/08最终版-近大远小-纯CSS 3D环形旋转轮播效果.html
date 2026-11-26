@@ -29,7 +29,7 @@
             --duration: 18s;    /* 旋转周期 */
             --radius: 280px;   /* 圆环半径：改大可以拉开前后距离 */
             --tilt: -18deg;    /* 俯视倾角 */
-            --dir: -1;         /* -1 反向旋转，1 正向旋转 */
+            --dir: 1;         /* -1 反向旋转，1 正向旋转 */
         }
 
         .ring {
@@ -38,6 +38,7 @@
             height: 100%;
             transform-style: preserve-3d;
             animation: orbitRing var(--duration) linear infinite;
+            animation-delay: -1000000s; /* 延迟时间：负数表示提前开始，让ring和card同时旋转 */
         }
 
         .stage:hover .ring,
@@ -80,6 +81,7 @@
             cursor: pointer;
             /* 绑定动画：同时处理旋转抵消与背面缩放 */
             animation: keepFront var(--duration) linear infinite;
+            animation-delay: -1000000s; /* 延迟时间：负数表示提前开始，让ring和card同时旋转 */
             transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
         }
 
@@ -153,7 +155,6 @@
         </div>
     </div>
 
-    <div class="code-container">
 <pre>
     <h5>纯CSS 3D环形旋转轮播效果代码解析：基于物理 Z 轴坐标，每一张卡片只要一转到背面就自动变小，一转到正面就自动变大，首尾 100% 无缝衔接！</h5>
 <ol>
@@ -161,7 +162,8 @@
     <li>定位包裹层（.item）的变换顺序：先 rotateY(初始角度)，再 translateZ(半径) 把卡片推到圆周上，最后必须紧跟一个 rotateY(-初始角度) 把卡片自身的朝向先掰回正前方！</li>
     <li>卡片本体（.card）抵消公转与俯仰：外环转了多少度，卡片本体就反向转多少度；外环往后仰了 -18deg，卡片本体就往前倾 +18deg，这样卡片在 3D 空间中的法线方向就永远垂直于屏幕，不会产生任何镜像翻转，也不会侧身。</li>
     <li>完全可见 + 真实物理透视：去掉 backface-visibility: hidden，背面的卡片完全可见，且因为处于 translateZ 的远端，浏览器会根据 perspective 自动渲染出真实的“近大远小”效果。</li>
+    <li>为什么有时候在刚打开页面时，card卡片不是正面向屏幕？item 和 card 的两个 CSS 动画在启动时没有同步时间基准（或触发时机不同步），以及 rotateX 和 rotateY 的矩阵乘法顺序在三维空间中并不完全对消。所以，有时候会看到 card 卡片不是正面向屏幕的情况。解决方法：就是让 item 和 card 的动画延迟时间不同步，比如 animation-delay: 0.5s;</li>
 </pre>
-    </div>
+
 </body>
 </html>
