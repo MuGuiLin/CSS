@@ -11,6 +11,10 @@
     align-items: center;
     perspective: 1125px;
     background-image: radial-gradient(circle, #000, #222);
+	
+	> h1 {
+		text-align: center;
+	}
   }
   
   .ball {
